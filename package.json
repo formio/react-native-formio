@@ -1,0 +1,91 @@
+{
+  "name": "react-formio",
+  "version": "1.5.4",
+  "description": "React rendering library for form.io embedded forms.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha --timeout 30000 --reporter spec test/.setup.js **/*.spec.js",
+    "build": "babel ./src --ignore=*.spec.js --out-dir ./lib --presets es2015,react,stage-2",
+    "lint": "eslint src",
+    "watch": "babel ./src --watch --ignore=*.spec.js --out-dir ./lib --presets es2015,react,stage-2",
+    "prepublish": "npm run lint; npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formio/react-formio.git"
+  },
+  "keywords": [
+    "React",
+    "component",
+    "Formio",
+    "Forms",
+    "react-component"
+  ],
+  "author": "Randall Knutson <randall@form.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/formio/react-formio/issues"
+  },
+  "homepage": "https://github.com/formio/react-formio#readme",
+  "browserify-shim": {
+    "react": "global:React"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.22.0",
+    "formio-utils": "^0.3.0",
+    "formiojs": "^2.25.4",
+    "lodash": "^4.15.0",
+    "moment": "^2.10.6",
+    "react-dropzone": "^3.5.3",
+    "react-flatpickr": "^3.1.1",
+    "react-pagify": "^2.1.1",
+    "react-quill": "^0.4.1",
+    "react-signature-canvas": "^0.3.0",
+    "react-text-mask": "^4.1.0",
+    "react-widgets": "^4.0.3",
+    "reactabular": "^3.0.5",
+    "reselect": "^2.5.4",
+    "segmentize": "^0.4.1",
+    "text-mask-addons": "^3.5.0"
+  },
+  "devDependencies": {
+    "ajv-pack": "^0.2.5",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.0.5",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-2": "^6.13.0",
+    "babel-register": "^6.4.3",
+    "chai": "^3.5.0",
+    "deep-freeze": "0.0.1",
+    "del": "^2.0.2",
+    "enzyme": "^2.0.0",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-config-formio": "^1.1.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^1.12.0",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^6.0.0",
+    "expect": "^1.20.2",
+    "jsdom": "^9.4.2",
+    "mocha": "^2.4.5",
+    "react": "^15.0.0",
+    "react-addons-test-utils": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "sinon": "^1.17.4",
+    "webpack": "^1.13.1"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "formio.css"
+  ],
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0"
+  }
+}
