@@ -1,4 +1,7 @@
-# React Formio
+# THIS LIBRARY IS PRE-ALPHA AND NOT READY FOR USE IN ANY FORM.
+Please wait for an alpha release to test this if you are not actively developing it.
+
+# React Native Formio
 
 A [React](http://facebook.github.io/react/) component for rendering out forms based on the [Form.io](https://www.form.io) platform.
 
