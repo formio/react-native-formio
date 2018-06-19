@@ -1,7 +1,7 @@
 {
-  "name": "react-formio",
-  "version": "1.5.4",
-  "description": "React rendering library for form.io embedded forms.",
+  "name": "react-native-formio",
+  "version": "0.0.0",
+  "description": "React native rendering library for form.io embedded forms.",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha --timeout 30000 --reporter spec test/.setup.js **/*.spec.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/formio/react-formio.git"
+    "url": "git+https://github.com/formio/react-native-formio.git"
   },
   "keywords": [
     "React",
@@ -24,9 +24,9 @@
   "author": "Randall Knutson <randall@form.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/formio/react-formio/issues"
+    "url": "https://github.com/formio/react-native-formio/issues"
   },
-  "homepage": "https://github.com/formio/react-formio#readme",
+  "homepage": "https://github.com/formio/react-native-formio#readme",
   "browserify-shim": {
     "react": "global:React"
   },
