@@ -2,7 +2,7 @@ import React from 'react';
 import valueMixin from './mixins/valueMixin';
 import selectMixin from './mixins/selectMixin';
 import componentMixin from './mixins/componentMixin';
-import { raw, interpolate } from '../../util';
+import {raw, interpolate} from '../../util';
 import Formiojs from 'formiojs';
 
 module.exports = React.createClass({

@@ -1,13 +1,13 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Password from './password.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Password', function () {
-  describe('Password field', function () {
+describe('Password', function() {
+  describe('Password field', function() {
     var component= {
       'input': true,
       'tableView': false,
@@ -18,7 +18,7 @@ describe('Password', function () {
       'prefix': '',
       'suffix': '',
       'protected': true,
-      "persistent": true,
+      'persistent': true,
       'inputMask': '',
       'multiple': false,
       'defaultValue': '',
@@ -39,7 +39,7 @@ describe('Password', function () {
       'type': 'password'
     };
     var attachToForm = sinon.spy();
-    it('Renders a password field', function (done) {
+    it('Renders a password field', function(done) {
       const element = render(
         <Password
           component={component}
@@ -76,7 +76,6 @@ describe('Password', function () {
       component.placeholder = '';
       done();
     });
-
 
     it('Renders with a prefix', function(done) {
       component.prefix = '$';
@@ -171,7 +170,7 @@ describe('Password', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Password
           component={component}
@@ -181,7 +180,5 @@ describe('Password', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
-
 });

@@ -8,7 +8,7 @@ module.exports = React.createClass({
   displayName: 'Textarea',
   mixins: [valueMixin, multiMixin, componentMixin],
   customState: function(state) {
-    const { component, readOnly } = this.props;
+    const {component, readOnly} = this.props;
     this.isWysiwig = false;
     if (!readOnly && component.wysiwyg) {
       this.isWysiwig = true;
@@ -19,7 +19,7 @@ module.exports = React.createClass({
     this.setValue(value, index);
   },
   getSingleElement: function(value, index) {
-    const { component, name, readOnly } = this.props;
+    const {component, name, readOnly} = this.props;
     index = index || 0;
     if (this.isWysiwig) {
       return (

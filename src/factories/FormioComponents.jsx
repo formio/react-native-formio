@@ -9,7 +9,7 @@ const groups = {
   layout: {
     title: 'Layout Components'
   }
-}
+};
 
 export const FormioComponents = {
   addGroup: function(name, group) {
@@ -33,4 +33,4 @@ export const FormioComponents = {
   },
   components,
   groups
-}
+};

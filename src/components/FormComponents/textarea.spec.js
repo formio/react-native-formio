@@ -1,43 +1,43 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Textarea from './textarea.jsx';
 import sinon from 'sinon';
 import form from '../../../test/forms/empty.json';
 
-describe('Textarea', function () {
-  describe('Single Textarea', function () {
+describe('Textarea', function() {
+  describe('Single Textarea', function() {
     var component= {
-      "input": true,
-      "tableView": true,
-      "label": "textarea",
-      "key": "textarea",
-      "placeholder": "",
-      "prefix": "",
-      "suffix": "",
-      "rows": 3,
-      "multiple": false,
-      "defaultValue": "",
-      "protected": false,
-      "persistent": true,
-      "wysiwyg": false,
-      "validate": {
-        "required": false,
-        "minLength": "",
-        "maxLength": "",
-        "pattern": "",
-        "custom": ""
+      'input': true,
+      'tableView': true,
+      'label': 'textarea',
+      'key': 'textarea',
+      'placeholder': '',
+      'prefix': '',
+      'suffix': '',
+      'rows': 3,
+      'multiple': false,
+      'defaultValue': '',
+      'protected': false,
+      'persistent': true,
+      'wysiwyg': false,
+      'validate': {
+        'required': false,
+        'minLength': '',
+        'maxLength': '',
+        'pattern': '',
+        'custom': ''
       },
-      "type": "textarea",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'type': 'textarea',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       }
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a basic textarea', function (done) {
+    it('Renders a basic textarea', function(done) {
       const element = render(
         <Textarea
       component={component}
@@ -159,7 +159,7 @@ describe('Textarea', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Textarea
           component={component}
@@ -169,36 +169,35 @@ describe('Textarea', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
 
   describe('Multiple Textarea', function() {
     var component = {
-      "input": true,
-      "tableView": true,
-      "label": "textarea",
-      "key": "textarea",
-      "placeholder": "",
-      "prefix": "",
-      "suffix": "",
-      "rows": 3,
-      "multiple": true,
-      "defaultValue": "",
-      "protected": false,
-      "persistent": true,
-      "wysiwyg": false,
-      "validate": {
-        "required": false,
-        "minLength": "",
-        "maxLength": "",
-        "pattern": "",
-        "custom": ""
+      'input': true,
+      'tableView': true,
+      'label': 'textarea',
+      'key': 'textarea',
+      'placeholder': '',
+      'prefix': '',
+      'suffix': '',
+      'rows': 3,
+      'multiple': true,
+      'defaultValue': '',
+      'protected': false,
+      'persistent': true,
+      'wysiwyg': false,
+      'validate': {
+        'required': false,
+        'minLength': '',
+        'maxLength': '',
+        'pattern': '',
+        'custom': ''
       },
-      "type": "textarea",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'type': 'textarea',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       }
     };
     var attachToForm = sinon.spy();
@@ -340,7 +339,7 @@ describe('Textarea', function () {
       expect(table.find('tr').length).to.equal(2);
       expect(table.find('tr').at(0).find('textarea').prop('data-index')).to.equal(0);
       done();
-    })
+    });
 
     it('Check multiple textarea with required', function(done) {
       component.validate.required = true;
@@ -379,7 +378,7 @@ describe('Textarea', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Textarea
           component={component}
@@ -390,5 +389,4 @@ describe('Textarea', function () {
       done();
     });
   });
-
 });

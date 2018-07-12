@@ -1,51 +1,51 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import DateTimePicker from './datetime.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Datetime', function () {
-  describe('datetime field', function () {
+describe('Datetime', function() {
+  describe('datetime field', function() {
     var component= {
-      "input": true,
-      "tableView": true,
-      "label": "TestDate",
-      "key": "testDate",
-      "placeholder": "",
-      "format": "yyyy-MM-dd HH:mm",
-      "enableDate": true,
-      "enableTime": true,
-      "datepickerMode": "day",
-      "datePicker": {
-        "showWeeks": true,
-        "startingDay": 0,
-        "initDate": "",
-        "minMode": "day",
-        "maxMode": "year",
-        "yearRange": "20",
-        "datepickerMode": "day"
+      'input': true,
+      'tableView': true,
+      'label': 'TestDate',
+      'key': 'testDate',
+      'placeholder': '',
+      'format': 'yyyy-MM-dd HH:mm',
+      'enableDate': true,
+      'enableTime': true,
+      'datepickerMode': 'day',
+      'datePicker': {
+        'showWeeks': true,
+        'startingDay': 0,
+        'initDate': '',
+        'minMode': 'day',
+        'maxMode': 'year',
+        'yearRange': '20',
+        'datepickerMode': 'day'
       },
-      "timePicker": {
-        "hourStep": 1,
-        "minuteStep": 1,
-        "showMeridian": true,
-        "readonlyInput": false,
-        "mousewheel": true,
-        "arrowkeys": true
+      'timePicker': {
+        'hourStep': 1,
+        'minuteStep': 1,
+        'showMeridian': true,
+        'readonlyInput': false,
+        'mousewheel': true,
+        'arrowkeys': true
       },
-      "protected": false,
-      "persistent": true,
-      "validate": {
-        "required": false,
-        "custom": ""
+      'protected': false,
+      'persistent': true,
+      'validate': {
+        'required': false,
+        'custom': ''
       },
-      "type": "datetime",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'type': 'datetime',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       }
 
     };
@@ -70,8 +70,8 @@ describe('Datetime', function () {
     //  done();
     //});
 
-    it('Check with the label of DatetimePicker', function (done) {
-      component.label = 'Test DatetimePicker'
+    it('Check with the label of DatetimePicker', function(done) {
+      component.label = 'Test DatetimePicker';
       const element = render(
         <DateTimePicker
           component={component}
@@ -83,7 +83,7 @@ describe('Datetime', function () {
       done();
     });
 
-    it('Check without label of DatetimePicker', function (done) {
+    it('Check without label of DatetimePicker', function(done) {
       component.label = null;
       const element = render(
         <DateTimePicker
@@ -127,7 +127,5 @@ describe('Datetime', function () {
     //  expect(element.find('.rw-list')).to.have.length(0);
     //  done();
     //});
-
   });
-
 });

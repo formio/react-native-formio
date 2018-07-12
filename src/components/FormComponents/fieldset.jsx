@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormioComponentsList } from '../../components';
+import {FormioComponentsList} from '../../components';
 
 module.exports = React.createClass({
   displayName: 'Fieldset',

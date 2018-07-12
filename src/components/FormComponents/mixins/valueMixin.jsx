@@ -1,11 +1,11 @@
 import React from 'react';
-import { deepEqual } from '../../../util';
+import {deepEqual} from '../../../util';
 import clone from 'lodash/clone';
 import debounce from 'lodash/debounce';
 
 module.exports = {
   getDefaultValue: function(value) {
-    const { component, data, row } = this.props;
+    const {component, data, row} = this.props;
     // Allow components to set different default values.
     if (value == null) {
       if (component.hasOwnProperty('customDefaultValue')) {
@@ -53,7 +53,7 @@ module.exports = {
     return state;
   },
   validate: function(value) {
-    const { component } = this.props;
+    const {component} = this.props;
     var state = {
       isValid: true,
       errorType: '',
@@ -77,7 +77,7 @@ module.exports = {
         }
       });
 
-      if (component.validate && component.validate.required && (!value instanceof Array || value.length === 0)) {
+      if (component.validate && component.validate.required && (!(value instanceof Array) || value.length === 0)) {
         state.isValid = false;
         state.errorType = 'required';
         state.errorMessage = (component.label || component.key) + ' is required.';
@@ -89,7 +89,7 @@ module.exports = {
     return state;
   },
   validateItem: function(item) {
-    const { component } = this.props;
+    const {component} = this.props;
 
     var state = {
       isValid: true,
@@ -103,7 +103,9 @@ module.exports = {
     // Required
     if (component.validate.required) {
       // Multivalue and selectboxes are exceptions since !![] === true and !!{} === true.
-      if (component.type === 'selectboxes' && !Object.keys(item).reduce(function(prev, cur) {  return prev || item[cur];}, false)) {
+      if (component.type === 'selectboxes' && !Object.keys(item).reduce(function(prev, cur) {
+  return prev || item[cur];
+}, false)) {
         state.isValid = false;
         state.errorType = 'required';
         state.errorMessage = (component.label || component.key) + ' is required.';
@@ -168,7 +170,7 @@ module.exports = {
       var input = item;
       var valid;
       try {
-        const { data, row } = this.props;
+        const {data, row} = this.props;
         valid = eval(custom);
         state.isValid = (valid === true);
       }
@@ -185,7 +187,7 @@ module.exports = {
     return state;
   },
   componentWillReceiveProps: function(nextProps) {
-    const { component } = this.props;
+    const {component} = this.props;
     let value;
     if (component.hasOwnProperty('calculateValue') && component.calculateValue) {
       if (!deepEqual(this.data, nextProps.data)) {
@@ -228,14 +230,14 @@ module.exports = {
     }
   },
   safeSingleToMultiple: function(value) {
-    const { component } = this.props;
+    const {component} = this.props;
     // Don't do anything to datagrid or containers.
     if ((component.type === 'datagrid') || (component.type === 'container') || (component.type === 'editgrid')) {
       return value;
     }
     // If this was a single but is not a multivalue.
     if (component.multiple && !Array.isArray(value)) {
-      if(component.type === 'select' && !value) {
+      if (component.type === 'select' && !value) {
         value = [];
       }
       else {
@@ -285,7 +287,7 @@ module.exports = {
       if (index !== null && Array.isArray(previousState.value)) {
         // Clone so we keep state immutable.
         const newValue = clone(previousState.value);
-        newValue[index] = value
+        newValue[index] = value;
         previousState.value = newValue;
       }
       else {

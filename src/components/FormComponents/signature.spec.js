@@ -2,44 +2,44 @@
  * Created by lt-68 on 9/8/16.
  */
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Signature from './signature.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Signature', function () {
-  describe('Signature field', function () {
+describe('Signature', function() {
+  describe('Signature field', function() {
     var component= {
-      "input": true,
-      "tableView": true,
-      "label": "Signature",
-      "key": "signature",
-      "placeholder": "",
-      "footer": "Sign above",
-      "width": "100%",
-      "height": "150px",
-      "penColor": "black",
-      "backgroundColor": "rgb(245,245,235)",
-      "minWidth": "0.5",
-      "maxWidth": "2.5",
-      "protected": false,
-      "persistent": true,
-      "validate": {
-        "required": false
+      'input': true,
+      'tableView': true,
+      'label': 'Signature',
+      'key': 'signature',
+      'placeholder': '',
+      'footer': 'Sign above',
+      'width': '100%',
+      'height': '150px',
+      'penColor': 'black',
+      'backgroundColor': 'rgb(245,245,235)',
+      'minWidth': '0.5',
+      'maxWidth': '2.5',
+      'protected': false,
+      'persistent': true,
+      'validate': {
+        'required': false
       },
-      "type": "signature",
-      "hideLabel": true,
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'type': 'signature',
+      'hideLabel': true,
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       }
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a basic Signature field', function (done) {
+    it('Renders a basic Signature field', function(done) {
       const element = render(
         <Signature
           component={component}
@@ -56,7 +56,7 @@ describe('Signature', function () {
       done();
     });
 
-    it('Check Footer for signature component', function (done) {
+    it('Check Footer for signature component', function(done) {
       const element = render(
         <Signature
           component={component}
@@ -69,7 +69,7 @@ describe('Signature', function () {
     });
 
     //Checked the clear button class is glyphicon-refresh.
-    it('Check refresh button of signature component', function (done) {
+    it('Check refresh button of signature component', function(done) {
       const element = render(
         <Signature
           component={component}
@@ -81,7 +81,7 @@ describe('Signature', function () {
     });
 
     it('Sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Signature
           component={component}
@@ -91,7 +91,5 @@ describe('Signature', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
-
 });

@@ -1,13 +1,13 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Number from './number.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Number @number', function () {
-  describe('Number field', function () {
+describe('Number @number', function() {
+  describe('Number field', function() {
     var component = {
       'input': true,
       'tableView': false,
@@ -18,7 +18,7 @@ describe('Number @number', function () {
       'prefix': '',
       'suffix': '',
       'protected': true,
-      "persistent": true,
+      'persistent': true,
       'inputMask': '',
       'multiple': false,
       'defaultValue': '',
@@ -40,7 +40,7 @@ describe('Number @number', function () {
     };
 
     var attachToForm = sinon.spy();
-    it('Renders a number field', function (done) {
+    it('Renders a number field', function(done) {
       const element = render(
         <Number
           component={component}
@@ -65,7 +65,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Updates the placeholder value', function (done) {
+    it('Updates the placeholder value', function(done) {
       component.placeholder = 'My Placeholder';
       const element = render(
         <Number
@@ -78,7 +78,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Renders with a prefix', function (done) {
+    it('Renders with a prefix', function(done) {
       component.prefix = '$';
       const element = render(
         <Number
@@ -93,7 +93,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Renders with a suffix', function (done) {
+    it('Renders with a suffix', function(done) {
       component.suffix = 'Pounds';
       const element = render(
         <Number
@@ -108,7 +108,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Renders with prefix and suffix', function (done) {
+    it('Renders with prefix and suffix', function(done) {
       component.prefix = 'Prefix';
       component.suffix = 'Suffix';
       const element = render(
@@ -127,7 +127,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Sets a default value', function (done) {
+    it('Sets a default value', function(done) {
       const element = render(
         <Number
           name="number"
@@ -140,8 +140,8 @@ describe('Number @number', function () {
       done();
     });
 
-    it('sets a custom class', function (done) {
-      component.customClass = 'my-custom-class'
+    it('sets a custom class', function(done) {
+      component.customClass = 'my-custom-class';
       const element = render(
         <Number
           component={component}
@@ -261,10 +261,9 @@ describe('Number @number', function () {
       component.validate.max = '';
       done();
     });
-
   });
 
-  describe('Multiple Number Field', function () {
+  describe('Multiple Number Field', function() {
     var component = {
       'input': true,
       'tableView': true,
@@ -297,7 +296,7 @@ describe('Number @number', function () {
     };
 
     var attachToForm = sinon.spy();
-    it('Renders a multivalue number field', function (done) {
+    it('Renders a multivalue number field', function(done) {
       const element = render(
         <Number
           name="number"
@@ -326,8 +325,8 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Fills in the placeholder value', function (done) {
-      component.placeholder = "My Placeholder";
+    it('Fills in the placeholder value', function(done) {
+      component.placeholder = 'My Placeholder';
       const element = render(
         <Number
           name="number"
@@ -340,7 +339,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Renders with a prefix', function (done) {
+    it('Renders with a prefix', function(done) {
       component.prefix = '$';
       const element = render(
         <Number
@@ -356,7 +355,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Renders with a suffix', function (done) {
+    it('Renders with a suffix', function(done) {
       component.suffix = 'Pounds';
       const element = render(
         <Number
@@ -372,9 +371,9 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Renders with prefix and suffix', function (done) {
-      component.prefix = "Prefix";
-      component.suffix = "Suffix";
+    it('Renders with prefix and suffix', function(done) {
+      component.prefix = 'Prefix';
+      component.suffix = 'Suffix';
       const element = render(
         <Number
           name="number"
@@ -392,7 +391,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Sets a default value', function (done) {
+    it('Sets a default value', function(done) {
       component.defaultValue = 100;
       const element = render(
         <Number
@@ -406,7 +405,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Keeps value over default value', function (done) {
+    it('Keeps value over default value', function(done) {
       component.defaultValue = 100;
       const element = render(
         <Number
@@ -421,7 +420,7 @@ describe('Number @number', function () {
       done();
     });
 
-    it('Adds and removes rows', function (done) {
+    it('Adds and removes rows', function(done) {
       const element = mount(
         <Number
           name="number"
@@ -465,8 +464,8 @@ describe('Number @number', function () {
       done();
     });
 
-    it('sets a custom class', function (done) {
-      component.customClass = 'my-custom-class'
+    it('sets a custom class', function(done) {
+      component.customClass = 'my-custom-class';
       const element = render(
         <Number
           component={component}

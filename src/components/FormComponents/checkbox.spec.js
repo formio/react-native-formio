@@ -1,35 +1,35 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Checkbox from './checkbox.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Checkbox', function () {
-  describe('Checkbox field', function () {
+describe('Checkbox', function() {
+  describe('Checkbox field', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "checkbox",
-      "validate": {
-        "required": false
+      'type': 'checkbox',
+      'validate': {
+        'required': false
       },
-      "persistent": true,
-      "protected": false,
-      "defaultValue": false,
-      "key": "checkbox",
-      "label": "Checkbox",
-      "hideLabel": true,
-      "tableView": true,
-      "inputType": "checkbox",
-      "input": true
+      'persistent': true,
+      'protected': false,
+      'defaultValue': false,
+      'key': 'checkbox',
+      'label': 'Checkbox',
+      'hideLabel': true,
+      'tableView': true,
+      'inputType': 'checkbox',
+      'input': true
     };
     var attachToForm = sinon.spy();
-    it('Renders a checkbox field', function (done) {
+    it('Renders a checkbox field', function(done) {
       const element = render(
         <Checkbox
       component={component}
@@ -48,7 +48,7 @@ describe('Checkbox', function () {
       done();
     });
 
-    it('Renders a checkbox field without a label', function (done) {
+    it('Renders a checkbox field without a label', function(done) {
       component.hideLabel = true;
       component.datagridLabel = false;
       const element = render(
@@ -62,7 +62,7 @@ describe('Checkbox', function () {
       done();
     });
 
-    it('Renders a checkbox field with a label when variables set', function (done) {
+    it('Renders a checkbox field with a label when variables set', function(done) {
       component.hideLabel = false;
       component.datagridLabel = false;
       const element = render(
@@ -77,7 +77,7 @@ describe('Checkbox', function () {
       done();
     });
 
-    it('Renders a checkbox field with a label when variables set', function (done) {
+    it('Renders a checkbox field with a label when variables set', function(done) {
       component.hideLabel = true;
       component.datagridLabel = true;
       const element = render(
@@ -92,7 +92,7 @@ describe('Checkbox', function () {
       done();
     });
 
-    it('Renders a checkbox field with a label when variables set', function (done) {
+    it('Renders a checkbox field with a label when variables set', function(done) {
       component.hideLabel = false;
       component.datagridLabel = true;
       const element = render(
@@ -141,13 +141,13 @@ describe('Checkbox', function () {
         ></Checkbox>
       );
       expect(element.find('label').hasClass('not-checked')).to.equal(true);
-      element.find('input').simulate('change', {"target": {"checked": true}});
+      element.find('input').simulate('change', {'target': {'checked': true}});
       expect(element.find('label').hasClass('checked')).to.equal(true);
       done();
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Checkbox
           component={component}
@@ -158,5 +158,4 @@ describe('Checkbox', function () {
       done();
     });
   });
-
 });

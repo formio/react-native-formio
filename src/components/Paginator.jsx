@@ -2,7 +2,7 @@ import React from 'react';
 import Pagify from 'react-pagify';
 import segmentize from 'segmentize';
 
-export default class extends React.Component {
+export default class Paginator extends React.Component {
   static propTypes = {
     onSelect: React.PropTypes.func
   }
@@ -11,7 +11,7 @@ export default class extends React.Component {
     super(props);
     this.state = {
       pagination: this.props.pagination
-    }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,7 +32,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { pagination } = this.state;
+    const {pagination} = this.state;
     const bootstrapStyles = {
       className: 'pagination',
       tags: {

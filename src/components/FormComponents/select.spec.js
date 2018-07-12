@@ -1,66 +1,66 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Select from './select.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Select Field', function () {
-  describe('Select Compoennt', function () {
+describe('Select Field', function() {
+  describe('Select Compoennt', function() {
     var component= {
-      "input": true,
-      "tableView": true,
-      "label": "",
-      "key": "select",
-      "placeholder": "",
-      "data": {
-        "values": [
+      'input': true,
+      'tableView': true,
+      'label': '',
+      'key': 'select',
+      'placeholder': '',
+      'data': {
+        'values': [
           {
-            "value": "a",
-            "label": "a"
+            'value': 'a',
+            'label': 'a'
           },
           {
-            "value": "b",
-            "label": "b"
+            'value': 'b',
+            'label': 'b'
           },
           {
-            "value": "c",
-            "label": "c"
+            'value': 'c',
+            'label': 'c'
           },
           {
-            "value": "d",
-            "label": "d"
+            'value': 'd',
+            'label': 'd'
           }
         ],
-        "json": "",
-        "url": "",
-        "resource": ""
+        'json': '',
+        'url': '',
+        'resource': ''
       },
-      "dataSrc": "values",
-      "valueProperty": "",
-      "defaultValue": "",
-      "refreshOn": "",
-      "filter": "",
-      "authenticate": false,
-      "template": "<span>{{ item.label }}</span>",
-      "multiple": false,
-      "protected": true,
-      "unique": false,
-      "persistent": true,
-      "validate": {
-        "required": false
+      'dataSrc': 'values',
+      'valueProperty': '',
+      'defaultValue': '',
+      'refreshOn': '',
+      'filter': '',
+      'authenticate': false,
+      'template': '<span>{{ item.label }}</span>',
+      'multiple': false,
+      'protected': true,
+      'unique': false,
+      'persistent': true,
+      'validate': {
+        'required': false
       },
-      "type": "select",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'type': 'select',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       }
     };
     var attachToForm = sinon.spy();
 
-    it('Render a basic select component', function (done) {
+    it('Render a basic select component', function(done) {
       const element = render(
         <Select
           component={component}
@@ -73,8 +73,8 @@ describe('Select Field', function () {
       done();
     });
 
-    it('Check the label of the select component', function (done) {
-      component.label = 'Select component'
+    it('Check the label of the select component', function(done) {
+      component.label = 'Select component';
       const element = render(
         <Select
           component={component}
@@ -86,7 +86,7 @@ describe('Select Field', function () {
       done();
     });
 
-    it('Check with out label for select component', function (done) {
+    it('Check with out label for select component', function(done) {
       component.label = null;
       const element = render(
         <Select
@@ -117,7 +117,7 @@ describe('Select Field', function () {
       done();
     });
 
-    it('Render a multiple select component ', function (done) {
+    it('Render a multiple select component ', function(done) {
       component.multiple = true;
       const element = render(
         <Select
@@ -129,7 +129,5 @@ describe('Select Field', function () {
       component.multiple = false;
       done();
     });
-
   });
-
 });

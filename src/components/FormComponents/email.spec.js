@@ -1,39 +1,39 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Email from './email.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Email @email', function () {
-  describe('Single email', function () {
+describe('Email @email', function() {
+  describe('Single email', function() {
     var component= {
-      "validate": {
-        "required": false
+      'validate': {
+        'required': false
       },
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "email",
-      "persistent": true,
-      "unique": true,
-      "protected": false,
-      "defaultValue": "",
-      "suffix": "",
-      "prefix": "",
-      "placeholder": "",
-      "key": "email",
-      "label": "my email",
-      "inputType": "email",
-      "tableView": true,
-      "input": true
+      'type': 'email',
+      'persistent': true,
+      'unique': true,
+      'protected': false,
+      'defaultValue': '',
+      'suffix': '',
+      'prefix': '',
+      'placeholder': '',
+      'key': 'email',
+      'label': 'my email',
+      'inputType': 'email',
+      'tableView': true,
+      'input': true
     };
 
     var attachToForm = sinon.spy();
-    it('Renders a basic email', function (done) {
+    it('Renders a basic email', function(done) {
       const element = render(
         <Email
       component={component}
@@ -168,7 +168,7 @@ describe('Email @email', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Email
           component={component}
@@ -211,33 +211,32 @@ describe('Email @email', function () {
       expect(element.state('value')).to.equal('');
       done();
     });
-
   });
 
   describe('Multiple email', function() {
     var component = {
-      "multiple": true,
-      "validate": {
-        "required": true
+      'multiple': true,
+      'validate': {
+        'required': true
       },
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "email",
-      "persistent": true,
-      "unique": true,
-      "protected": false,
-      "defaultValue": "",
-      "suffix": "",
-      "prefix": "",
-      "placeholder": "",
-      "key": "email",
-      "label": "my email",
-      "inputType": "email",
-      "tableView": true,
-      "input": true
+      'type': 'email',
+      'persistent': true,
+      'unique': true,
+      'protected': false,
+      'defaultValue': '',
+      'suffix': '',
+      'prefix': '',
+      'placeholder': '',
+      'key': 'email',
+      'label': 'my email',
+      'inputType': 'email',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
     it('Renders a multi-value email', function(done) {
@@ -376,7 +375,7 @@ describe('Email @email', function () {
       expect(table.find('tr').length).to.equal(2);
       expect(table.find('tr').at(0).find('input').prop('data-index')).to.equal(0);
       done();
-    })
+    });
 
     it('Check multiple email with required', function(done) {
       component.validate.required = true;
@@ -416,7 +415,7 @@ describe('Email @email', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Email
           component={component}
@@ -427,5 +426,4 @@ describe('Email @email', function () {
       done();
     });
   });
-
 });

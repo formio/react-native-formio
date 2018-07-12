@@ -8,7 +8,7 @@ module.exports = React.createClass({
   displayName: 'Textfield',
   mixins: [valueMixin, multiMixin, componentMixin],
   onChangeCustom: function(config, event) {
-    const { value } = event.target;
+    const {value} = event.target;
     // Don't fire a change if the value didn't change.
     if (value === this.state.date[config.key]) {
       return;
@@ -20,7 +20,7 @@ module.exports = React.createClass({
       const padLeft = function padLeft(nr, n, str) {
         return Array(n - String(nr.toString()).length + 1).join(str || '0') + nr.toString();
       };
-      const { date } = this.state;
+      const {date} = this.state;
 
       if (this.props.component.dayFirst) {
         this.setValue(padLeft(date.day, 2) + '/' + padLeft(date.month, 2) + '/' + padLeft(date.year, 4));
@@ -102,7 +102,7 @@ module.exports = React.createClass({
           month: parseInt(parts[(this.props.component.dayFirst ? 1 : 0)]).toString(),
           year: parts[2]
         }
-      })
+      });
     }
   },
   getDatePart: function(config) {
@@ -137,7 +137,7 @@ module.exports = React.createClass({
           disabled={this.props.readOnly}
         />
       </div>
-    )
+    );
   },
   getDay: function(componentId, field) {
     if (field.hide) {
@@ -199,7 +199,7 @@ module.exports = React.createClass({
     });
   },
   getSingleElement: function(value, index) {
-    let { component } = this.props;
+    let {component} = this.props;
     return (
       <div className='day-input'>
         <div className='daySelect form row'>

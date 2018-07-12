@@ -33,7 +33,7 @@ module.exports = React.createClass({
     this.setValue(null);
   },
   getElements: function() {
-    const { component } = this.props;
+    const {component} = this.props;
     var footerClass = 'formio-signature-footer' + (component.validate.required ? ' field-required' : '');
     var ref = component.key;
     var styles = {
@@ -53,7 +53,9 @@ module.exports = React.createClass({
         <div className="m-signature-pad">
           <div className="m-signature-pad--body" style={styles}>
             <SignatureCanvas
-              ref={ (ref) => { this.signature = ref; } }
+              ref={ (ref) => {
+ this.signature = ref; 
+} }
               minWidth={Number(component.minWidth)}
               maxWidth={Number(component.maxWidth)}
               penColor={component.penColor}

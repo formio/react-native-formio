@@ -1,57 +1,57 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Survey from './survey.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Survey', function () {
-  describe('Survey field', function () {
+describe('Survey', function() {
+  describe('Survey field', function() {
     var component= {
-      "inline": false,
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'inline': false,
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "survey",
-      "validate": {
-        "customPrivate": false,
-        "custom": "",
-        "required": false
+      'type': 'survey',
+      'validate': {
+        'customPrivate': false,
+        'custom': '',
+        'required': false
       },
-      "persistent": true,
-      "protected": false,
-      "defaultValue": "",
-      "values": [
+      'persistent': true,
+      'protected': false,
+      'defaultValue': '',
+      'values': [
         {
-          "label": "firsrtCol",
-          "value": "firsrtCol"
+          'label': 'firsrtCol',
+          'value': 'firsrtCol'
         },
         {
-          "label": "secCol",
-          "value": "secCol"
+          'label': 'secCol',
+          'value': 'secCol'
         }
       ],
-      "questions": [
+      'questions': [
         {
-          "label": "first",
-          "value": "first"
+          'label': 'first',
+          'value': 'first'
         },
         {
-          "label": "second",
-          "value": "second"
+          'label': 'second',
+          'value': 'second'
         }
       ],
-      "key": "testSurvey",
-      "label": "Test Survey",
-      "tableView": true,
-      "input": true
+      'key': 'testSurvey',
+      'label': 'Test Survey',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a Survey field', function (done) {
+    it('Renders a Survey field', function(done) {
       const element = render(
         <Survey
       component={component}
@@ -133,7 +133,7 @@ describe('Survey', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Survey
           component={component}
@@ -143,7 +143,5 @@ describe('Survey', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
-
 });

@@ -29,7 +29,7 @@ module.exports = {
     });
   },
   getElements: function() {
-    const { component } = this.props;
+    const {component} = this.props;
     var Component;
     var classLabel = 'control-label' + ( component.validate && component.validate.required ? ' field-required' : '');
     var inputLabel = (component.label && !component.hideLabel ? <label htmlFor={component.key} className={classLabel}>{component.label}</label> : '');

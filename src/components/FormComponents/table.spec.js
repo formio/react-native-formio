@@ -1,71 +1,71 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Table from './table.jsx';
 import sinon from 'sinon';
 import form from '../../../test/forms/empty.json';
 
 var components = require('../../../test/forms/componentSpec.js');
 
-describe('Table', function () {
-  describe(' Table component', function () {
+describe('Table', function() {
+  describe(' Table component', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "table",
-      "condensed": false,
-      "hover": false,
-      "bordered": false,
-      "striped": false,
-      "caption": "",
-      "header": [],
-      "rows": [
+      'type': 'table',
+      'condensed': false,
+      'hover': false,
+      'bordered': false,
+      'striped': false,
+      'caption': '',
+      'header': [],
+      'rows': [
         [
           {
-            "components": [
+            'components': [
               components.textfeild
             ]
           },
           {
-            "components": [
+            'components': [
               components.password
             ]
           }
         ],
         [
           {
-            "components": [
+            'components': [
               components.phoneNumber
             ]
           },
           {
-            "components": [
+            'components': [
               components.textfeild
             ]
           }
         ]
       ],
-      "numCols": 2,
-      "numRows": 2,
-      "input": false
+      'numCols': 2,
+      'numRows': 2,
+      'input': false
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a basic Table', function (done) {
+    it('Renders a basic Table', function(done) {
       const element = shallow(<Table
       component={component}
       attachToForm={attachToForm}
-      />)
+      />);
       expect(element.find('.table').length).to.equal(1);
       expect(element.find('.table thead').length).to.equal(1);
       expect(element.find('.table tbody').length).to.equal(1);
       done();
     });
 
-    it('Check the table classes ', function (done) {
+    it('Check the table classes ', function(done) {
       component.condensed = true;
       component.hover = true;
       component.bordered = true;
@@ -79,7 +79,7 @@ describe('Table', function () {
       done();
     });
 
-    it('Check the number of rows inside table component ', function (done) {
+    it('Check the number of rows inside table component ', function(done) {
       const element = shallow(<Table
       component={component}
       attachToForm={attachToForm}
@@ -88,7 +88,7 @@ describe('Table', function () {
       done();
     });
 
-    it('Check the number of columns inside table component ', function (done) {
+    it('Check the number of columns inside table component ', function(done) {
       const element = shallow(<Table
       component={component}
       attachToForm={attachToForm}
@@ -99,7 +99,7 @@ describe('Table', function () {
       done();
     });
 
-    it('Check the nested components of table', function (done) {
+    it('Check the nested components of table', function(done) {
       const element = shallow(<Table
       component={component}
       attachToForm={attachToForm}
@@ -114,7 +114,5 @@ describe('Table', function () {
       }
       done();
     });
-
   });
-
 });

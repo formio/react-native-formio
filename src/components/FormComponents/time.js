@@ -27,7 +27,7 @@ module.exports = React.createClass({
   },
   getSingleElement: function(value, index) {
     index = index || 0;
-    const { component, name, readOnly } = this.props;
+    const {component, name, readOnly} = this.props;
     const properties = {
       type: component.inputType,
       key: index,

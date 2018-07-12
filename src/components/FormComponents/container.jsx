@@ -2,7 +2,7 @@ import React from 'react';
 import clone from 'lodash/clone';
 import valueMixin from './mixins/valueMixin';
 import componentMixin from './mixins/componentMixin';
-import { FormioComponentsList } from '../../components';
+import {FormioComponentsList} from '../../components';
 
 module.exports = React.createClass({
   displayName: 'Container',
@@ -34,7 +34,7 @@ module.exports = React.createClass({
           previousState.isPristine = false;
         }
         return previousState;
-      }, () => this.props.onChange(component, { container: this, item: this }), this);
+      }, () => this.props.onChange(component, {container: this, item: this}), this);
     }
   },
   attachToForm: function(component) {
@@ -52,7 +52,7 @@ module.exports = React.createClass({
     }
     let deleteKey = false;
     if (!component.props.component.hasOwnProperty('clearOnHide') || component.props.component.clearOnHide !== false) {
-      deleteKey = component.props.component.key
+      deleteKey = component.props.component.key;
     }
     delete this.inputs[component.props.component.key];
     this.setState(previousState => {

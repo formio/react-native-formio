@@ -1,5 +1,5 @@
 import React from 'react';
-import { deepEqual } from '../../../util';
+import {deepEqual} from '../../../util';
 
 module.exports = {
   shouldComponentUpdate: function(nextProps, nextState) {
@@ -12,7 +12,7 @@ module.exports = {
     if (this.state && this.state.hasOwnProperty('isPristine') && this.state.isPristine !== nextState.isPristine) {
       return true;
     }
-    
+
     // If a new value is passed in, re-render.
     if (this.props.value !== nextProps.value) {
       return true;

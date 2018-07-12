@@ -1,34 +1,34 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Htmlelement from './htmlelement.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Htmlelement', function () {
-  describe('Htmlelement field', function () {
+describe('Htmlelement', function() {
+  describe('Htmlelement field', function() {
     var component= {
-      "input": false,
-      "tag": "button",
-      "attrs": [
+      'input': false,
+      'tag': 'button',
+      'attrs': [
         {
-          "attr": "",
-          "value": ""
+          'attr': '',
+          'value': ''
         }
       ],
-      "customClass": "htmlelement",
-      "content": "",
-      "type": "htmlelement",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'customClass': 'htmlelement',
+      'content': '',
+      'type': 'htmlelement',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       }
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a htmlelement component', function (done) {
+    it('Renders a htmlelement component', function(done) {
       const element = render(
         <Htmlelement
       component={component}
@@ -41,7 +41,7 @@ describe('Htmlelement', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Htmlelement
           component={component}
@@ -62,7 +62,7 @@ describe('Htmlelement', function () {
           attr: 'name',
           value: 'bar'
         }
-      ]
+      ];
       const element = render(
         <Htmlelement
           component={component}
@@ -76,5 +76,4 @@ describe('Htmlelement', function () {
 
   //  To Do :- Need to implement the test cases for attributes of html elements.
   });
-
 });

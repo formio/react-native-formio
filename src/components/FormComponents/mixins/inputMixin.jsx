@@ -1,6 +1,6 @@
 import React from 'react';
 import MaskedInput from 'react-text-mask';
-import { clone } from 'lodash';
+import {clone} from 'lodash';
 
 module.exports = {
   timeout: null,
@@ -84,7 +84,7 @@ module.exports = {
   },
   getSingleElement: function(value, index) {
     index = index || 0;
-    const { component, name, readOnly } = this.props;
+    const {component, name, readOnly} = this.props;
     const mask = component.inputMask || '';
     const properties = {
       type: component.inputType !== 'number' ? component.inputType : 'text',
@@ -104,7 +104,7 @@ module.exports = {
     if (mask || component.type === 'currency' || component.type === 'number') {
       properties.inputMode = 'number';
       properties.mask = this.getInputMask(mask);
-      properties.placeholderChar = "_";
+      properties.placeholderChar = '_';
       properties.guide = true;
       return React.createElement(MaskedInput, properties);
     }

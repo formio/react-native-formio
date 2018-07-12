@@ -2,10 +2,10 @@ import React from 'react';
 import DropdownList from 'react-widgets/lib/DropdownList';
 import Multiselect from 'react-widgets/lib/Multiselect';
 import List from 'react-widgets/lib/List';
-import { interpolate, raw } from '../../../util';
+import {interpolate, raw} from '../../../util';
 import get from 'lodash/get';
-import isEqual from 'lodash/isEqual'
-  
+import isEqual from 'lodash/isEqual';
+
 module.exports = {
   data: {},
   getInitialState: function() {
@@ -91,7 +91,7 @@ module.exports = {
     });
   },
   itemComponent: function() {
-    let { component } = this.props;
+    let {component} = this.props;
     if (!component.template) {
       return null;
     }
@@ -108,10 +108,10 @@ module.exports = {
 
     return React.createClass({
       render: function() {
-        let { item } = this.props;
+        let {item} = this.props;
         if (component.dataSrc === 'values') {
           // Search for the full item from values.
-          item = _.find(component.data.values, { value: item }) || item;
+          item = _.find(component.data.values, {value: item}) || item;
         }
         else if (component.dataSrc === 'json' && component.valueProperty && item && typeof item !== 'object') {
           item = _.find(items, {[component.valueProperty]: item}) || item;
@@ -119,7 +119,7 @@ module.exports = {
 
         if (item && typeof item === 'object') {
           // Render the markup raw under this react element
-          return React.createElement('span', raw(interpolate(component.template, { item })));
+          return React.createElement('span', raw(interpolate(component.template, {item})));
         }
 
         return React.createElement('span', {}, item);

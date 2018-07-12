@@ -6,8 +6,8 @@ import {
   SearchColumns, resizableColumn
 } from 'reactabular';
 import Paginator from './Paginator';
-import { nested } from '../util';
-import { FormioComponents } from '../factories';
+import {nested} from '../util';
+import {FormioComponents} from '../factories';
 
 export default class FormioGrid extends React.Component {
   static defaultProps = {
@@ -36,9 +36,9 @@ export default class FormioGrid extends React.Component {
     this.state = {
       columns: this.columnsFromForm(props.form),
       submissions: this.props.submissions || [],
-      pagination: { ...FormioGrid.defaultProps.pagination, ...this.props.pagination }
+      pagination: {...FormioGrid.defaultProps.pagination, ...this.props.pagination}
     };
-  };
+  }
 
   formatCell = (value, {column}) => {
     return FormioComponents.getComponent(column.component.type).prototype.getDisplay(column.component, value);
@@ -55,7 +55,10 @@ export default class FormioGrid extends React.Component {
         cell: {
           format: (rowKey, {rowData}) => {
             return (
-              <a className={button.class} onClick={(event) => {this.onButtonClick(event, button.event, rowData)}}>
+              <a className={button.class} onClick={(event) => {
+this.onButtonClick(event, button.event, rowData)
+;
+}}>
                 {(() => {
                   if (button.icon) {
                     return <i className={button.icon} aria-hidden="true"></i>;
@@ -63,11 +66,11 @@ export default class FormioGrid extends React.Component {
                 })()}
                 <span>{button.label}</span>
               </a>
-            )
+            );
           }
         },
         visible: true
-      }
+      };
     });
     if (form && form.components) {
       FormioUtils.eachComponent(form.components, (component, path) => {

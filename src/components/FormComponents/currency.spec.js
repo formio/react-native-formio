@@ -1,40 +1,40 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Currency from './currency.jsx';
 import sinon from 'sinon';
 import form from '../../../test/forms/empty.json';
 
-describe('Currency', function () {
-  describe('Single Currency', function () {
+describe('Currency', function() {
+  describe('Single Currency', function() {
     var component= {
-      "input": true,
-      "tableView": true,
-      "inputType": "text",
-      "inputMask": "",
-      "label": "Currency Lable",
-      "key": "currency",
-      "placeholder": "",
-      "prefix": "",
-      "suffix": "",
-      "defaultValue": "",
-      "protected": false,
-      "persistent": true,
-      "validate": {
-        "required": false,
-        "multiple": "",
-        "custom": ""
+      'input': true,
+      'tableView': true,
+      'inputType': 'text',
+      'inputMask': '',
+      'label': 'Currency Lable',
+      'key': 'currency',
+      'placeholder': '',
+      'prefix': '',
+      'suffix': '',
+      'defaultValue': '',
+      'protected': false,
+      'persistent': true,
+      'validate': {
+        'required': false,
+        'multiple': '',
+        'custom': ''
       },
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       },
-      "type": "currency"
+      'type': 'currency'
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a basic currency', function (done) {
+    it('Renders a basic currency', function(done) {
       const element = render(
         <Currency
       component={component}
@@ -168,7 +168,7 @@ describe('Currency', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Currency
           component={component}
@@ -178,35 +178,34 @@ describe('Currency', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
 
   describe('Multiple currency', function() {
     var component = {
-      "multiple": true,
-      "type": "currency",
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'multiple': true,
+      'type': 'currency',
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "validate": {
-        "custom": "",
-        "multiple": "",
-        "required": false
+      'validate': {
+        'custom': '',
+        'multiple': '',
+        'required': false
       },
-      "persistent": true,
-      "protected": false,
-      "defaultValue": "",
-      "suffix": "",
-      "prefix": "",
-      "placeholder": "",
-      "key": "currency",
-      "label": "Currency Lable",
-      "inputMask": "",
-      "inputType": "text",
-      "tableView": true,
-      "input": true
+      'persistent': true,
+      'protected': false,
+      'defaultValue': '',
+      'suffix': '',
+      'prefix': '',
+      'placeholder': '',
+      'key': 'currency',
+      'label': 'Currency Lable',
+      'inputMask': '',
+      'inputType': 'text',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
 
@@ -346,7 +345,7 @@ describe('Currency', function () {
       expect(table.find('tr').length).to.equal(2);
       expect(table.find('tr').at(0).find('input').prop('data-index')).to.equal(0);
       done();
-    })
+    });
 
     it('Check multiple currency with required', function(done) {
       component.validate.required = true;
@@ -397,7 +396,7 @@ describe('Currency', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Currency
           component={component}
@@ -407,7 +406,5 @@ describe('Currency', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
-
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormioComponents } from '../factories';
+import {FormioComponents} from '../factories';
 
 export default class extends React.Component {
   render = () => {
