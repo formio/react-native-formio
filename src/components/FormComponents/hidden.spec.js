@@ -1,31 +1,31 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Hidden from './hidden.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Hidden', function () {
-  describe('Hidden field', function () {
+describe('Hidden', function() {
+  describe('Hidden field', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "hidden",
-      "persistent": true,
-      "unique": false,
-      "protected": true,
-      "label": "test hidden",
-      "key": "hidden",
-      "tableView": true,
-      "input": true
+      'type': 'hidden',
+      'persistent': true,
+      'unique': false,
+      'protected': true,
+      'label': 'test hidden',
+      'key': 'hidden',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a hidden field', function (done) {
+    it('Renders a hidden field', function(done) {
       const element = render(
         <Hidden
       component={component}
@@ -65,7 +65,7 @@ describe('Hidden', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Hidden
           component={component}
@@ -75,7 +75,5 @@ describe('Hidden', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
-
 });

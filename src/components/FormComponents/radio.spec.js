@@ -1,48 +1,48 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Radio from './radio.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Radio', function () {
-  describe('Radio field', function () {
+describe('Radio', function() {
+  describe('Radio field', function() {
     var component= {
-      "input": true,
-      "tableView": true,
-      "inputType": "radio",
-      "label": "",
-      "key": "radio",
-      "values": [
+      'input': true,
+      'tableView': true,
+      'inputType': 'radio',
+      'label': '',
+      'key': 'radio',
+      'values': [
         {
-          "value": "test",
-          "label": "test"
+          'value': 'test',
+          'label': 'test'
         },
         {
-          "value": "test1",
-          "label": "test1"
+          'value': 'test1',
+          'label': 'test1'
         }
       ],
-      "defaultValue": "",
-      "protected": false,
-      "persistent": true,
-      "validate": {
-        "required": false,
-        "custom": "",
-        "customPrivate": false
+      'defaultValue': '',
+      'protected': false,
+      'persistent': true,
+      'validate': {
+        'required': false,
+        'custom': '',
+        'customPrivate': false
       },
-      "type": "radio",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'type': 'radio',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       },
-      "inline": false
+      'inline': false
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a radio field', function (done) {
+    it('Renders a radio field', function(done) {
       const element = render(
         <Radio
       component={component}
@@ -120,13 +120,13 @@ describe('Radio', function () {
       );
       // There is a label in the header so indexes are off by 1.
       expect(element.find('label').at(1).hasClass('not-checked')).to.equal(true);
-      element.find('input').at(0).simulate('change', {"target": {"id": element.find('input').at(0).prop('id')}});
+      element.find('input').at(0).simulate('change', {'target': {'id': element.find('input').at(0).prop('id')}});
       expect(element.find('label').at(1).hasClass('checked')).to.equal(true);
       done();
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Radio
           component={component}
@@ -138,7 +138,5 @@ describe('Radio', function () {
     });
 
     //To Do :- Write a test case to validate the inline layout support.
-
   });
-
 });

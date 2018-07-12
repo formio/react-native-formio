@@ -2,11 +2,11 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import valueMixin from './mixins/valueMixin';
 import componentMixin from './mixins/componentMixin';
-import { fileSize } from '../../util';
+import {fileSize} from '../../util';
 
 const FormioFileList = React.createClass({
   displayName: 'FormioFileList',
-  fileRow: function (file, index) {
+  fileRow: function(file, index) {
     if (!file) {
       return null;
     }
@@ -72,7 +72,7 @@ const FormioImageList = React.createClass({
           );
         }) : null
       }
-    </div>
+    </div>;
   }
 });
 
@@ -93,7 +93,9 @@ const FormioFile = React.createClass({
       });
   },
   render: function() {
-    return <a href={this.props.file.url} onClick={event => {this.getFile(event)}} target="_blank">{this.props.file.name}</a>;
+    return <a href={this.props.file.url} onClick={event => {
+this.getFile(event);
+}} target="_blank">{this.props.file.name}</a>;
   }
 });
 
@@ -102,7 +104,7 @@ const FormioImage = React.createClass({
   getInitialState: function() {
     return {
       imageSrc: ''
-    }
+    };
   },
   componentWillMount: function() {
     this.props.formio
@@ -256,10 +258,10 @@ module.exports = React.createClass({
   },
   fileList: function() {
     if (!this.props.component.image) {
-      return <FormioFileList files={this.state.value} formio={this.props.formio} removeFile={this.removeFile} />
+      return <FormioFileList files={this.state.value} formio={this.props.formio} removeFile={this.removeFile} />;
     }
     else {
-      return <FormioImageList files={this.state.value} formio={this.props.formio} width={this.props.component.imageSize} removeFile={this.removeFile} />
+      return <FormioImageList files={this.state.value} formio={this.props.formio} width={this.props.component.imageSize} removeFile={this.removeFile} />;
     }
   },
   getElements: function() {
@@ -293,6 +295,6 @@ module.exports = React.createClass({
     let files = Array.isArray(data) ? data : [data];
     return (
       <FormioFileList files={files} readOnly={true} />
-    )
+    );
   }
 });

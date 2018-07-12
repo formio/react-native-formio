@@ -1,28 +1,28 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Content from './content.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Content', function () {
-  describe('Content field', function () {
+describe('Content', function() {
+  describe('Content field', function() {
     var component= {
-      "input": false,
-      "html": "<p>Test p tag and<strong>strong tag</strong></p>\n",
-      "type": "content",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'input': false,
+      'html': '<p>Test p tag and<strong>strong tag</strong></p>\n',
+      'type': 'content',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       },
-      "key": "testContent",
-      "lockKey": true
+      'key': 'testContent',
+      'lockKey': true
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a content component', function (done) {
+    it('Renders a content component', function(done) {
       const element = render(
         <Content
       component={component}
@@ -43,7 +43,5 @@ describe('Content', function () {
       expect(element.html()).to.equal(component.html);
       done();
     });
-
   });
-
 });

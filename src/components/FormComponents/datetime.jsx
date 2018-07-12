@@ -83,7 +83,7 @@ module.exports = React.createClass({
     }, 0);
   },
   getSingleElement: function(value, index) {
-    const { component, name, readOnly } = this.props;
+    const {component, name, readOnly} = this.props;
     return (
     [
       <DateTimePicker

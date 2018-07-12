@@ -2,7 +2,7 @@ import React from 'react';
 import clone from 'lodash/clone';
 import isEqual from 'lodash/isEqual';
 import valueMixin from './mixins/valueMixin';
-import { FormioComponents } from '../../factories';
+import {FormioComponents} from '../../factories';
 import FormioUtils from 'formio-utils';
 
 class DataGridRow extends React.Component {
@@ -10,15 +10,15 @@ class DataGridRow extends React.Component {
     super(props);
     this.data = {...props.data};
     this.refresh = false;
-  };
+  }
 
   componentWillReceiveProps = (nextProps) => {
-    const { components } = this.props;
+    const {components} = this.props;
     // If one of the fields is set to refresh on a value outside the datagrid, check it as well.
     this.refresh = false;
     FormioUtils.eachComponent(components, (component) => {
       if ('refreshOn' in component && component.refreshOn) {
-        const { refreshOn } = component;
+        const {refreshOn} = component;
         if (refreshOn === 'data') {
           this.refresh = true;
         }
@@ -31,7 +31,7 @@ class DataGridRow extends React.Component {
   };
 
   shouldComponentUpdate = (nextProps) => {
-    const { row, value } = this.props;
+    const {row, value} = this.props;
 
     if (!isEqual(row, nextProps.row)) {
       return true;
@@ -45,7 +45,7 @@ class DataGridRow extends React.Component {
   };
 
   render = () => {
-    const { component, rowIndex, row, checkConditional, visibleCols } = this.props;
+    const {component, rowIndex, row, checkConditional, visibleCols} = this.props;
     const datagridValue = (this.state && ('value' in this.state)) ? this.state.value : [];
     let btnClassNames = 'btn btn-default' + (this.props.readOnly ? ' disabled' : '');
 
@@ -104,7 +104,7 @@ module.exports = React.createClass({
     return [{}];
   },
   customState: function(state) {
-    const { component } = this.props;
+    const {component} = this.props;
     let rows = state.value;
     if (component.validate && component.validate.hasOwnProperty('minLength') && rows.length < component.validate.minLength) {
       var toAdd = component.validate.minLength - rows.length;
@@ -138,7 +138,7 @@ module.exports = React.createClass({
       isDisabled: function() {
         return false;
       }
-    }
+    };
   },
   addRow: function() {
     if (this.props.readOnly) {
@@ -185,7 +185,7 @@ module.exports = React.createClass({
         previousState.isPristine = false;
       }
       return previousState;
-    }, () => this.props.onChange(component, { row, datagrid: this, item: this }));
+    }, () => this.props.onChange(component, {row, datagrid: this, item: this}));
   },
   attachToDatarid(row, component) {
     this.inputs = this.inputs || [];
@@ -239,8 +239,8 @@ module.exports = React.createClass({
     };
   },
   getElements: function() {
-    const { value } = this.state;
-    const { component, checkConditional } = this.props;
+    const {value} = this.state;
+    const {component, checkConditional} = this.props;
     let visibleCols = component.components.reduce((prev, col) => {
       prev[col.key] = value.reduce(
         (prev, row) => {
@@ -320,7 +320,7 @@ module.exports = React.createClass({
   getValueDisplay: function(component, data) {
     var renderComponent = (component, row) => {
       return FormioComponents.getComponent(component.type).prototype.getDisplay(component, row[component.key] || null);
-    }
+    };
     return (
       <table className="table table-striped table-bordered">
         <thead>

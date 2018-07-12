@@ -3,7 +3,7 @@ import valueMixin from './mixins/valueMixin';
 import selectMixin from './mixins/selectMixin';
 import componentMixin from './mixins/componentMixin';
 import formiojs from 'formiojs';
-import { interpolate, serialize, raw } from '../../util';
+import {interpolate, serialize, raw} from '../../util';
 import get from 'lodash/get';
 import debounce from 'lodash/debounce';
 
@@ -89,7 +89,7 @@ module.exports = React.createClass({
         this.refreshItems = (input) => {
           try {
             /* eslint-disable no-unused-vars */
-            const { data, row } = this.props;
+            const {data, row} = this.props;
             /* eslint-enable no-unused-vars */
             let selectItems = eval('(function(data, row, input) { var values = [];' + this.props.component.data.custom.toString() + '; return values; })(data, row, input)');
             if (!Array.isArray(selectItems)) {
@@ -147,7 +147,7 @@ module.exports = React.createClass({
         };
 
         this.refreshItems = (input, newUrl, append) => {
-          let { data, row } = this.props;
+          let {data, row} = this.props;
           newUrl = newUrl || this.url;
           // Allow templating the url.
           newUrl = interpolate(newUrl, {
@@ -202,7 +202,7 @@ module.exports = React.createClass({
               this.setResult(data, append);
             }
           });
-        }
+        };
 
         this.refreshItems();
 

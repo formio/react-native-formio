@@ -9,8 +9,8 @@ module.exports = React.createClass({
     this.setValue(event.target.checked);
   },
   getElements: function() {
-    const { component } = this.props;
-    const { value } = this.state;
+    const {component} = this.props;
+    const {value} = this.state;
     var required = 'control-label' + (component.validate.required ? ' field-required' : '') + (value ? ' checked' : ' not-checked');
     return (
       <div className="checkbox">

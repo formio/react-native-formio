@@ -22,7 +22,7 @@ module.exports = React.createClass({
     return value;
   },
   customMask: function() {
-    const { component } = this.props;
+    const {component} = this.props;
 
     this.decimalLimit = component.hasOwnProperty('decimalLimit') ? component.decimalLimit : 2;
     this.requireDecimal = component.hasOwnProperty('requireDecimal') ? component.requireDecimal : true;
@@ -32,7 +32,7 @@ module.exports = React.createClass({
       suffix: '',
       allowDecimal: true,
       allowNegative: true
-    }
+    };
 
     if (this.decimalLimit === 0) {
       maskOptions.allowDecimal = false;
@@ -43,6 +43,6 @@ module.exports = React.createClass({
       maskOptions.requireDecimal = this.requireDecimal;
     }
 
-    return createNumberMask(maskOptions)
+    return createNumberMask(maskOptions);
   }
 });

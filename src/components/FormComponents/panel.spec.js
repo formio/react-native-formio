@@ -1,43 +1,43 @@
 
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Panel from './panel.jsx';
 import sinon from 'sinon';
 import form from '../../../test/forms/empty.json';
 
 var components = require('../../../test/forms/componentSpec.js');
 
-describe('Panel', function () {
-  describe(' Panel component', function () {
+describe('Panel', function() {
+  describe(' Panel component', function() {
     var component= {
-      "input": false,
-      "title": "testpanel",
-      "theme": "warning",
-      "components": [
+      'input': false,
+      'title': 'testpanel',
+      'theme': 'warning',
+      'components': [
         components.textfeild,
         components.password,
         components.phoneNumber
       ],
-      "type": "panel",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'type': 'panel',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       }
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a basic panel component', function (done) {
+    it('Renders a basic panel component', function(done) {
       const element = shallow(<Panel
         component={component}
         attachToForm={attachToForm}
-        />)
+        />);
       expect(element.find('.panel').length).to.equal(1);
       done();
     });
 
-    it('Test the theme of panel component', function (done) {
+    it('Test the theme of panel component', function(done) {
       const element = shallow(<Panel
         component={component}
         attachToForm={attachToForm}
@@ -46,7 +46,7 @@ describe('Panel', function () {
       done();
     });
 
-    it('Test the label of panel component', function (done) {
+    it('Test the label of panel component', function(done) {
       const element = shallow(<Panel
         component={component}
         attachToForm={attachToForm}
@@ -56,7 +56,7 @@ describe('Panel', function () {
       done();
     });
 
-    it('Check the nested components of Panel', function (done) {
+    it('Check the nested components of Panel', function(done) {
       const element = shallow(<Panel
         component={component}
         attachToForm={attachToForm}
@@ -68,7 +68,5 @@ describe('Panel', function () {
       }
       done();
     });
-
   });
-
 });

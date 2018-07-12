@@ -1,18 +1,34 @@
 {
   "root": true,
-  "extends": "eslint-config-formio",
   "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2017
+  },
   "rules": {
     "max-len": 0,
     "max-depth": [1, 5],
     "max-statements": 0,
     "no-unused-vars": 0
   },
+  "env": {
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "plugins": [
+    "react",
+    "react-native"
+  ],
   "globals": {
-    "window": true,
     "require": true,
     "module": true,
     "global": true,
     "fetch": true
-  }
+  },
+  "extends": [
+    "eslint-config-formio",
+    "plugin:react/recommended",
+    "plugin:react-native/all"
+  ]
 }

@@ -1,35 +1,35 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Button from './button.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Button', function () {
-  describe('Button field', function () {
+describe('Button', function() {
+  describe('Button field', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "button",
-      "theme": "success",
-      "disableOnInvalid": true,
-      "action": "submit",
-      "block": false,
-      "rightIcon": "",
-      "leftIcon": "",
-      "size": "sm",
-      "key": "submit",
-      "tableView": false,
-      "label": "Submit",
-      "input": true
+      'type': 'button',
+      'theme': 'success',
+      'disableOnInvalid': true,
+      'action': 'submit',
+      'block': false,
+      'rightIcon': '',
+      'leftIcon': '',
+      'size': 'sm',
+      'key': 'submit',
+      'tableView': false,
+      'label': 'Submit',
+      'input': true
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a button component', function (done) {
+    it('Renders a button component', function(done) {
       const element = render(
         <Button
       component={component}
@@ -41,7 +41,7 @@ describe('Button', function () {
       done();
     });
 
-    it('Check the type of rendred button component', function (done) {
+    it('Check the type of rendred button component', function(done) {
       const element = render(
         <Button
       component={component}
@@ -53,7 +53,7 @@ describe('Button', function () {
       done();
     });
 
-    it('Check the theme of rendred button component', function (done) {
+    it('Check the theme of rendred button component', function(done) {
       const element = render(
         <Button
       component={component}
@@ -65,7 +65,7 @@ describe('Button', function () {
       done();
     });
 
-    it('Check the size of rendred button component', function (done) {
+    it('Check the size of rendred button component', function(done) {
       const element = render(
         <Button
       component={component}
@@ -78,7 +78,7 @@ describe('Button', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Button
           component={component}
@@ -88,7 +88,5 @@ describe('Button', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
-
 });

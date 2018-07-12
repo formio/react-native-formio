@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Resource from './resource.jsx';
 import sinon from 'sinon';
 
@@ -10,37 +10,37 @@ import form from '../../../test/forms/empty.json';
 // To pass project url as Formio props.
 var projectUrl = {projectUrl : 'https://calcxokkdyhwybb.form.io'};
 
-describe('Resource field', function () {
-  describe('Single resource component', function () {
+describe('Resource field', function() {
+  describe('Single resource component', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "resource",
-      "defaultPermission": "",
-      "validate": {
-        "required": false
+      'type': 'resource',
+      'defaultPermission': '',
+      'validate': {
+        'required': false
       },
-      "persistent": true,
-      "protected": false,
-      "multiple": false,
-      "searchFields": "",
-      "selectFields": "",
-      "template": "<span>{{ item.data.company }}</span>",
-      "defaultValue": "",
-      "project": "57ac74515b7a477b00271f88",
-      "resource": "57ac76b85b7a477b00271f97",
-      "placeholder": "",
-      "key": "testResource",
-      "label": "testResource",
-      "tableView": true,
-      "input": true
+      'persistent': true,
+      'protected': false,
+      'multiple': false,
+      'searchFields': '',
+      'selectFields': '',
+      'template': '<span>{{ item.data.company }}</span>',
+      'defaultValue': '',
+      'project': '57ac74515b7a477b00271f88',
+      'resource': '57ac76b85b7a477b00271f97',
+      'placeholder': '',
+      'key': 'testResource',
+      'label': 'testResource',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a basic resource component', function (done) {
+    it('Renders a basic resource component', function(done) {
       const element = render(
         <Resource
           component={component}
@@ -54,7 +54,7 @@ describe('Resource field', function () {
       done();
     });
 
-    it('Check single resource component', function (done) {
+    it('Check single resource component', function(done) {
       const element = render(
         <Resource
           component={component}
@@ -99,7 +99,7 @@ describe('Resource field', function () {
       done();
     });
 
-    it('Check with label for resource component', function (done) {
+    it('Check with label for resource component', function(done) {
       component.label = 'Test Label';
       const element = render(
         <Resource
@@ -113,7 +113,7 @@ describe('Resource field', function () {
       done();
     });
 
-    it('Check without label for resource component', function (done) {
+    it('Check without label for resource component', function(done) {
       component.label = null;
       const element = render(
         <Resource
@@ -128,7 +128,7 @@ describe('Resource field', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Resource
           component={component}
@@ -139,39 +139,38 @@ describe('Resource field', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
 
-  describe('Multiple resource component', function () {
+  describe('Multiple resource component', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "resource",
-      "defaultPermission": "",
-      "validate": {
-        "required": false
+      'type': 'resource',
+      'defaultPermission': '',
+      'validate': {
+        'required': false
       },
-      "persistent": true,
-      "protected": false,
-      "multiple": true,
-      "searchFields": "",
-      "selectFields": "",
-      "template": "<span>{{ item.data.company }}</span>",
-      "defaultValue": "",
-      "project": "57ac74515b7a477b00271f88",
-      "resource": "57ac76b85b7a477b00271f97",
-      "placeholder": "",
-      "key": "testResource",
-      "label": "testResource",
-      "tableView": true,
-      "input": true
+      'persistent': true,
+      'protected': false,
+      'multiple': true,
+      'searchFields': '',
+      'selectFields': '',
+      'template': '<span>{{ item.data.company }}</span>',
+      'defaultValue': '',
+      'project': '57ac74515b7a477b00271f88',
+      'resource': '57ac76b85b7a477b00271f97',
+      'placeholder': '',
+      'key': 'testResource',
+      'label': 'testResource',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
 
-    it('Render multiple resource component', function (done) {
+    it('Render multiple resource component', function(done) {
       const element = render(
         <Resource
           component={component}
@@ -214,7 +213,7 @@ describe('Resource field', function () {
       done();
     });
 
-    it('Check with label for resource component', function (done) {
+    it('Check with label for resource component', function(done) {
       component.label = 'Test Label';
       const element = render(
         <Resource
@@ -228,7 +227,7 @@ describe('Resource field', function () {
       done();
     });
 
-    it('Check without label for resource component', function (done) {
+    it('Check without label for resource component', function(done) {
       component.label = null;
       const element = render(
         <Resource
@@ -243,7 +242,7 @@ describe('Resource field', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Resource
           component={component}
@@ -254,6 +253,5 @@ describe('Resource field', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
 });

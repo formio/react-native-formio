@@ -1,7 +1,7 @@
 import React from 'react';
 import Formiojs from 'formiojs';
 import FormioUtils from 'formio-utils';
-import { FormioComponentsList } from '../components';
+import {FormioComponentsList} from '../components';
 import clone from 'lodash/clone';
 
 // TODO: We should have a better way of initializing form components.
@@ -9,7 +9,7 @@ import '../components/FormComponents';
 
 export const Formio = React.createClass({
   displayName: 'Formio',
-  getInitialState: function () {
+  getInitialState: function() {
     this.unmounting = false;
     if (this.props.submission && this.props.submission.data) {
       this.data = clone(this.props.submission.data);
@@ -25,14 +25,14 @@ export const Formio = React.createClass({
       isPristine: true
     };
   },
-  getDefaultProps: function () {
+  getDefaultProps: function() {
     return {
       readOnly: false,
       formAction: false,
       options: {}
     };
   },
-  componentWillMount: function () {
+  componentWillMount: function() {
     this.props.options.isInit = true;
     if (this.props.submission && this.props.submission.data) {
       this.data = clone(this.props.submission.data);
@@ -43,7 +43,7 @@ export const Formio = React.createClass({
     this.inputs = {};
     if (this.props.src) {
       this.formio = new Formiojs(this.props.src);
-      this.formio.loadForm().then(function (form) {
+      this.formio.loadForm().then(function(form) {
         this.rerender = true;
         if (typeof this.props.onFormLoad === 'function') {
           this.props.onFormLoad(form);
@@ -54,7 +54,7 @@ export const Formio = React.createClass({
         }, this.validate);
       }.bind(this));
       if (this.formio.submissionId) {
-        this.formio.loadSubmission().then(function (submission) {
+        this.formio.loadSubmission().then(function(submission) {
           if (typeof this.props.onSubmissionLoad === 'function') {
             this.props.onSubmissionLoad(submission);
           }
@@ -76,7 +76,7 @@ export const Formio = React.createClass({
   componentWillUnmount: function() {
     this.unmounting = true;
   },
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps: function(nextProps) {
     if (nextProps.form !== this.props.form) {
       this.rerender = true;
       this.setState({
@@ -92,11 +92,11 @@ export const Formio = React.createClass({
       });
     }
   },
-  attachToForm: function (component) {
+  attachToForm: function(component) {
     this.inputs[component.props.component.key] = component;
     this.validate();
   },
-  detachFromForm: function (component) {
+  detachFromForm: function(component) {
     let sendChange = false;
     // Don't detach when the whole form is unmounting.
     if (this.unmounting) {
@@ -125,7 +125,7 @@ export const Formio = React.createClass({
       this.props.onChange({data: this.data}, component, context);
     }
   },
-  onChange: function (component, context = {}) {
+  onChange: function(component, context = {}) {
     // Datagrids and containers are different.
     if (context.hasOwnProperty('datagrid')) {
       this.data[context.datagrid.props.component.key] = context.datagrid.state.value;
@@ -151,11 +151,11 @@ export const Formio = React.createClass({
       });
     }
   },
-  validate: function (next) {
+  validate: function(next) {
     var allIsValid = true;
 
     var inputs = this.inputs;
-    Object.keys(inputs).forEach(function (name) {
+    Object.keys(inputs).forEach(function(name) {
       if (!inputs[name].state.isValid) {
         allIsValid = false;
       }
@@ -169,37 +169,37 @@ export const Formio = React.createClass({
     if (!component.hasOwnProperty('clearOnHide') || component.clearOnHide !== false) {
       if (this.data.hasOwnProperty(component.key)) {
         delete this.data[component.key];
-        this.externalChange({ props: { component }, state: { isPristine: true, value: null }});
+        this.externalChange({props: {component}, state: {isPristine: true, value: null}});
       }
     }
     if (component.hasOwnProperty('components')) {
       component.components.forEach(component => {
-        this.clearHiddenData(component)
+        this.clearHiddenData(component);
       });
     }
     if (component.hasOwnProperty('columns')) {
       component.columns.forEach(column => {
         column.components.forEach(component => {
-          this.clearHiddenData(component)
+          this.clearHiddenData(component);
         });
       });
     }
     if (component.hasOwnProperty('rows') && Array.isArray(component.rows)) {
       component.rows.forEach(column => {
         column.forEach(component => {
-          this.clearHiddenData(component)
+          this.clearHiddenData(component);
         });
       });
     }
   },
-  checkConditional: function (component, row = {}) {
+  checkConditional: function(component, row = {}) {
     const show = FormioUtils.checkCondition(component, row, this.data);
 
     // If element is hidden, remove any values already on the form (this can happen when data is loaded into the form
     // and the field is initially hidden.
     if (!show) {
       // Recursively delete data for all components under this component.
-      this.clearHiddenData(component)
+      this.clearHiddenData(component);
     }
 
     return show;
@@ -207,8 +207,8 @@ export const Formio = React.createClass({
   isDisabled: function(component, data) {
     return this.props.readOnly || (Array.isArray(this.props.disableComponents) && this.props.disableComponents.indexOf(component.key) !== -1) || component.disabled;
   },
-  showAlert: function (type, message, clear) {
-    this.setState(function (previousState) {
+  showAlert: function(type, message, clear) {
+    this.setState(function(previousState) {
       if (clear) {
         previousState.alerts = [];
       }
@@ -218,7 +218,7 @@ export const Formio = React.createClass({
   },
   setPristine: function(isPristine) {
     // Mark all inputs as dirty so errors show.
-    Object.keys(this.inputs).forEach(function (name) {
+    Object.keys(this.inputs).forEach(function(name) {
       this.inputs[name].setState({
         isPristine
       });
@@ -230,7 +230,7 @@ export const Formio = React.createClass({
       isPristine
     });
   },
-  onSubmit: function (event) {
+  onSubmit: function(event) {
     event.preventDefault();
 
     this.setPristine(false);
@@ -258,7 +258,7 @@ export const Formio = React.createClass({
       request = this.formio.saveSubmission(sub);
     }
     if (request) {
-      request.then(function (submission) {
+      request.then(function(submission) {
           if (typeof this.props.onFormSubmit === 'function') {
             this.props.onFormSubmit(submission);
           }
@@ -270,7 +270,7 @@ export const Formio = React.createClass({
             }]
           });
         }.bind(this))
-        .catch(function (response) {
+        .catch(function(response) {
           if (typeof this.props.onFormError === 'function') {
             this.props.onFormError(response);
           }
@@ -278,7 +278,7 @@ export const Formio = React.createClass({
             isSubmitting: false
           });
           if (response.hasOwnProperty('name') && response.name === 'ValidationError') {
-            response.details.forEach(function (detail) {
+            response.details.forEach(function(detail) {
               if (this.inputs[detail.path]) {
                 this.inputs[detail.path].setState({
                   isValid: false,
@@ -303,20 +303,20 @@ export const Formio = React.createClass({
       });
     }
   },
-  resetForm: function () {
-    this.setState(function (previousState) {
+  resetForm: function() {
+    this.setState(function(previousState) {
       for (var key in previousState.submission.data) {
         delete previousState.submission.data[key];
       }
       return previousState;
     });
   },
-  render: function () {
+  render: function() {
     var components = this.state.form.components || [];
     var formClass = (this.props.readOnly ? 'form-disabled' : '');
     var loading = (this.state.isLoading ?
       <i id='formio-loading' className='glyphicon glyphicon-refresh glyphicon-spin'></i> : '');
-    var alerts = this.state.alerts.map(function (alert, index) {
+    var alerts = this.state.alerts.map(function(alert, index) {
       var className = 'alert alert-' + alert.type;
       return (<div className={className} role='alert' key={index}>{alert.message}</div>);
     });

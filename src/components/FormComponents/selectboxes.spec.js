@@ -1,48 +1,48 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Selectboxes from './selectboxes.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Selectboxes', function () {
-  describe('Selectboxes field', function () {
+describe('Selectboxes', function() {
+  describe('Selectboxes field', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "selectboxes",
-      "validate": {
-        "required": false
+      'type': 'selectboxes',
+      'validate': {
+        'required': false
       },
-      "persistent": true,
-      "protected": false,
-      "inline": false,
-      "values": [
+      'persistent': true,
+      'protected': false,
+      'inline': false,
+      'values': [
         {
-          "label": "firstSelectbox",
-          "value": "firstSelectbox-value"
+          'label': 'firstSelectbox',
+          'value': 'firstSelectbox-value'
         },
         {
-          "label": "secondSelectbox",
-          "value": "secondSelectbox-value"
+          'label': 'secondSelectbox',
+          'value': 'secondSelectbox-value'
         },
         {
-          "label": "thirdSelectbox",
-          "value": "thirdSelectbox-value"
+          'label': 'thirdSelectbox',
+          'value': 'thirdSelectbox-value'
         }
       ],
-      "key": "selectBox",
-      "label": "selectBox",
-      "tableView": true,
-      "input": true
+      'key': 'selectBox',
+      'label': 'selectBox',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a selectboxes field', function (done) {
+    it('Renders a selectboxes field', function(done) {
       const element = render(
         <Selectboxes
       component={component}
@@ -65,7 +65,7 @@ describe('Selectboxes', function () {
         ></Selectboxes>
       );
       expect(element.find('.checkbox').length).to.equal(component.values.length);
-      expect(element.find('.checkbox label input').attr("type")).to.equal('checkbox');
+      expect(element.find('.checkbox label input').attr('type')).to.equal('checkbox');
 
       //To test the label of each select boxes
       for (var i= 0; i<component.values.length; i++) {
@@ -121,13 +121,13 @@ describe('Selectboxes', function () {
       );
       // There is a label in the header so indexes are off by 1.
       expect(element.find('label').at(1).hasClass('not-checked')).to.equal(true);
-      element.find('input').at(0).simulate('change', {"target": {"checked": true}});
+      element.find('input').at(0).simulate('change', {'target': {'checked': true}});
       expect(element.find('label').at(1).hasClass('checked')).to.equal(true);
       done();
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Selectboxes
           component={component}
@@ -137,7 +137,5 @@ describe('Selectboxes', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
-
 });

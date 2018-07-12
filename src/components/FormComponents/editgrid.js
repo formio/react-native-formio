@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import clone from 'lodash/clone';
 import isEqual from 'lodash/isEqual';
 import valueMixin from './mixins/valueMixin';
@@ -35,12 +35,12 @@ class EditGridRow extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    const { components } = this.props;
+    const {components} = this.props;
     // If one of the fields is set to refresh on a value outside the datagrid, check it as well.
     this.refresh = false;
     FormioUtils.eachComponent(components, (component) => {
       if ('refreshOn' in component && component.refreshOn) {
-        const { refreshOn } = component;
+        const {refreshOn} = component;
         if (refreshOn === 'data') {
           this.refresh = true;
         }
@@ -53,7 +53,7 @@ class EditGridRow extends Component {
   };
 
   shouldComponentUpdate = (nextProps) => {
-    const { row, isOpen } = this.props;
+    const {row, isOpen} = this.props;
 
     if (!isEqual(row, nextProps.row)) {
       return true;
@@ -67,7 +67,7 @@ class EditGridRow extends Component {
   };
 
   render = () => {
-    const { component, rowIndex, row, isOpen, validation } = this.props;
+    const {component, rowIndex, row, isOpen, validation} = this.props;
 
     if (isOpen) {
       return (
@@ -142,7 +142,7 @@ class RowEdit extends React.Component {
     if (this.unmounting) {
       return;
     }
-    const { value } = this.state;
+    const {value} = this.state;
     if (!component.props.component.hasOwnProperty('clearOnHide') || component.props.component.clearOnHide !== false) {
       if (component.props.component.key && value && value.hasOwnProperty(component.props.component.key)) {
         this.setState(previousState => {
@@ -201,7 +201,7 @@ class RowEdit extends React.Component {
   }
 
   render = () => {
-    const { component, rowIndex } = this.props;
+    const {component, rowIndex} = this.props;
     return (
       <div className="editgrid-edit">
         <div className="editgrid-body">
@@ -233,7 +233,7 @@ export default React.createClass({
   mixins: [valueMixin],
   getInitialValue: () => [],
   customState: function(state) {
-    const { component } = this.props;
+    const {component} = this.props;
     let rows = state.value;
     if (component.validate && component.validate.hasOwnProperty('minLength') && rows.length < component.validate.minLength) {
       var toAdd = component.validate.minLength - rows.length;
@@ -276,7 +276,7 @@ export default React.createClass({
       return;
     }
     // Allow addRow override.
-    const { component } = this.props;
+    const {component} = this.props;
     if (component.Edit) {
       return this.setState({
         openEdit: {
@@ -364,7 +364,7 @@ export default React.createClass({
   },
   validateCustom: function(value, state) {
     let isValid = true, errorType = '', errorMessage = '';
-    const myState = state || this.state || { value, openRows: [] };
+    const myState = state || this.state || {value, openRows: []};
     if (myState) {
       if (myState.openRows.length) {
         isValid = false;
@@ -385,7 +385,7 @@ export default React.createClass({
     };
   },
   validateRows: function(values) {
-    const { component } = this.props;
+    const {component} = this.props;
     let allRowsValid = true;
     let rowsValid = values.map(value => {
       let state = {
@@ -401,7 +401,7 @@ export default React.createClass({
         let valid;
         try {
           const row = value;
-          const { data } = this.props;
+          const {data} = this.props;
           valid = new Function('row', 'data', custom + '; return valid;')(row, data);
           state.isValid = (valid === true);
         }
@@ -422,9 +422,9 @@ export default React.createClass({
     return rowsValid;
   },
   getElements: function() {
-    const { value, openRows } = this.state;
+    const {value, openRows} = this.state;
     const rowsValid = this.validateRows(value);
-    const { component, checkConditional } = this.props;
+    const {component, checkConditional} = this.props;
     const Header = renderTemplate(component.templates.header, {
       components: component.components,
       util: FormioUtils,

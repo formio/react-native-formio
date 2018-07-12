@@ -1,40 +1,40 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Address from './address.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Address field', function () {
-  describe('Single address component', function () {
+describe('Address field', function() {
+  describe('Single address component', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "address",
-      "validate": {
-        "required": false
+      'type': 'address',
+      'validate': {
+        'required': false
       },
-      "map": {
-        "key": "",
-        "region": ""
+      'map': {
+        'key': '',
+        'region': ''
       },
-      "persistent": true,
-      "unique": false,
-      "protected": false,
-      "multiple": false,
-      "placeholder": "",
-      "key": "test",
-      "label": "test",
-      "tableView": true,
-      "input": true
+      'persistent': true,
+      'unique': false,
+      'protected': false,
+      'multiple': false,
+      'placeholder': '',
+      'key': 'test',
+      'label': 'test',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
 
-    it('Renders a basic address component', function (done) {
+    it('Renders a basic address component', function(done) {
       const element = render(
         <Address
           component={component}
@@ -47,7 +47,7 @@ describe('Address field', function () {
       done();
     });
 
-    it('Check single addess component', function (done) {
+    it('Check single addess component', function(done) {
       const element = render(
         <Address
           component={component}
@@ -107,37 +107,36 @@ describe('Address field', function () {
 
       done();
     });
-
   });
 
-  describe('Multiple address component', function () {
+  describe('Multiple address component', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "address",
-      "validate": {
-        "required": false
+      'type': 'address',
+      'validate': {
+        'required': false
       },
-      "map": {
-        "key": "",
-        "region": ""
+      'map': {
+        'key': '',
+        'region': ''
       },
-      "persistent": true,
-      "unique": false,
-      "protected": false,
-      "multiple": true,
-      "placeholder": "",
-      "key": "test",
-      "label": "test",
-      "tableView": true,
-      "input": true
+      'persistent': true,
+      'unique': false,
+      'protected': false,
+      'multiple': true,
+      'placeholder': '',
+      'key': 'test',
+      'label': 'test',
+      'tableView': true,
+      'input': true
     };
     var attachToForm = sinon.spy();
 
-    it('Check multiple addess component ', function (done) {
+    it('Check multiple addess component ', function(done) {
       const element = render(
         <Address
           component={component}
@@ -199,5 +198,4 @@ describe('Address field', function () {
 
 // TODO: Write a test case to check empty search field for first occurance of multiple address component.
   });
-
 });

@@ -1,13 +1,13 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import Textfield from './textfield.jsx';
 import sinon from 'sinon';
 
 import form from '../../../test/forms/empty.json';
 
-describe('Textfield @textfield', function () {
-  describe('Single Textfield', function () {
+describe('Textfield @textfield', function() {
+  describe('Single Textfield', function() {
     var component= {
       'input': true,
       'tableView': true,
@@ -39,7 +39,7 @@ describe('Textfield @textfield', function () {
       'type': 'textfield'
     };
     var attachToForm = sinon.spy();
-    it('renders a basic textfield', function (done) {
+    it('renders a basic textfield', function(done) {
       const element = render(
         <Textfield
           component={component}
@@ -90,7 +90,7 @@ describe('Textfield @textfield', function () {
       component.placeholder = '';
       done();
     });
-  
+
     it('renders with a prefix', function(done) {
       component.prefix = '$';
       const element = render(
@@ -105,7 +105,7 @@ describe('Textfield @textfield', function () {
       component.prefix = '';
       done();
     });
-  
+
     it('renders with a suffix', function(done) {
       component.suffix = 'Pounds';
       const element = render(
@@ -182,7 +182,7 @@ describe('Textfield @textfield', function () {
     });
 
     it('initially fulfills required fields with default values', function(done) {
-      component.defaultValue = 'My Value'
+      component.defaultValue = 'My Value';
       component.validate.required = true;
       const element = mount(
         <Textfield
@@ -299,7 +299,7 @@ describe('Textfield @textfield', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <Textfield
           component={component}
@@ -336,7 +336,7 @@ describe('Textfield @textfield', function () {
       const onChange = sinon.spy();
       const element = mount(
         <Textfield
-          options={{ skipInit: true }}
+          options={{skipInit: true}}
           component={component}
           onChange={onChange}
         ></Textfield>
@@ -540,8 +540,7 @@ describe('Textfield @textfield', function () {
       expect(table.find('tr').at(0).find('input').prop('data-index')).to.equal(0);
       component.defaultValue = '';
       done();
-    })
-
+    });
 
     it('fires a change event @change', function(done) {
       const onChange = sinon.spy();
@@ -570,7 +569,7 @@ describe('Textfield @textfield', function () {
       const onChange = sinon.spy();
       const element = mount(
         <Textfield
-          options={{ skipInit: true }}
+          options={{skipInit: true}}
           component={component}
           onChange={onChange}
         ></Textfield>

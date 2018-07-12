@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormBuilder } from '../components';
+import {FormBuilder} from '../components';
 
 export default class extends React.Component {
   static defaultProps = {
@@ -27,8 +27,8 @@ export default class extends React.Component {
   }
 
   render = () => {
-    const { onSave, onCancel } = this.props;
-    const { form } = this.state;
+    const {onSave, onCancel} = this.props;
+    const {form} = this.state;
     const actionTitle = form._id ? 'Save Form' : 'Create Form';
     return (
       <form role="form">
@@ -47,8 +47,12 @@ export default class extends React.Component {
         </div>
         <FormBuilder src="formUrl"></FormBuilder>
         <div className="form-group pull-right">
-          <a className="btn btn-default" onClick={() => {onCancel(form)}}>Cancel</a>
-          <input type="submit" className="btn btn-primary" onClick={() => {onSave(form)}} value={actionTitle} />
+          <a className="btn btn-default" onClick={() => {
+onCancel(form)
+;}}>Cancel</a>
+          <input type="submit" className="btn btn-primary" onClick={() => {
+onSave(form);
+}} value={actionTitle} />
         </div>
       </form>
     );

@@ -1,39 +1,39 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow, mount, render } from 'enzyme';
+import {expect} from 'chai';
+import {shallow, mount, render} from 'enzyme';
 import PhoneNumber from './phoneNumber.jsx';
 import sinon from 'sinon';
 import form from '../../../test/forms/empty.json';
 
-describe('phoneNumber', function () {
-  describe('Single phoneNumber', function () {
+describe('phoneNumber', function() {
+  describe('Single phoneNumber', function() {
     var component= {
-      "conditional": {
-        "eq": "",
-        "when": null,
-        "show": ""
+      'conditional': {
+        'eq': '',
+        'when': null,
+        'show': ''
       },
-      "type": "phoneNumber",
-      "validate": {
-        "required": false
+      'type': 'phoneNumber',
+      'validate': {
+        'required': false
       },
-      "defaultValue": "",
-      "persistent": true,
-      "unique": false,
-      "protected": false,
-      "multiple": false,
-      "suffix": "",
-      "prefix": "",
-      "placeholder": "",
-      "key": "phoneNumber",
-      "label": "Phone Number",
-      "inputMask": "(999) 999-9999",
-      "tableView": true,
-      "input": true
+      'defaultValue': '',
+      'persistent': true,
+      'unique': false,
+      'protected': false,
+      'multiple': false,
+      'suffix': '',
+      'prefix': '',
+      'placeholder': '',
+      'key': 'phoneNumber',
+      'label': 'Phone Number',
+      'inputMask': '(999) 999-9999',
+      'tableView': true,
+      'input': true
     };
 
     var attachToForm = sinon.spy();
-    it('Renders a basic phoneNumber', function (done) {
+    it('Renders a basic phoneNumber', function(done) {
       const element = render(
         <PhoneNumber
       component={component}
@@ -180,7 +180,7 @@ describe('phoneNumber', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <PhoneNumber
           component={component}
@@ -190,32 +190,31 @@ describe('phoneNumber', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
 
   describe('Multiple phoneNumber', function() {
     var component = {
-      "input": true,
-      "tableView": true,
-      "inputMask": "(999) 999-9999",
-      "label": "Phone Number",
-      "key": "phoneNumber",
-      "placeholder": "",
-      "prefix": "",
-      "suffix": "",
-      "multiple": true,
-      "protected": false,
-      "unique": false,
-      "persistent": true,
-      "defaultValue": "",
-      "validate": {
-        "required": false
+      'input': true,
+      'tableView': true,
+      'inputMask': '(999) 999-9999',
+      'label': 'Phone Number',
+      'key': 'phoneNumber',
+      'placeholder': '',
+      'prefix': '',
+      'suffix': '',
+      'multiple': true,
+      'protected': false,
+      'unique': false,
+      'persistent': true,
+      'defaultValue': '',
+      'validate': {
+        'required': false
       },
-      "type": "phoneNumber",
-      "conditional": {
-        "show": "",
-        "when": null,
-        "eq": ""
+      'type': 'phoneNumber',
+      'conditional': {
+        'show': '',
+        'when': null,
+        'eq': ''
       }
     };
     var attachToForm = sinon.spy();
@@ -381,7 +380,7 @@ describe('phoneNumber', function () {
       expect(table.find('tr').length).to.equal(2);
       expect(table.find('tr').at(0).find('input').prop('data-index')).to.equal(0);
       done();
-    })
+    });
 
     it('Check multiple phoneNumber with required', function(done) {
       component.validate.required = true;
@@ -421,7 +420,7 @@ describe('phoneNumber', function () {
     });
 
     it('sets a custom class', function(done) {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = render(
         <PhoneNumber
           component={component}
@@ -431,7 +430,5 @@ describe('phoneNumber', function () {
       expect(element.attr('class').split(' ')).to.contain('my-custom-class');
       done();
     });
-
   });
-
 });
