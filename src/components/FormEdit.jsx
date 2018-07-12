@@ -1,7 +1,7 @@
 import React from 'react';
 import {FormBuilder} from '../components';
 
-export default class extends React.Component {
+export default class FormEdit extends React.Component {
   static defaultProps = {
     form: {
       type: 'form'
@@ -49,7 +49,8 @@ export default class extends React.Component {
         <div className="form-group pull-right">
           <a className="btn btn-default" onClick={() => {
 onCancel(form)
-;}}>Cancel</a>
+;
+}}>Cancel</a>
           <input type="submit" className="btn btn-primary" onClick={() => {
 onSave(form);
 }} value={actionTitle} />
