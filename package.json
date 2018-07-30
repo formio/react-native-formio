@@ -1,6 +1,6 @@
 {
   "name": "react-native-formio",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "React native rendering library for form.io embedded forms.",
   "main": "src/index.js",
   "scripts": {
@@ -27,19 +27,21 @@
   "homepage": "https://github.com/formio/react-native-formio#readme",
   "dependencies": {
     "babel-polyfill": "^6.22.0",
-    "formio-utils": "^0.3.0",
-    "formiojs": "^2.25.4",
+    "eventemitter2": "^5.0.1",
+    "json-logic-js": "^1.2.2",
     "lodash": "^4.15.0",
     "moment": "^2.10.6",
+    "node-fetch": "^2.1.2",
     "prop-types": "^15.6.1",
     "react-dropzone": "^3.5.3",
     "react-flatpickr": "^3.1.1",
+    "react-native": "^0.56.0",
+    "react-native-clean-form": "^0.5.0",
+    "react-native-vector-icons": "^4.6.0",
     "react-pagify": "^2.1.1",
     "react-quill": "^0.4.1",
-    "react-signature-canvas": "^0.3.0",
-    "react-text-mask": "^4.1.0",
-    "react-widgets": "^4.0.3",
-    "reactabular": "^3.0.5",
+    "react-test-renderer": "^16.4.1",
+    "react-text-mask-hoc": "^0.10.6",
     "reselect": "^2.5.4",
     "segmentize": "^0.4.1",
     "text-mask-addons": "^3.5.0"
@@ -51,9 +53,6 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-jest": "^23.2.0",
     "babel-preset-react-native": "^4.0.0",
-    "deep-freeze": "0.0.1",
-    "del": "^2.0.2",
-    "enzyme": "^2.9.1",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",
     "eslint-config-formio": "^1.1.0",
@@ -62,16 +61,32 @@
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-react-native": "^2.3.1",
     "jest": "23.4.0",
-    "react": "16.2.0",
-    "react-test-renderer": "16.4.1"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-native": "*"
   },
   "files": [
     "dist",
     "lib",
     "formio.css"
   ],
-  "peerDependencies": {
-    "react": "^16.0.0",
-    "react-native": "^0.52.0"
+  "jest": {
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "setupFiles": [
+      "<rootDir>/test/.setup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|react-native-clean-form|react-native-vector-icons|react-text-mask-hoc)/)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ]
   }
 }

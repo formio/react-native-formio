@@ -1,21 +1,6 @@
-require('babel-register')();
 
-var jsdom = require('jsdom').jsdom;
+import { Response, Headers, Request } from 'node-fetch';
 
-var exposedProperties = ['window', 'navigator', 'document'];
-
-global.document = jsdom('');
-global.window = document.defaultView;
-global.window.FormioComponents = {};
-Object.keys(document.defaultView).forEach(function (property) {
-  if (typeof global[property] === 'undefined') {
-    exposedProperties.push(property);
-    global[property] = document.defaultView[property];
-  }
-});
-
-global.navigator = {
-  userAgent: 'node.js'
-};
-
-documentRef = document;
+global.Response = Response;
+global.Headers = Headers;
+global.Request = Request;
