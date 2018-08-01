@@ -35,7 +35,6 @@
     "prop-types": "^15.6.1",
     "react-dropzone": "^3.5.3",
     "react-flatpickr": "^3.1.1",
-    "react-native": "^0.56.0",
     "react-native-clean-form": "^0.5.0",
     "react-native-vector-icons": "^4.6.0",
     "react-pagify": "^2.1.1",
@@ -62,7 +61,7 @@
     "eslint-plugin-react-native": "^2.3.1",
     "jest": "23.4.0",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-native": "^0.56.0"
   },
   "peerDependencies": {
     "react": "^16.2.0",
