@@ -263,7 +263,6 @@ exports[`Textfield @textfield Single Textfield renders a basic textfield 1`] = `
       multiline={false}
       numberOfLines={1}
       onBlur={[Function]}
-      onChange={[Function]}
       onChangeText={[Function]}
       placeholder=""
       placeholderTextColor="#c9c9c9"
@@ -347,7 +346,7 @@ exports[`Textfield @textfield Single Textfield renders a basic textfield 1`] = `
     style={
       Object {
         "alignSelf": "flex-end",
-        "color": "red",
+        "color": "#FF4545",
         "fontSize": 10,
       }
     }

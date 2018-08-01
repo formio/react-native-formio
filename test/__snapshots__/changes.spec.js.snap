@@ -359,7 +359,6 @@ exports[`Change Events @change fires change events on a form 1`] = `
                 name="myTextfield"
                 numberOfLines={1}
                 onBlur={[Function]}
-                onChange={[Function]}
                 onChangeText={[Function]}
                 placeholder=""
                 placeholderTextColor="#c9c9c9"
@@ -443,7 +442,7 @@ exports[`Change Events @change fires change events on a form 1`] = `
               style={
                 Object {
                   "alignSelf": "flex-end",
-                  "color": "red",
+                  "color": "#FF4545",
                   "fontSize": 10,
                 }
               }

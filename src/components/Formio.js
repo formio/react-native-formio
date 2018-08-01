@@ -413,15 +413,17 @@ export default class Formio extends React.Component {
 }
 
 const style = StyleSheet.create({
-  flex: 1,
+  formWrapper: {
+    flex: 1,
   marginHorizontal: 10,
+  }
 });
 
 Formio.defaultProps = {
   readOnly: false,
   formAction: false,
   options: {},
-  style: style,
+  style: style.formWrapper,
   theme: theme
 };
 

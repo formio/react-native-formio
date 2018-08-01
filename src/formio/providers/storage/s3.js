@@ -1,11 +1,12 @@
+/** THIS FILE IS NOT USABLE, NEEDS TO BE RECREATED IN REACT NATIVE */
 
 const s3 = (formio) => ({
   uploadFile(file, fileName, dir, progressCallback) {
     return new Promise(((resolve, reject) => {
       // Send the pre response to sign the upload.
-      const pre = new XMLHttpRequest();
+      const pre = {};
 
-      const prefd = new FormData();
+      const prefd = {};
       prefd.append('name', fileName);
       prefd.append('size', file.size);
       prefd.append('type', file.type);
@@ -23,7 +24,7 @@ const s3 = (formio) => ({
           const response = JSON.parse(pre.response);
 
           // Send the file with data.
-          const xhr = new XMLHttpRequest();
+          const xhr = {};
 
           if (typeof progressCallback === 'function') {
             xhr.upload.onprogress = progressCallback;
@@ -32,7 +33,7 @@ const s3 = (formio) => ({
           response.data.fileName = fileName;
           response.data.key += dir + fileName;
 
-          const fd = new FormData();
+          const fd = {};
           for (const key in response.data) {
             fd.append(key, response.data[key]);
           }

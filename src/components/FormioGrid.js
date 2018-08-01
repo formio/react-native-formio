@@ -155,10 +155,7 @@ export default class FormioGrid extends React.Component {
   }
 
   render() {
-    let rows = resolve.resolve({
-      columns: this.state.columns,
-      method: nested
-    })(this.state.submissions);
+    let rows =  this.state.columns;
     return (
       <View>
         {rows}

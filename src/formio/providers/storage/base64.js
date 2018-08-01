@@ -1,8 +1,10 @@
+/** THIS FILE IS NOT USABLE, NEEDS TO BE RECREATED IN REACT NATIVE */
+
 const base64 = () => ({
   title: 'Base64',
   name: 'base64',
   uploadFile(file, fileName) {
-    const reader = new FileReader();
+    const reader = {};
 
     return new Promise((resolve, reject) => {
       reader.onload = (event) => {

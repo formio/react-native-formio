@@ -1,15 +1,16 @@
+/** THIS FILE IS NOT USABLE, NEEDS TO BE RECREATED IN REACT NATIVE */
 
 const dropbox = (formio) => ({
   uploadFile(file, fileName, dir, progressCallback) {
     return new Promise(((resolve, reject) => {
       // Send the file with data.
-      const xhr = new XMLHttpRequest();
+      const xhr = {};
 
       if (typeof progressCallback === 'function') {
         xhr.upload.onprogress = progressCallback;
       }
 
-      const fd = new FormData();
+      const fd = {};
       fd.append('name', fileName);
       fd.append('dir', dir);
       fd.append('file', file);

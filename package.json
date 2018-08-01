@@ -43,7 +43,8 @@
     "react-text-mask-hoc": "^0.10.6",
     "reselect": "^2.5.4",
     "segmentize": "^0.4.1",
-    "text-mask-addons": "^3.5.0"
+    "text-mask-addons": "^3.5.0",
+    "written-number": "^0.8.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",

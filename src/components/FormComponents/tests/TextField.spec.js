@@ -48,7 +48,7 @@ describe('Textfield @textfield', () => {
       expect(inputInstance.findByType(FormGroup)).toBeDefined();
       expect(inputInstance.findByType(Label)).toBeDefined();
       expect(inputInstance.findByType(Input)).toBeDefined();
-      expect(inputInstance.findByType(Input).props.id).toEqual('');
+      expect(inputInstance.findByType(Input).props.id).toEqual('myTextfield');
       // expect(element.hasClass('form-group form-field-type-textfield form-group-myTextfield')).to.equal(true);
       // expect(element.attr('id')).to.equal('form-group-myTextfield');
       // expect(element.find('.formio-component-single').length).to.equal(1);
@@ -66,7 +66,7 @@ describe('Textfield @textfield', () => {
     });
 
     it('sets the initial state correctly', function(done) {
-      const element = mount(
+      const element = renderer.create(
         <Textfield
           component={component}
           attachToForm={attachToForm}
@@ -81,7 +81,7 @@ describe('Textfield @textfield', () => {
 
     it('fills in the placeholder value', function(done) {
       component.placeholder = 'My Placeholder';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           component={component}
           attachToForm={attachToForm}
@@ -94,7 +94,7 @@ describe('Textfield @textfield', () => {
 
     it('renders with a prefix', function(done) {
       component.prefix = '$';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           component={component}
           attachToForm={attachToForm}
@@ -109,7 +109,7 @@ describe('Textfield @textfield', () => {
 
     it('renders with a suffix', function(done) {
       component.suffix = 'Pounds';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           component={component}
           attachToForm={attachToForm}
@@ -125,7 +125,7 @@ describe('Textfield @textfield', () => {
     it('renders with prefix and suffix', function(done) {
       component.prefix = 'Prefix';
       component.suffix = 'Suffix';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           component={component}
           attachToForm={attachToForm}
@@ -143,7 +143,7 @@ describe('Textfield @textfield', () => {
 
     it('sets a default value', function(done) {
       component.defaultValue = 'My Value';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           component={component}
           value={null}
@@ -157,7 +157,7 @@ describe('Textfield @textfield', () => {
 
     it('requires required fields', function(done) {
       component.validate.required = true;
-      const element = mount(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           value=""
@@ -185,7 +185,7 @@ describe('Textfield @textfield', () => {
     it('initially fulfills required fields with default values', function(done) {
       component.defaultValue = 'My Value';
       component.validate.required = true;
-      const element = mount(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           value={null}
@@ -208,7 +208,7 @@ describe('Textfield @textfield', () => {
 
     it('validates maxLength', function(done) {
       component.validate.maxLength = '5';
-      const element = mount(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           value=""
@@ -235,7 +235,7 @@ describe('Textfield @textfield', () => {
 
     it('validates minLength', function(done) {
       component.validate.minLength = '5';
-      const element = mount(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           value=""
@@ -268,7 +268,7 @@ describe('Textfield @textfield', () => {
     it('validates minLength and maxLength', function(done) {
       component.validate.minLength = '5';
       component.validate.maxLength = '10';
-      const element = mount(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           value=""
@@ -301,7 +301,7 @@ describe('Textfield @textfield', () => {
 
     it('sets a custom class', function(done) {
       component.customClass = 'my-custom-class';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           component={component}
           attachToForm={attachToForm}
@@ -313,8 +313,8 @@ describe('Textfield @textfield', () => {
     });
 
     it('fires a change event @change', function(done) {
-      const onChange = sinon.spy();
-      const element = mount(
+      const onChange = jest.fn();
+      const element = renderer.create(
         <Textfield
           component={component}
           onChange={onChange}
@@ -334,8 +334,8 @@ describe('Textfield @textfield', () => {
     });
 
     it('fires a change event with skipInit @change', function(done) {
-      const onChange = sinon.spy();
-      const element = mount(
+      const onChange = jest.fn();
+      const element = renderer.create(
         <Textfield
           options={{skipInit: true}}
           component={component}
@@ -386,9 +386,9 @@ describe('Textfield @textfield', () => {
       },
       'type': 'textfield'
     };
-    var attachToForm = sinon.spy();
+    var attachToForm = jest.fn();
     it('renders a multi-value textfield', function(done) {
-      const element = render(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           component={component}
@@ -418,7 +418,7 @@ describe('Textfield @textfield', () => {
 
     it('fills in the placeholder value', function(done) {
       component.placeholder = 'My Placeholder';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           component={component}
@@ -432,7 +432,7 @@ describe('Textfield @textfield', () => {
 
     it('renders with a prefix', function(done) {
       component.prefix = '$';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           component={component}
@@ -448,7 +448,7 @@ describe('Textfield @textfield', () => {
 
     it('renders with a suffix', function(done) {
       component.suffix = 'Pounds';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           component={component}
@@ -465,7 +465,7 @@ describe('Textfield @textfield', () => {
     it('renders with prefix and suffix', function(done) {
       component.prefix = 'Prefix';
       component.suffix = 'Suffix';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           component={component}
@@ -484,7 +484,7 @@ describe('Textfield @textfield', () => {
 
     it('sets a default value', function(done) {
       component.defaultValue = 'My Value';
-      const element = render(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           value={null}
@@ -499,7 +499,7 @@ describe('Textfield @textfield', () => {
 
     it('adds and removes rows', function(done) {
       component.defaultValue = 'My Value';
-      const element = mount(
+      const element = renderer.create(
         <Textfield
           name="myTextfield"
           component={component}
@@ -544,8 +544,8 @@ describe('Textfield @textfield', () => {
     });
 
     it('fires a change event @change', function(done) {
-      const onChange = sinon.spy();
-      const element = mount(
+      const onChange = jest.fn();
+      const element = renderer.create(
         <Textfield
           component={component}
           onChange={onChange}
@@ -567,8 +567,8 @@ describe('Textfield @textfield', () => {
     });
 
     it('fires a change event with skipInit @change', function(done) {
-      const onChange = sinon.spy();
-      const element = mount(
+      const onChange = jest.fn();
+      const element = renderer.create(
         <Textfield
           options={{skipInit: true}}
           component={component}

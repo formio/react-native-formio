@@ -36,7 +36,7 @@ const form = {
       'type': 'textfield'
     }
   ]
-}
+};
 
 describe('Change Events @change', function() {
   it.only('fires change events on a form', function() {
@@ -102,7 +102,7 @@ describe('Change Events @change', function() {
 
   it('fires events when a field becomes visible', function(done) {
     const onChange = jest.fn();
-    const element = shallow(
+    const element = renderer.create(
       <Formio
         form={{
           'components': [
@@ -183,7 +183,7 @@ describe('Change Events @change', function() {
 
   it('fires events when a field becomes visible with skipInit', function(done) {
     const onChange = jest.fn();
-    const element = shallow(
+    const element = renderer.create(
       <Formio
         form={{
           'components': [
@@ -265,7 +265,7 @@ describe('Change Events @change', function() {
 
   it('fires events and removes hidden data on form load', function(done) {
     const onChange = jest.fn();
-    const element = shallow(
+    const element = renderer.create(
       <Formio
         form={{
           'components': [
@@ -348,7 +348,7 @@ describe('Change Events @change', function() {
 
   it('fires events when data already exists', function(done) {
     const onChange = jest.fn();
-    const element = shallow(
+    const element = renderer.create(
       <Formio
         form={{
           'components': [
@@ -429,7 +429,7 @@ describe('Change Events @change', function() {
 
   it('fires events when data already exists with skipInit', function(done) {
     const onChange = jest.fn();
-    const element = shallow(
+    const element = renderer.create(
       <Formio
         form={{
           'components': [
@@ -519,7 +519,7 @@ describe('Change Events @change', function() {
 
   it('fires events when data is hidden in a layout component', function(done) {
     const onChange = jest.fn();
-    const element = shallow(
+    const element = renderer.create(
       <Formio
         form={{
           'components': [
@@ -622,7 +622,7 @@ describe('Change Events @change', function() {
 
   it('fires events when data is hidden in a column component @wip', function(done) {
     const onChange = jest.fn();
-    const element = shallow(
+    const element = renderer.create(
       <Formio
         form={{
           'components': [

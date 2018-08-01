@@ -1,3 +1,4 @@
+/** THIS FILE IS NOT USABLE, NEEDS TO BE RECREATED IN REACT NATIVE */
 
 const url = (formio) => ({
   title: 'Url',
@@ -11,13 +12,13 @@ const url = (formio) => ({
       };
 
       // Send the file with data.
-      const xhr = new XMLHttpRequest();
+      const xhr = {};
 
       if (typeof progressCallback === 'function') {
         xhr.upload.onprogress = progressCallback;
       }
 
-      const fd = new FormData();
+      const fd = {};
       for (const key in data) {
         fd.append(key, data[key]);
       }

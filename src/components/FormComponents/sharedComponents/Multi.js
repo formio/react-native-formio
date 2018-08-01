@@ -2,7 +2,7 @@ import React from 'react';
 import clone from 'lodash/clone';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
-import {Text} from 'react-native';
+import {Text, StyleSheet} from 'react-native';
 import InputComponent from './Input';
 import {
   Button,
@@ -10,6 +10,15 @@ import {
   FormGroup,
   Label
 } from 'react-native-clean-form';
+
+const errorColor = '#FF4545';
+const multiStyles = StyleSheet.create({
+  errorText: {
+    color: errorColor,
+    alignSelf: 'flex-end',
+    fontSize: 10
+  }
+});
 
 export default class MultiComponent extends InputComponent {
   constructor(props) {
@@ -50,7 +59,7 @@ export default class MultiComponent extends InputComponent {
     const Element = this.getSingleElement(value, id);
     const error = this.state.isPristine || value.isValid ? false : true;
     const errorText = (
-    <Text style={{color: 'red', alignSelf: 'flex-end', fontSize: 10}}>
+    <Text style={multiStyles.errorText}>
       {error ? value.errorMessage: ''}
     </Text>);
     return (
@@ -90,7 +99,7 @@ export default class MultiComponent extends InputComponent {
       const Element = this.getSingleElement(data);
       const error = this.state.isPristine || data.isValid ? false : true;
       const errorText = (
-        <Text style={{color: 'red', alignSelf: 'flex-end', fontSize: 10}}>
+        <Text style={multiStyles.errorText}>
           {error ? data.errorMessage: ''}
         </Text>);
 
