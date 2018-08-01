@@ -10,6 +10,7 @@ const FormioComponentsList = (props) => {
         const key = component.key || component.type + index;
         const value = (props.values && props.values.hasOwnProperty(component.key) ? props.values[component.key] : null);
         const FormioElement = FormioComponents.getComponent(component.type);
+        if (!FormioElement) return null;
         if (props.checkConditional(component, props.row)) {
           return (
             <FormioElement

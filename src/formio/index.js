@@ -654,7 +654,7 @@ export default class Formio {
     return Formio.pluginAlter('wrapRequestPromise', request, requestArgs);
   }
 
-  static request(url, method, data, header, opts) {
+  static async request(url, method, data, header, opts) {
     if (!url) {
       return Promise.reject('No url provided');
     }
@@ -682,7 +682,7 @@ export default class Formio {
       'Accept': 'application/json',
       'Content-type': 'application/json; charset=UTF-8'
     });
-    const token = Formio.getToken(opts);
+    const token = await Formio.getToken(opts);
     if (token && !opts.noToken) {
       headers.append('x-jwt-token', token);
     }
