@@ -7,7 +7,7 @@ const Theme = {
     height: 45
   },
   ErrorMessage: {
-    color: 'red',
+    color: '#FF4545',
     fontSize: 10,
     marginBottom: 15,
     textAlign: 'right'
@@ -46,7 +46,7 @@ const Theme = {
     color: '#313131',
   },
   Label: {
-    color: '#bfc2c9',
+    color: '#182232',
     fontSize: 12,
     stackedHeight: 25
   },
