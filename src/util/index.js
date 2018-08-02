@@ -4,11 +4,7 @@ import isEqual from 'lodash/isEqual';
 
 function defineTransformerOutsideStrictMode() {
   var safeGlobalName = '____formioSelectMixinGetTransformer';
-  var globalObject = typeof window !== 'undefined'
-    ? window
-    : typeof global !== 'undefined'
-    ? global
-    : {};
+  var globalObject = typeof global !== 'undefined' ? global : {};
 
   /* We are essentially doing this, but because we're in strict mode by default in all babeled
    * modules, we need to escape it
