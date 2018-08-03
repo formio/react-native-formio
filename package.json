@@ -1,14 +1,12 @@
 {
   "name": "react-native-formio",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "React native rendering library for form.io embedded forms.",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "mocha --timeout 30000 --reporter spec test/.setup.js **/*.spec.js",
-    "build": "babel ./src --ignore=*.spec.js --out-dir ./lib --presets es2015,react,stage-2",
+    "test": "jest",
     "lint": "eslint src",
-    "watch": "babel ./src --watch --ignore=*.spec.js --out-dir ./lib --presets es2015,react,stage-2",
-    "prepublish": "npm run lint; npm run build"
+    "prepublish": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -19,7 +17,7 @@
     "component",
     "Formio",
     "Forms",
-    "react-component"
+    "react--native-component"
   ],
   "author": "Randall Knutson <randall@form.io>",
   "license": "MIT",
@@ -27,65 +25,68 @@
     "url": "https://github.com/formio/react-native-formio/issues"
   },
   "homepage": "https://github.com/formio/react-native-formio#readme",
-  "browserify-shim": {
-    "react": "global:React"
-  },
   "dependencies": {
     "babel-polyfill": "^6.22.0",
-    "formio-utils": "^0.3.0",
-    "formiojs": "^2.25.4",
+    "eventemitter2": "^5.0.1",
+    "json-logic-js": "^1.2.2",
     "lodash": "^4.15.0",
     "moment": "^2.10.6",
+    "prop-types": "^15.6.1",
     "react-dropzone": "^3.5.3",
     "react-flatpickr": "^3.1.1",
+    "react-native-elements": "^0.19.1",
+    "react-native-simple-radio-button": "^2.7.2",
+    "react-native-vector-icons": "^4.6.0",
     "react-pagify": "^2.1.1",
     "react-quill": "^0.4.1",
-    "react-signature-canvas": "^0.3.0",
-    "react-text-mask": "^4.1.0",
-    "react-widgets": "^4.0.3",
-    "reactabular": "^3.0.5",
+    "react-test-renderer": "^16.4.1",
+    "react-text-mask-hoc": "^0.10.6",
     "reselect": "^2.5.4",
     "segmentize": "^0.4.1",
-    "text-mask-addons": "^3.5.0"
+    "text-mask-addons": "^3.5.0",
+    "written-number": "^0.8.1"
   },
   "devDependencies": {
-    "ajv-pack": "^0.2.5",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.10.4",
-    "babel-eslint": "^6.0.5",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-2": "^6.13.0",
-    "babel-register": "^6.4.3",
-    "chai": "^3.5.0",
-    "deep-freeze": "0.0.1",
-    "del": "^2.0.2",
-    "enzyme": "^2.0.0",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "23.4.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-jest": "^23.2.0",
+    "babel-preset-react-native": "^4.0.0",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",
     "eslint-config-formio": "^1.1.0",
     "eslint-loader": "^1.5.0",
-    "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-jsx-a11y": "^2.0.1",
-    "eslint-plugin-react": "^6.0.0",
-    "expect": "^1.20.2",
-    "jsdom": "^9.4.2",
-    "mocha": "^2.4.5",
-    "react": "^15.0.0",
-    "react-addons-test-utils": "^15.0.0",
-    "react-dom": "^15.0.0",
-    "react-transform-catch-errors": "^1.0.0",
-    "sinon": "^1.17.4",
-    "webpack": "^1.13.1"
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-plugin-react-native": "^2.3.1",
+    "jest": "23.4.0",
+    "react": "^16.4.2",
+    "react-native": "^0.56.0"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-native": "*"
   },
   "files": [
     "dist",
     "lib",
     "formio.css"
   ],
-  "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+  "jest": {
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "setupFiles": [
+      "<rootDir>/test/.setup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|react-native-clean-form|react-native-vector-icons|react-text-mask-hoc|react-native-elements|react-native-simple-radio-button)/)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ]
   }
 }
