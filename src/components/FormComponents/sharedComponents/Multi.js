@@ -1,26 +1,18 @@
+
 import React from 'react';
 import clone from 'lodash/clone';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
-import {Text, StyleSheet} from 'react-native';
-import InputComponent from './Input';
+import {View, StyleSheet} from 'react-native';
+import ValueComponent from './Value';
 import {
+  Icon,
   Button,
-  Fieldset,
-  FormGroup,
-  Label
-} from 'react-native-clean-form';
+  FormValidationMessage,
+  Text,
+  FormLabel
+} from 'react-native-elements';
 
-const errorColor = '#FF4545';
-const multiStyles = StyleSheet.create({
-  errorText: {
-    color: errorColor,
-    alignSelf: 'flex-end',
-    fontSize: 10
-  }
-});
-
-export default class MultiComponent extends InputComponent {
+export default class MultiComponent extends ValueComponent {
   constructor(props) {
     super(props);
     this.addFieldValue = this.addFieldValue.bind(this);
@@ -55,60 +47,69 @@ export default class MultiComponent extends InputComponent {
     });
   }
 
-  getTableRows(value, id) {
-    const Element = this.getSingleElement(value, id);
+  getTableRows(value, id, style) {
     const error = this.state.isPristine || value.isValid ? false : true;
-    const errorText = (
-    <Text style={multiStyles.errorText}>
-      {error ? value.errorMessage: ''}
-    </Text>);
+    const Element = this.getSingleElement(value, id, error);
+    const errorText = error ? (<FormValidationMessage style={style.errorMessage}> {value.errorMessage}</FormValidationMessage>) : null;
     return (
-      <FormGroup theme={this.props.theme} error={error} inlineLabel={false} key={id}>
+      <View style={style.fieldWrapper}>
         {Element}
-        <Button icon='minus-circle' onPress={this.removeFieldValue.bind(null, id)} />
+        <Icon name='minus-circle' type='font-awesome' onPress={this.removeFieldValue.bind(null, id)} />
         {errorText}
-      </FormGroup>
+      </View>
     );
   }
 
   getElements() {
+    const multiStyles = StyleSheet.create({
+      fieldWrapper: {
+        flex: 1,
+      },
+      errorText: {
+        alignSelf: 'flex-end',
+        fontSize: 10,
+        color: this.props.colors.errorColor
+      },
+      label: {
+        color: this.props.theme.Label.color,
+        fontSize: this.props.theme.Label.fontSize,
+      }
+    });
+
     const {component} = this.props;
     let Component;
     const requiredInline = ((component.hideLabel === true || component.label === '' ||
-      !component.label) && component.validate && component.validate.required ? <Icon name='asterisk' /> : '');
+      !component.label) && component.validate && component.validate.required ? <Icon name='asterisk' type='font-awesome'/> : <Text>{''}</Text>);
 
-    const prefix = (component.prefix ? <Text>{component.prefix}</Text> : '');
-    const suffix = (component.suffix ? <Text>{component.suffix}</Text> : '');
-
+    const prefix = (<Text>{component.prefix}</Text>);
+    const suffix = (<Text>{component.suffix}</Text>);
     const inputLabel = (component.label && !component.hideLabel ?
-      <Label>{requiredInline} {prefix} {component.label} {suffix}</Label> : `${requiredInline} ${prefix} ${suffix}`);
+      <FormLabel labelStyle={multiStyles.labelStyle}>{requiredInline} {prefix} {component.label} {suffix}</FormLabel> : null);
 
       const data = this.state.value;
     if (component.multiple) {
       const rows = data.map((value, id) => {
-        this.getTableRows(value, id);
+        this.getTableRows(value, id, multiStyles);
       });
       Component = (
-          <Fieldset theme={this.props.theme} label={component.label}>
+          <View>
+            <Text h3>{component.label}</Text>
             {rows}
-            <Button icon='plus' onPress={this.addFieldValue}> Add another</Button>
-          </Fieldset>
+            <Button icon={{name: 'plus', type: 'font-awesome'}} onPress={this.addFieldValue}> Add another</Button>
+          </View>
       );
     }
     else {
-      const Element = this.getSingleElement(data);
       const error = this.state.isPristine || data.isValid ? false : true;
-      const errorText = (
-        <Text style={multiStyles.errorText}>
-          {error ? data.errorMessage: ''}
-        </Text>);
+      const Element = this.getSingleElement(data, 0, error);
+      const errorText = error ? (<FormValidationMessage>{data.errorMessage}</FormValidationMessage>) : null;
 
       Component = (
-        <FormGroup inlineLabel={false} error={error} theme={this.props.theme}>
+        <View style={multiStyles.fieldWrapper}>
           {inputLabel}
           {Element}
           {errorText}
-        </FormGroup>
+        </View>
       );
     }
     return Component;
@@ -118,5 +119,6 @@ export default class MultiComponent extends InputComponent {
 MultiComponent.propTypes = {
   component: PropTypes.any,
   onChange: PropTypes.func,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  colors: PropTypes.object
 };

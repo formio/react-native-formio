@@ -1,12 +1,12 @@
 import {deepEqual} from '../../../util';
 import clone from 'lodash/clone';
-import SelectComponent from './Multi';
+import BaseComponent from './Base';
 import PropTypes from 'prop-types';
 import {validate} from '../componentUtils/validators';
 import {safeSingleToMultiple} from '../componentUtils/safeSingleToMultiple';
 import {getDefaultValue} from '../componentUtils/getDefaultValue';
 
-export default class ValueComponent extends SelectComponent {
+export default class ValueComponent extends BaseComponent {
   constructor(props) {
     super(props);
     const value = getDefaultValue(this.props.value, this.props.component, this.props.getInitialValue, this.props.onChangeCustom);

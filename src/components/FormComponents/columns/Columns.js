@@ -1,10 +1,11 @@
 import React from 'react';
-import {FormioComponentsList} from '../../components';
-import {Fieldset} from 'react-native-clean-form';
+import {FormioComponentsList} from '../../../components';
 import PropTypes from 'prop-types';
+import {View} from 'react-native';
+import styles from './styles';
 
 const Columns = (props) => (
-  <Fieldset theme={props.theme}>
+  <View style={{...styles.columns, borderBottomColor: props.colors.borderColor}}>
     {props.component.columns.map((column, index) => (
       <FormioComponentsList
         key={index}
@@ -12,12 +13,13 @@ const Columns = (props) => (
         components={column.components}
       />
     ))}
-  </Fieldset>
+  </View>
 );
 
 Columns.propTypes = {
   component: PropTypes.object,
   theme: PropTypes.any,
+  colors: PropTypes.object,
 };
 
 export default Columns;

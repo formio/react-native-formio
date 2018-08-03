@@ -1,11 +1,12 @@
 import React from 'react';
-import BaseComponent from './Base';
+import MultiComponent from './Multi';
+import {StyleSheet} from 'react-native';
 import {TextMask} from 'react-text-mask-hoc/ReactNative';
 import {clone} from 'lodash';
-import {Input} from 'react-native-clean-form';
+import {FormInput} from 'react-native-elements';
 import PropTypes from 'prop-types';
 
-export default class InputComponent extends BaseComponent {
+export default class InputComponent extends MultiComponent {
   constructor(props) {
     super(props);
     this.timeout = null;
@@ -99,7 +100,17 @@ export default class InputComponent extends BaseComponent {
     return maskArray;
   }
 
-  getSingleElement(value, index) {
+  getSingleElement(value, index, error) {
+    const themeStyle = this.props.theme.Input;
+    const style = StyleSheet.create({
+      input: {
+        borderColor: error ? themeStyle.borderColorOnError : themeStyle.borderColor,
+        color: themeStyle.color,
+        fontSize: themeStyle.fontSize,
+        lineHeight: themeStyle.lineHeight,
+      }
+    });
+
     index = index || 0;
     const item = typeof value === 'string' ? value : value.item;
     const {component, name, readOnly} = this.props;
@@ -107,14 +118,15 @@ export default class InputComponent extends BaseComponent {
     const properties = {
       type: component.inputType !== 'number' ? component.inputType : 'text',
       key: index,
-      style: component.style,
       id: component.key,
       'data-index': index,
       name: name,
+      shake: true,
       defaultValue: item,
       value: item,
       editable: !readOnly,
       placeholder: component.placeholder,
+      placeholderTextColor: this.props.theme.Input.placeholderTextColor,
       onChangeText: this.onChangeInput,
       onBlur: this.onBlur,
       ref: input => this.element = input
@@ -126,10 +138,10 @@ export default class InputComponent extends BaseComponent {
       properties.placeholderChar = '_';
       properties.guide = true;
 
-      return (<TextMask Component={Input} {...properties}/>);
+      return (<TextMask style={style.input} Component={FormInput} {...properties}/>);
     }
     else {
-      return (<Input  theme={this.props.theme} {...properties} />);
+      return (<FormInput  containerStyle={style.input} {...properties} />);
     }
   }
 }

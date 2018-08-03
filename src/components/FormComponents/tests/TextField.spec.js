@@ -1,7 +1,15 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Textfield from '../Textfield';
-import {FormGroup, Label, Input} from 'react-native-clean-form';
+import {View} from 'react-native';
+import {FormLabel, FormInput} from 'react-native-elements';
+import Textfield from '../textfield/Textfield';
+import colors from '../../../defaultTheme/colors';
+import theme from '../../../defaultTheme';
+
+jest.mock('react-native-elements', () => ({
+  FormInput: () => () => 'FormInput',
+  FormLabel: () => () => 'FormLabel',
+}));
 
 describe('Textfield @textfield', () => {
   describe.only('Single Textfield', () => {
@@ -41,14 +49,16 @@ describe('Textfield @textfield', () => {
         <Textfield
           component={component}
           attachToForm={attachToForm}
+          colors={colors}
+          theme={theme}
         />,
       );
       const inputInstance = element.root;
       expect(element).toMatchSnapshot();
-      expect(inputInstance.findByType(FormGroup)).toBeDefined();
-      expect(inputInstance.findByType(Label)).toBeDefined();
-      expect(inputInstance.findByType(Input)).toBeDefined();
-      expect(inputInstance.findByType(Input).props.id).toEqual('myTextfield');
+      expect(inputInstance.findByType(View)).toBeDefined();
+      expect(inputInstance.findByType(FormLabel)).toBeDefined();
+      expect(inputInstance.findByType(FormInput)).toBeDefined();
+      expect(inputInstance.findByType(FormInput).props.id).toEqual('myTextfield');
       // expect(element.hasClass('form-group form-field-type-textfield form-group-myTextfield')).to.equal(true);
       // expect(element.attr('id')).to.equal('form-group-myTextfield');
       // expect(element.find('.formio-component-single').length).to.equal(1);
