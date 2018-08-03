@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {FieldsContainer} from  'react-native-clean-form';
+import {View, StyleSheet} from  'react-native';
 import {FormioComponents} from '../factories';
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  }
+});
 
 const FormioComponentsList = (props) => {
   return (
-    <FieldsContainer>
+    <View style={styles.wrapper}>
       {props.components.map((component, index) => {
         const key = component.key || component.type + index;
         const value = (props.values && props.values.hasOwnProperty(component.key) ? props.values[component.key] : null);
@@ -27,7 +33,7 @@ const FormioComponentsList = (props) => {
           return null;
         }
       })}
-    </FieldsContainer>
+    </View>
   );
 };
 

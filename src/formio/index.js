@@ -1,5 +1,4 @@
 import {EventEmitter2 as EventEmitter} from 'eventemitter2';
-import {Headers} from 'node-fetch';
 import clone from 'lodash/clone';
 import * as providers from './providers';
 import {AsyncStorage} from 'react-native';

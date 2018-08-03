@@ -1,10 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {Formio, FormioComponentsList} from '../src';
-import {Form, Input} from 'react-native-clean-form';
+import {ScrollView} from 'react-native';
+import {FormInput} from 'react-native-elements';
 
 const form = {
-  components:  [
+components:  [
     {
       'input': true,
       'tableView': true,
@@ -45,14 +46,15 @@ describe('Change Events @change', function() {
       <Formio
         form={form}
         onChange={onChange}
+
       />
     );
     const elementInstance = element.root;
     expect(element).toMatchSnapshot();
-    expect(elementInstance.findByType(Form)).toBeDefined();
+    expect(elementInstance.findByType(ScrollView)).toBeDefined();
     expect(elementInstance.findByType(FormioComponentsList)).toBeDefined();
     expect(elementInstance.findByType(FormioComponentsList).props.components).toEqual(form.components);
-    expect(elementInstance.findByType(Input)).toBeDefined();
+    expect(elementInstance.findByType(FormInput)).toBeDefined();
   });
 
   it('fires change events on a form with skipInit', function(done) {

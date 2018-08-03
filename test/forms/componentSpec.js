@@ -41,7 +41,7 @@ export var textfeild = {
     'prefix': '',
     'suffix': '',
     'protected': true,
-    "persistent": true,
+    'persistent': true,
     'inputMask': '',
     'multiple': false,
     'defaultValue': '',
@@ -63,26 +63,26 @@ export var textfeild = {
   },
 //Spec for phoneNumber component
   phoneNumber= {
-    "conditional": {
-      "eq": "",
-      "when": null,
-      "show": ""
+    'conditional': {
+      'eq': '',
+      'when': null,
+      'show': ''
     },
-    "type": "phoneNumber",
-    "validate": {
-      "required": false
+    'type': 'phoneNumber',
+    'validate': {
+      'required': false
     },
-    "defaultValue": "",
-    "persistent": true,
-    "unique": false,
-    "protected": false,
-    "multiple": false,
-    "suffix": "",
-    "prefix": "",
-    "placeholder": "",
-    "key": "phoneNumber",
-    "label": "Phone Number",
-    "inputMask": "(999) 999-9999",
-    "tableView": true,
-    "input": true
+    'defaultValue': '',
+    'persistent': true,
+    'unique': false,
+    'protected': false,
+    'multiple': false,
+    'suffix': '',
+    'prefix': '',
+    'placeholder': '',
+    'key': 'phoneNumber',
+    'label': 'Phone Number',
+    'inputMask': '(999) 999-9999',
+    'tableView': true,
+    'input': true
   };
