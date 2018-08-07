@@ -1,11 +1,10 @@
 import React from 'react';
-import {Text, ScrollView, StyleSheet} from 'react-native';
+import {Text, ScrollView, StyleSheet, View, ActivityIndicator} from 'react-native';
 import PropTypes from 'prop-types';
 import Formiojs from '../formio';
 import FormioUtils from '../formio/utils';
 import {FormioComponentsList} from '../components';
 import clone from 'lodash/clone';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import theme from '../defaultTheme';
 import colors from '../defaultTheme/colors';
 import '../components/FormComponents';
@@ -376,8 +375,6 @@ export default class Formio extends React.Component {
       return null;
     }
     const components = this.state.form.components;
-    const loading = (this.state.isLoading ?
-      <Icon id='formio-loading' name='spin'></Icon> : <Text>{''}</Text>);
     const alerts = this.state.alerts.map((alert, index) => {
       // const className = 'alert alert-' + alert.type;
       return (<Text key={index}>{alert.message}</Text>);
@@ -387,13 +384,36 @@ export default class Formio extends React.Component {
       formWrapper: {
         flex: 1,
         ...this.props.theme.Main
+      },
+      loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '40%'
+      },
+      loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 80
       }
     });
+
+    const loading = (
+      <View style={style.loadingContainer}>
+        <ActivityIndicator
+          size="large"
+          color={this.props.colors.primary1Color}
+          style={style.loading}
+        />
+      </View>
+    );
+
     return (
       <ScrollView style={style.formWrapper}>
-        {loading}
+        {this.state.isLoading && loading}
         {alerts}
-        <FormioComponentsList
+        {!this.state.isLoading && <FormioComponentsList
           components={components}
           values={this.data}
           options={this.props.options}
@@ -414,7 +434,7 @@ export default class Formio extends React.Component {
           checkConditional={this.checkConditional}
           showAlert={this.showAlert}
           formPristine={this.state.isPristine}
-        />
+        />}
       </ScrollView>
     );
   }

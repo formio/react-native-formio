@@ -1,5 +1,5 @@
 export default {
-  mainBackground: 'rgba(0, 0, 0, 0.08)',
+  mainBackground: '#ffffff',
   primary1Color: '#03a9f4',
   primary2Color: '#1976d2',
   primary3Color: '#bdbdbd',

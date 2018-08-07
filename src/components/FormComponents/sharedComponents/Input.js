@@ -103,8 +103,10 @@ export default class InputComponent extends MultiComponent {
   getSingleElement(value, index, error) {
     const themeStyle = this.props.theme.Input;
     const style = StyleSheet.create({
-      input: {
+      container: {
         borderColor: error ? themeStyle.borderColorOnError : themeStyle.borderColor,
+      },
+      input: {
         color: themeStyle.color,
         fontSize: themeStyle.fontSize,
         lineHeight: themeStyle.lineHeight,
@@ -141,7 +143,7 @@ export default class InputComponent extends MultiComponent {
       return (<TextMask style={style.input} Component={FormInput} {...properties}/>);
     }
     else {
-      return (<FormInput  containerStyle={style.input} {...properties} />);
+      return (<FormInput  inputStyle={style.input} containerStyle={style.container} {...properties} />);
     }
   }
 }

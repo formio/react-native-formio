@@ -34,7 +34,7 @@ const Theme = {
     borderColorOnError:  colors.errorColor,
     color: colors.textColor,
     placeholderTextColor: colors.primary3Color,
-    fontSize: 12,
+    fontSize: 14,
     lineHeight: 18
   },
   Label: {
