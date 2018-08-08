@@ -383,7 +383,8 @@ export default class Formio extends React.Component {
     const style = StyleSheet.create({
       formWrapper: {
         flex: 1,
-        ...this.props.theme.Main
+        ...this.props.theme.Main,
+        ...this.props.style,
       },
       loadingContainer: {
         flex: 1,
