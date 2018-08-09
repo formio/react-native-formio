@@ -6,6 +6,10 @@ import styles from './styles';
 
 export default class Content extends BaseComponent {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <View style={styles.content}>
