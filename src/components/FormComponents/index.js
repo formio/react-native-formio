@@ -1,7 +1,7 @@
 import {FormioComponents} from '../../factories';
 
 // import address from './address';
-// import button from './button';
+import Button from './button/Button';
 // import checkbox from './checkbox';
 import Columns from './columns/Columns';
 // import container from './container';
@@ -34,7 +34,7 @@ import TextField from './textfield/TextField';
 // import well from './well';
 
 // FormioComponents.register('address', address);
-// FormioComponents.register('button', button);
+FormioComponents.register('button', Button);
 // FormioComponents.register('checkbox', checkbox);
 FormioComponents.register('columns', Columns);
 // FormioComponents.register('container', container);
