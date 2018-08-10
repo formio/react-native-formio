@@ -1,12 +1,13 @@
 import React from 'react';
-import {Select, FormGroup} from 'react-native-clean-form';
+import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
-import MultiComponent from './Multi';
+import ValueComponent from './Value';
+import {Picker} from 'react-native';
 
-export default class SelectComponent extends MultiComponent {
+export default class SelectComponent extends ValueComponent {
   constructor(props) {
     super(props);
     this.data = {...this.props.data};
@@ -90,16 +91,16 @@ export default class SelectComponent extends MultiComponent {
     properties.label = this.props.component.label && !this.props.component.hideLabel ? this.props.component.label : '';
     const requiredInline = (!this.props.component.label && this.props.component.validate && this.props.component.validate.required ? <Icon name='asterisk' /> : '');
     if (this.props.component.multiple) {
-      Element = <Select {...properties}/>;
+      Element = <Picker {...properties}/>;
     }
     else {
-      Element = <Select {...properties}/>;
+      Element = <Picker {...properties}/>;
     }
     return (
-      <FormGroup>
+      <View>
         {requiredInline}
         {Element}
-      </FormGroup>
+      </View>
     );
   }
 }

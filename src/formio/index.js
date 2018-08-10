@@ -1,5 +1,4 @@
 import {EventEmitter2 as EventEmitter} from 'eventemitter2';
-import {Headers} from 'node-fetch';
 import clone from 'lodash/clone';
 import * as providers from './providers';
 import {AsyncStorage} from 'react-native';
@@ -405,10 +404,10 @@ export default class Formio {
     }
     return this.makeRequest('tempToken', `${this.projectUrl}/token`, 'GET', null, {
       ignoreCache: true,
-      header: new Headers({
+      header: {
         'x-expire': expire,
         'x-allow': allowed
-      })
+      }
     });
   }
 
@@ -678,10 +677,10 @@ export default class Formio {
     }
 
     // Set up and fetch request
-    const headers = header || new Headers(opts.headers || {
+    const headers = header || opts.headers || {
       'Accept': 'application/json',
       'Content-type': 'application/json; charset=UTF-8'
-    });
+    };
     const token = await Formio.getToken(opts);
     if (token && !opts.noToken) {
       headers.append('x-jwt-token', token);
@@ -702,7 +701,7 @@ export default class Formio {
       opts.namespace = options.namespace;
     }
 
-    const requestToken = options.headers.get('x-jwt-token');
+    const requestToken = options.headers['x-jwt-token'];
     return fetch(url, options)
       .then((response) => {
         // Allow plugins to respond.
@@ -1062,7 +1061,6 @@ export default class Formio {
 // Define all the static properties.
 Formio.libraries = {};
 Formio.Promise = Promise;
-Formio.Headers = Headers;
 Formio.baseUrl = 'https://api.form.io';
 Formio.projectUrl = Formio.baseUrl;
 Formio.projectUrlSet = false;

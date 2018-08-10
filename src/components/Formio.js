@@ -1,14 +1,14 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, ScrollView, StyleSheet, View, ActivityIndicator} from 'react-native';
 import PropTypes from 'prop-types';
-import {Form} from  'react-native-clean-form';
 import Formiojs from '../formio';
 import FormioUtils from '../formio/utils';
 import {FormioComponentsList} from '../components';
 import clone from 'lodash/clone';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import theme from '../defaultTheme';
+import colors from '../defaultTheme/colors';
 import '../components/FormComponents';
+
 export default class Formio extends React.Component {
   static getDerivedStateFromProps(props, state) {
     let form = state.form, submission = state.submission;
@@ -375,56 +375,78 @@ export default class Formio extends React.Component {
       return null;
     }
     const components = this.state.form.components;
-    const loading = (this.state.isLoading ?
-      <Icon id='formio-loading' name='spin'></Icon> : <Text>{''}</Text>);
     const alerts = this.state.alerts.map((alert, index) => {
       // const className = 'alert alert-' + alert.type;
       return (<Text key={index}>{alert.message}</Text>);
     });
 
-    return (<View style={this.props.style}>
-        <Form name='formioForm' onSubmit={this.onSubmit}>
-          {loading}
-          {alerts}
-          <FormioComponentsList
-            components={components}
-            values={this.data}
-            options={this.props.options}
-            attachToForm={this.attachToForm}
-            detachFromForm={this.detachFromForm}
-            isSubmitting={this.state.isSubmitting}
-            isFormValid={this.state.isValid}
-            onElementRender={this.props.onElementRender}
-            theme={this.props.theme}
-            resetForm={this.resetForm}
-            formio={this.formio}
-            data={this.data}
-            onChange={this.onChange}
-            onEvent={this.onEvent}
-            isDisabled={this.isDisabled}
-            checkConditional={this.checkConditional}
-            showAlert={this.showAlert}
-            formPristine={this.state.isPristine}
-          />
-      </Form>
+    const style = StyleSheet.create({
+      formWrapper: {
+        flex: 1,
+        ...this.props.theme.Main,
+        ...this.props.style,
+      },
+      loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '40%'
+      },
+      loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 80
+      }
+    });
+
+    const loading = (
+      <View style={style.loadingContainer}>
+        <ActivityIndicator
+          size="large"
+          color={this.props.colors.primary1Color}
+          style={style.loading}
+        />
       </View>
+    );
+
+    return (
+      <ScrollView style={style.formWrapper}>
+        {this.state.isLoading && loading}
+        {alerts}
+        {!this.state.isLoading && <FormioComponentsList
+          components={components}
+          values={this.data}
+          options={this.props.options}
+          attachToForm={this.attachToForm}
+          detachFromForm={this.detachFromForm}
+          isSubmitting={this.state.isSubmitting}
+          isFormValid={this.state.isValid}
+          onElementRender={this.props.onElementRender}
+          theme={this.props.theme}
+          colors={this.props.colors}
+          resetForm={this.resetForm}
+          formio={this.formio}
+          data={this.data}
+          onSubmit={this.onSubmit}
+          onChange={this.onChange}
+          onEvent={this.onEvent}
+          isDisabled={this.isDisabled}
+          checkConditional={this.checkConditional}
+          showAlert={this.showAlert}
+          formPristine={this.state.isPristine}
+        />}
+      </ScrollView>
     );
   }
 }
-
-const style = StyleSheet.create({
-  formWrapper: {
-    flex: 1,
-  marginHorizontal: 10,
-  }
-});
 
 Formio.defaultProps = {
   readOnly: false,
   formAction: false,
   options: {},
-  style: style.formWrapper,
-  theme: theme
+  theme: theme,
+  colors: colors
 };
 
 Formio.propTypes = {
@@ -435,6 +457,7 @@ Formio.propTypes = {
   options: PropTypes.object,
   readOnly: PropTypes.bool,
   theme: PropTypes.object,
+  colors: PropTypes.object,
   style: PropTypes.object,
   disableComponents: PropTypes.array,
   onElementRender: PropTypes.func,
