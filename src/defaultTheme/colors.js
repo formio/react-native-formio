@@ -14,4 +14,5 @@ export default {
   pickerColor: '#2196f3',
   shadowColor: 'rgba(0, 0, 0, 0.54)',
   errorColor: 'rgb(244, 67, 54)',
+  successColor: '#4BB543',
 };

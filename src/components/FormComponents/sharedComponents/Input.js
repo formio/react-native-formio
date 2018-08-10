@@ -57,7 +57,7 @@ export default class InputComponent extends MultiComponent {
     this.setState({
       isPristine: false,
       hasChanges: true,
-      value: validatedValue,
+      value: validatedValue.item,
     });
   }
 

@@ -16,7 +16,7 @@ export default class Formio extends React.Component {
     if (props.form && props.form !== state.form) {
       form = props.form;
     }
-    if (props.submission !== state.submission) {
+    if (props.submission && props.submission !== state.submission) {
       if (props.submission && props.submission.data) {
         this.data = clone(props.submission.data);
       }
@@ -295,12 +295,12 @@ export default class Formio extends React.Component {
   }
 
   showAlert(type, message, clear) {
-    this.setState((previousState) => {
-      if (clear) {
-        previousState.alerts = [];
-      }
-      previousState.alerts = previousState.alerts.concat({type: type, message: message});
-      return previousState;
+    let alerts = this.state.alerts;
+    if (clear) {
+      alerts = [];
+    }
+    this.setState({
+      alerts : alerts.concat({type: type, message: message}),
     });
   }
 
@@ -374,11 +374,6 @@ export default class Formio extends React.Component {
     if (!this.state.form || !this.state.form.components) {
       return null;
     }
-    const components = this.state.form.components;
-    const alerts = this.state.alerts.map((alert, index) => {
-      // const className = 'alert alert-' + alert.type;
-      return (<Text key={index}>{alert.message}</Text>);
-    });
 
     const style = StyleSheet.create({
       formWrapper: {
@@ -397,7 +392,27 @@ export default class Formio extends React.Component {
         justifyContent: 'center',
         alignItems: 'center',
         height: 80
+      },
+      alertsWrapper: {
+        flex: 1,
+        alignItems: 'center'
+      },
+      successText: {
+        fontSize: 14,
+        color: this.props.colors.successColor,
+      },
+     errorText: {
+        fontSize: 14,
+        color: this.props.colors.errorColor,
       }
+    });
+
+    const components = this.state.form.components;
+    const alerts = this.state.alerts.map((alert, index) => {
+      return (
+      <View style={style.alertsWrapper} key={index}>
+        <Text style={alert.type === 'danger' ? style.errorText : style.successText}>{alert.message}</Text>
+      </View>);
     });
 
     const loading = (
@@ -413,7 +428,6 @@ export default class Formio extends React.Component {
     return (
       <ScrollView style={style.formWrapper}>
         {this.state.isLoading && loading}
-        {alerts}
         {!this.state.isLoading && <FormioComponentsList
           components={components}
           values={this.data}
@@ -436,6 +450,7 @@ export default class Formio extends React.Component {
           showAlert={this.showAlert}
           formPristine={this.state.isPristine}
         />}
+        {alerts}
       </ScrollView>
     );
   }
