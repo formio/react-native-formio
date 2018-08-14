@@ -216,7 +216,7 @@ export default class Formio extends React.Component {
         delete this.data[component.props.component.key];
       }
       else {
-        this.data[component.props.component.key] = component.state.value;
+        this.data[component.props.component.key] = component.state.value.item;
       }
     }
     this.validate(() => {
@@ -233,7 +233,6 @@ export default class Formio extends React.Component {
   validate(next) {
     let allIsValid = true;
     const inputs = this.inputs;
-
     Object.keys(inputs).forEach((name) => {
       if (!inputs[name].state.isValid) {
         allIsValid = false;
@@ -318,7 +317,6 @@ export default class Formio extends React.Component {
     event.preventDefault();
 
     this.setPristine(false);
-
     if (!this.state.isValid) {
       this.showAlert('danger', 'Please fix the following errors before submitting.', true);
       return;
@@ -381,6 +379,9 @@ export default class Formio extends React.Component {
         ...this.props.theme.Main,
         ...this.props.style,
       },
+      contentContainerStyle: {
+        paddingBottom: 30,
+      },
       loadingContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -426,7 +427,7 @@ export default class Formio extends React.Component {
     );
 
     return (
-      <ScrollView style={style.formWrapper}>
+      <ScrollView style={style.formWrapper} contentContainerStyle={style.contentContainerStyle}>
         {this.state.isLoading && loading}
         {!this.state.isLoading && <FormioComponentsList
           components={components}
