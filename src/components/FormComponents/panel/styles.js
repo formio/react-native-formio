@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     padding: 0,
+    paddingBottom: 20,
   },
   title: {
     alignSelf: 'flex-start',
