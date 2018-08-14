@@ -20,7 +20,7 @@ export default class Content extends BaseComponent {
   renderContent() {
     let Tag = tags.default;
     if (tags.hasOwnProperty(this.props.component.tag.toLowerCase())) {
-      Tag = [this.props.component.tag.toLowerCase()];
+      Tag = tags[this.props.component.tag.toLowerCase()];
     }
     return (<Tag>{this.props.component.content}</Tag>);
   }

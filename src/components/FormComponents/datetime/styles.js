@@ -10,6 +10,13 @@ const styles = StyleSheet.flatten({
   },
   date: {
     flex: 1,
+    flexDirection: 'row'
+  },
+  dateText: {
+    fontSize: 18,
+    marginLeft: 20,
+    marginRight: 10,
+    marginTop: 20,
   }
 });
 
