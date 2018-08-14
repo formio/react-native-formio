@@ -35,8 +35,8 @@ export default class InputComponent extends MultiComponent {
 
   onChangeInput(value) {
     // Allow components to respond to onChange event.
-    if (typeof this.props.onChangeCustom === 'function') {
-      value = this.props.onChangeCustom(value);
+    if (typeof this.onChangeCustom === 'function') {
+      value = this.onChangeCustom(value);
     }
 
     clearTimeout(this.timeout);
@@ -57,7 +57,7 @@ export default class InputComponent extends MultiComponent {
     this.setState({
       isPristine: false,
       hasChanges: true,
-      value: validatedValue.item,
+      value: validatedValue,
     });
   }
 
@@ -153,6 +153,5 @@ InputComponent.propTypes = {
   name: PropTypes.string,
   theme: PropTypes.object,
   readOnly: PropTypes.bool,
-  onChange: PropTypes.func,
-  onChangeCustom: PropTypes.func
+  onChange: PropTypes.func
 };
