@@ -77,6 +77,19 @@ export default class Formio extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.apiUrl) {
+      Formiojs.setApiUrl(this.props.apiUrl);
+    }
+    if (this.props.projectUrl) {
+      Formiojs.setProjectUrl(this.props.projectUrl);
+    }
+
+    if (this.props.plugins && this.props.plugins.length) {
+      this.props.plugins.forEach((plugin) => {
+        Formiojs.registerPlugin(plugin, plugin.name);
+      });
+    }
+
     if (this.props.src) {
       this.formio = new Formiojs(this.props.src);
       this.formio.loadForm().then((form) => {
@@ -469,10 +482,13 @@ Formio.propTypes = {
   src: PropTypes.string,
   form: PropTypes.object,
   submission: PropTypes.object,
+  apiUrl: PropTypes.string,
+  projectUrl: PropTypes.string,
   submissions: PropTypes.arrayOf(PropTypes.object),
   options: PropTypes.object,
   readOnly: PropTypes.bool,
   theme: PropTypes.object,
+  plugins: PropTypes.arrayOf(PropTypes.object),
   colors: PropTypes.object,
   style: PropTypes.object,
   disableComponents: PropTypes.array,
