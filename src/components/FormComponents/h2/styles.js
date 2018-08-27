@@ -2,9 +2,10 @@ import {StyleSheet} from  'react-native';
 
 const styles = StyleSheet.create({
   header2: {
-    fontSize: 18,
+    fontSize: 28,
     margin: 10,
-    fontWeight: 'bold',
+    lineHeight: 34,
+    letterSpacing: 0.36,
   }
 });
 
