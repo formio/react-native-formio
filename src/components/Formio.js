@@ -464,7 +464,7 @@ export default class Formio extends React.Component {
           showAlert={this.showAlert}
           formPristine={this.state.isPristine}
         />}
-        {alerts}
+        {this.props.options.showAlerts && alerts}
       </ScrollView>
     );
   }
@@ -475,7 +475,10 @@ Formio.defaultProps = {
   formAction: false,
   options: {},
   theme: theme,
-  colors: colors
+  colors: colors,
+  options: {
+    showAlerts: true,
+  }
 };
 
 Formio.propTypes = {
@@ -485,8 +488,10 @@ Formio.propTypes = {
   apiUrl: PropTypes.string,
   projectUrl: PropTypes.string,
   submissions: PropTypes.arrayOf(PropTypes.object),
-  options: PropTypes.object,
   readOnly: PropTypes.bool,
+  options: PropTypes.shape({
+    showAlerts: PropTypes.bool,
+  }),
   theme: PropTypes.object,
   plugins: PropTypes.arrayOf(PropTypes.object),
   colors: PropTypes.object,
