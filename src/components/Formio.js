@@ -90,6 +90,10 @@ export default class Formio extends React.Component {
       });
     }
 
+    if (this.props.submissionId) {
+      this.formio.submissionId = this.props.submissionId;
+    }
+
     if (this.props.src) {
       this.formio = new Formiojs(this.props.src);
       this.formio.loadForm().then((form) => {
@@ -423,9 +427,17 @@ export default class Formio extends React.Component {
 
     const components = this.state.form.components;
     const alerts = this.state.alerts.map((alert, index) => {
+      let message;
+      if (typeof alert.message === 'string') {
+        message = alert.message;
+      }
+      else {
+        message = JSON.stringify(alert.message);
+      }
+
       return (
       <View style={style.alertsWrapper} key={index}>
-        <Text style={alert.type === 'danger' ? style.errorText : style.successText}>{alert.message}</Text>
+        <Text style={alert.type === 'danger' ? style.errorText : style.successText}>{message}</Text>
       </View>);
     });
 
@@ -473,7 +485,6 @@ export default class Formio extends React.Component {
 Formio.defaultProps = {
   readOnly: false,
   formAction: false,
-  options: {},
   theme: theme,
   colors: colors,
   options: {
@@ -485,11 +496,13 @@ Formio.propTypes = {
   src: PropTypes.string,
   form: PropTypes.object,
   submission: PropTypes.object,
+  submissionId: PropTypes.string,
   apiUrl: PropTypes.string,
   projectUrl: PropTypes.string,
   submissions: PropTypes.arrayOf(PropTypes.object),
   readOnly: PropTypes.bool,
   options: PropTypes.shape({
+    isInit: PropTypes.bool,
     showAlerts: PropTypes.bool,
   }),
   theme: PropTypes.object,
