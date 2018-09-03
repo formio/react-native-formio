@@ -96,10 +96,6 @@ export default class Formio extends React.Component {
         this.loadForm(form);
       });
 
-      if (this.props.submissionId) {
-        this.formio.submissionId = this.props.submissionId;
-      }
-
       if (this.formio.submission) {
         this.formio.loadSubmission().then((submission) => {
           this.loadSubmission(submission);
