@@ -9,9 +9,10 @@ import {getDefaultValue} from '../componentUtils/getDefaultValue';
 export default class ValueComponent extends BaseComponent {
   constructor(props) {
     super(props);
-    const value = getDefaultValue(this.props.value, this.props.component, this.props.getInitialValue, this.props.onChangeCustom);
+    const value = getDefaultValue(this.props.value, this.props.component, this.getInitialValue, this.onChangeCustom);
     const valid = this.validate(value);
     this.state = {
+      open: false,
       value: value,
       isValid: valid.isValid,
       errorType: valid.errorType,
@@ -26,7 +27,6 @@ export default class ValueComponent extends BaseComponent {
     this.onChange =this.onChange.bind(this);
     this.setValue =this.setValue.bind(this);
     this.getDisplay =this.getDisplay.bind(this);
-    this.getInputMask =this.getInputMask.bind(this);
     this.getElements =this.getElements.bind(this);
   }
 
@@ -66,11 +66,11 @@ export default class ValueComponent extends BaseComponent {
         }
       }
     }
-    if (this.props.value !== this.props.value) {
+    if (prevProps.value && prevProps.value.item !== this.props.value.item) {
       value = safeSingleToMultiple(this.props.value, this.props.component);
     }
     // This occurs when a datagrid row is deleted.
-    let defaultValue = getDefaultValue(value, this.props.component, this.props.getInitialValue, this.props.onChangeCustom);
+    let defaultValue = getDefaultValue(value, this.props.component, this.getInitialValue, this.onChangeCustom);
     if (value === null && this.state.value !== defaultValue) {
       value = defaultValue;
       this.setState({
@@ -92,7 +92,7 @@ export default class ValueComponent extends BaseComponent {
   }
 
   validate(value) {
-    return validate(value, this.props.component, this.props.data, this.props.validateCustom);
+    return validate(value, this.props.component, this.props.data, this.validateCustom);
   }
 
   onChange(event) {
@@ -125,7 +125,7 @@ export default class ValueComponent extends BaseComponent {
       value: validatedValue,
     }, () => {
       if (typeof this.props.onChange === 'function') {
-        if (!this.state.isPristine || this.props.value !== this.state.value) {
+        if (!this.state.isPristine || (this.props.value && this.props.value.item !== this.state.value.item)) {
           this.props.onChange(this);
         }
       }
@@ -171,7 +171,4 @@ ValueComponent.propTypes = {
   onElementRender: PropTypes.func,
   attachToForm: PropTypes.func,
   detachFromForm: PropTypes.func,
-  onChangeCustom: PropTypes.func,
-  getInitialValue: PropTypes.func,
-  validateCustom: PropTypes.func,
 };

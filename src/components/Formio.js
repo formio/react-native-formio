@@ -77,13 +77,26 @@ export default class Formio extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.apiUrl) {
+      Formiojs.setApiUrl(this.props.apiUrl);
+    }
+    if (this.props.projectUrl) {
+      Formiojs.setProjectUrl(this.props.projectUrl);
+    }
+
+    if (this.props.plugins && this.props.plugins.length) {
+      this.props.plugins.forEach((plugin) => {
+        Formiojs.registerPlugin(plugin, plugin.name);
+      });
+    }
+
     if (this.props.src) {
       this.formio = new Formiojs(this.props.src);
       this.formio.loadForm().then((form) => {
         this.loadForm(form);
       });
 
-      if (this.formio.submissionId) {
+      if (this.formio.submission) {
         this.formio.loadSubmission().then((submission) => {
           this.loadSubmission(submission);
         });
@@ -216,7 +229,7 @@ export default class Formio extends React.Component {
         delete this.data[component.props.component.key];
       }
       else {
-        this.data[component.props.component.key] = component.state.value;
+        this.data[component.props.component.key] = component.state.value.item;
       }
     }
     this.validate(() => {
@@ -233,7 +246,6 @@ export default class Formio extends React.Component {
   validate(next) {
     let allIsValid = true;
     const inputs = this.inputs;
-
     Object.keys(inputs).forEach((name) => {
       if (!inputs[name].state.isValid) {
         allIsValid = false;
@@ -318,7 +330,6 @@ export default class Formio extends React.Component {
     event.preventDefault();
 
     this.setPristine(false);
-
     if (!this.state.isValid) {
       this.showAlert('danger', 'Please fix the following errors before submitting.', true);
       return;
@@ -381,6 +392,9 @@ export default class Formio extends React.Component {
         ...this.props.theme.Main,
         ...this.props.style,
       },
+      contentContainerStyle: {
+        paddingBottom: 30,
+      },
       loadingContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -409,9 +423,17 @@ export default class Formio extends React.Component {
 
     const components = this.state.form.components;
     const alerts = this.state.alerts.map((alert, index) => {
+      let message;
+      if (typeof alert.message === 'string') {
+        message = alert.message;
+      }
+      else {
+        message = JSON.stringify(alert.message);
+      }
+
       return (
       <View style={style.alertsWrapper} key={index}>
-        <Text style={alert.type === 'danger' ? style.errorText : style.successText}>{alert.message}</Text>
+        <Text style={alert.type === 'danger' ? style.errorText : style.successText}>{message}</Text>
       </View>);
     });
 
@@ -426,7 +448,7 @@ export default class Formio extends React.Component {
     );
 
     return (
-      <ScrollView style={style.formWrapper}>
+      <ScrollView style={style.formWrapper} contentContainerStyle={style.contentContainerStyle}>
         {this.state.isLoading && loading}
         {!this.state.isLoading && <FormioComponentsList
           components={components}
@@ -450,7 +472,7 @@ export default class Formio extends React.Component {
           showAlert={this.showAlert}
           formPristine={this.state.isPristine}
         />}
-        {alerts}
+        {this.props.options.showAlerts && alerts}
       </ScrollView>
     );
   }
@@ -459,19 +481,28 @@ export default class Formio extends React.Component {
 Formio.defaultProps = {
   readOnly: false,
   formAction: false,
-  options: {},
   theme: theme,
-  colors: colors
+  colors: colors,
+  options: {
+    showAlerts: true,
+  }
 };
 
 Formio.propTypes = {
   src: PropTypes.string,
   form: PropTypes.object,
   submission: PropTypes.object,
+  submissionId: PropTypes.string,
+  apiUrl: PropTypes.string,
+  projectUrl: PropTypes.string,
   submissions: PropTypes.arrayOf(PropTypes.object),
-  options: PropTypes.object,
   readOnly: PropTypes.bool,
+  options: PropTypes.shape({
+    isInit: PropTypes.bool,
+    showAlerts: PropTypes.bool,
+  }),
   theme: PropTypes.object,
+  plugins: PropTypes.arrayOf(PropTypes.object),
   colors: PropTypes.object,
   style: PropTypes.object,
   disableComponents: PropTypes.array,
