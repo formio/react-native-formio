@@ -1,5 +1,5 @@
 export default {
-  mainBackground: 'rgba(0, 0, 0, 0.08)',
+  mainBackground: '#ffffff',
   primary1Color: '#03a9f4',
   primary2Color: '#1976d2',
   primary3Color: '#bdbdbd',
@@ -14,4 +14,5 @@ export default {
   pickerColor: '#2196f3',
   shadowColor: 'rgba(0, 0, 0, 0.54)',
   errorColor: 'rgb(244, 67, 54)',
+  successColor: '#4BB543',
 };

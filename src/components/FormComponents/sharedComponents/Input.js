@@ -35,8 +35,8 @@ export default class InputComponent extends MultiComponent {
 
   onChangeInput(value) {
     // Allow components to respond to onChange event.
-    if (typeof this.props.onChangeCustom === 'function') {
-      value = this.props.onChangeCustom(value);
+    if (typeof this.onChangeCustom === 'function') {
+      value = this.onChangeCustom(value);
     }
 
     clearTimeout(this.timeout);
@@ -103,8 +103,10 @@ export default class InputComponent extends MultiComponent {
   getSingleElement(value, index, error) {
     const themeStyle = this.props.theme.Input;
     const style = StyleSheet.create({
-      input: {
+      container: {
         borderColor: error ? themeStyle.borderColorOnError : themeStyle.borderColor,
+      },
+      input: {
         color: themeStyle.color,
         fontSize: themeStyle.fontSize,
         lineHeight: themeStyle.lineHeight,
@@ -141,7 +143,7 @@ export default class InputComponent extends MultiComponent {
       return (<TextMask style={style.input} Component={FormInput} {...properties}/>);
     }
     else {
-      return (<FormInput  containerStyle={style.input} {...properties} />);
+      return (<FormInput  inputStyle={style.input} containerStyle={style.container} {...properties} />);
     }
   }
 }
@@ -151,6 +153,5 @@ InputComponent.propTypes = {
   name: PropTypes.string,
   theme: PropTypes.object,
   readOnly: PropTypes.bool,
-  onChange: PropTypes.func,
-  onChangeCustom: PropTypes.func
+  onChange: PropTypes.func
 };

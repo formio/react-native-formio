@@ -26,25 +26,17 @@
   },
   "homepage": "https://github.com/formio/react-native-formio#readme",
   "dependencies": {
-    "babel-polyfill": "^6.22.0",
     "eventemitter2": "^5.0.1",
     "json-logic-js": "^1.2.2",
     "lodash": "^4.15.0",
-    "moment": "^2.10.6",
+    "moment": "^2.22.2",
     "prop-types": "^15.6.1",
-    "react-dropzone": "^3.5.3",
-    "react-flatpickr": "^3.1.1",
+    "react-native-device-info": "^0.22.3",
     "react-native-elements": "^0.19.1",
+    "react-native-modal-datetime-picker": "^6.0.0",
     "react-native-simple-radio-button": "^2.7.2",
     "react-native-vector-icons": "^4.6.0",
-    "react-pagify": "^2.1.1",
-    "react-quill": "^0.4.1",
-    "react-test-renderer": "^16.4.1",
-    "react-text-mask-hoc": "^0.10.6",
-    "reselect": "^2.5.4",
-    "segmentize": "^0.4.1",
-    "text-mask-addons": "^3.5.0",
-    "written-number": "^0.8.1"
+    "react-text-mask-hoc": "^0.10.6"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
@@ -62,7 +54,9 @@
     "eslint-plugin-react-native": "^2.3.1",
     "jest": "23.4.0",
     "react": "^16.4.2",
-    "react-native": "^0.56.0"
+    "react-native": "^0.56.0",
+    "react-test-renderer": "^16.4.2",
+    "written-number": "^0.8.1"
   },
   "peerDependencies": {
     "react": "^16.2.0",

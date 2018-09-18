@@ -86,7 +86,7 @@ export default class MultiComponent extends ValueComponent {
     const inputLabel = (component.label && !component.hideLabel ?
       <FormLabel labelStyle={multiStyles.labelStyle}>{requiredInline} {prefix} {component.label} {suffix}</FormLabel> : null);
 
-      const data = this.state.value;
+      const data = this.state.value || {};
     if (component.multiple) {
       const rows = data.map((value, id) => {
         this.getTableRows(value, id, multiStyles);

@@ -1,11 +1,10 @@
 import React from 'react';
-import {Text, ScrollView, StyleSheet} from 'react-native';
+import {Text, ScrollView, StyleSheet, View, ActivityIndicator} from 'react-native';
 import PropTypes from 'prop-types';
 import Formiojs from '../formio';
 import FormioUtils from '../formio/utils';
 import {FormioComponentsList} from '../components';
 import clone from 'lodash/clone';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import theme from '../defaultTheme';
 import colors from '../defaultTheme/colors';
 import '../components/FormComponents';
@@ -17,7 +16,7 @@ export default class Formio extends React.Component {
     if (props.form && props.form !== state.form) {
       form = props.form;
     }
-    if (props.submission !== state.submission) {
+    if (props.submission && props.submission !== state.submission) {
       if (props.submission && props.submission.data) {
         this.data = clone(props.submission.data);
       }
@@ -78,13 +77,26 @@ export default class Formio extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.apiUrl) {
+      Formiojs.setApiUrl(this.props.apiUrl);
+    }
+    if (this.props.projectUrl) {
+      Formiojs.setProjectUrl(this.props.projectUrl);
+    }
+
+    if (this.props.plugins && this.props.plugins.length) {
+      this.props.plugins.forEach((plugin) => {
+        Formiojs.registerPlugin(plugin, plugin.name);
+      });
+    }
+
     if (this.props.src) {
       this.formio = new Formiojs(this.props.src);
       this.formio.loadForm().then((form) => {
         this.loadForm(form);
       });
 
-      if (this.formio.submissionId) {
+      if (this.formio.submission) {
         this.formio.loadSubmission().then((submission) => {
           this.loadSubmission(submission);
         });
@@ -217,7 +229,7 @@ export default class Formio extends React.Component {
         delete this.data[component.props.component.key];
       }
       else {
-        this.data[component.props.component.key] = component.state.value;
+        this.data[component.props.component.key] = component.state.value.item;
       }
     }
     this.validate(() => {
@@ -234,7 +246,6 @@ export default class Formio extends React.Component {
   validate(next) {
     let allIsValid = true;
     const inputs = this.inputs;
-
     Object.keys(inputs).forEach((name) => {
       if (!inputs[name].state.isValid) {
         allIsValid = false;
@@ -296,12 +307,12 @@ export default class Formio extends React.Component {
   }
 
   showAlert(type, message, clear) {
-    this.setState((previousState) => {
-      if (clear) {
-        previousState.alerts = [];
-      }
-      previousState.alerts = previousState.alerts.concat({type: type, message: message});
-      return previousState;
+    let alerts = this.state.alerts;
+    if (clear) {
+      alerts = [];
+    }
+    this.setState({
+      alerts : alerts.concat({type: type, message: message}),
     });
   }
 
@@ -319,7 +330,6 @@ export default class Formio extends React.Component {
     event.preventDefault();
 
     this.setPristine(false);
-
     if (!this.state.isValid) {
       this.showAlert('danger', 'Please fix the following errors before submitting.', true);
       return;
@@ -375,25 +385,72 @@ export default class Formio extends React.Component {
     if (!this.state.form || !this.state.form.components) {
       return null;
     }
-    const components = this.state.form.components;
-    const loading = (this.state.isLoading ?
-      <Icon id='formio-loading' name='spin'></Icon> : <Text>{''}</Text>);
-    const alerts = this.state.alerts.map((alert, index) => {
-      // const className = 'alert alert-' + alert.type;
-      return (<Text key={index}>{alert.message}</Text>);
-    });
 
     const style = StyleSheet.create({
       formWrapper: {
         flex: 1,
-        ...this.props.theme.Main
+        ...this.props.theme.Main,
+        ...this.props.style,
+      },
+      contentContainerStyle: {
+        paddingBottom: 30,
+      },
+      loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '40%'
+      },
+      loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 80
+      },
+      alertsWrapper: {
+        flex: 1,
+        alignItems: 'center'
+      },
+      successText: {
+        fontSize: 14,
+        color: this.props.colors.successColor,
+      },
+     errorText: {
+        fontSize: 14,
+        color: this.props.colors.errorColor,
       }
     });
+
+    const components = this.state.form.components;
+    const alerts = this.state.alerts.map((alert, index) => {
+      let message;
+      if (typeof alert.message === 'string') {
+        message = alert.message;
+      }
+      else {
+        message = JSON.stringify(alert.message);
+      }
+
+      return (
+      <View style={style.alertsWrapper} key={index}>
+        <Text style={alert.type === 'danger' ? style.errorText : style.successText}>{message}</Text>
+      </View>);
+    });
+
+    const loading = (
+      <View style={style.loadingContainer}>
+        <ActivityIndicator
+          size="large"
+          color={this.props.colors.primary1Color}
+          style={style.loading}
+        />
+      </View>
+    );
+
     return (
-      <ScrollView style={style.formWrapper}>
-        {loading}
-        {alerts}
-        <FormioComponentsList
+      <ScrollView style={style.formWrapper} contentContainerStyle={style.contentContainerStyle}>
+        {this.state.isLoading && loading}
+        {!this.state.isLoading && <FormioComponentsList
           components={components}
           values={this.data}
           options={this.props.options}
@@ -414,7 +471,8 @@ export default class Formio extends React.Component {
           checkConditional={this.checkConditional}
           showAlert={this.showAlert}
           formPristine={this.state.isPristine}
-        />
+        />}
+        {this.props.options.showAlerts && alerts}
       </ScrollView>
     );
   }
@@ -423,19 +481,28 @@ export default class Formio extends React.Component {
 Formio.defaultProps = {
   readOnly: false,
   formAction: false,
-  options: {},
   theme: theme,
-  colors: colors
+  colors: colors,
+  options: {
+    showAlerts: true,
+  }
 };
 
 Formio.propTypes = {
   src: PropTypes.string,
   form: PropTypes.object,
   submission: PropTypes.object,
+  submissionId: PropTypes.string,
+  apiUrl: PropTypes.string,
+  projectUrl: PropTypes.string,
   submissions: PropTypes.arrayOf(PropTypes.object),
-  options: PropTypes.object,
   readOnly: PropTypes.bool,
+  options: PropTypes.shape({
+    isInit: PropTypes.bool,
+    showAlerts: PropTypes.bool,
+  }),
   theme: PropTypes.object,
+  plugins: PropTypes.arrayOf(PropTypes.object),
   colors: PropTypes.object,
   style: PropTypes.object,
   disableComponents: PropTypes.array,

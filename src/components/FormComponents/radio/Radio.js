@@ -12,7 +12,7 @@ export default class Radio extends InputComponent {
     this.onChangeRadio = this.onChangeRadio.bind(this);
     this.getRadioButton = this.getRadioButton.bind(this);
     this.getSingleElement = this.getSingleElement.bind(this);
-    this.getDisplay = this.getDisplay.bind(this);
+    this.getValueDisplay = this.getValueDisplay.bind(this);
   }
 
   onChangeRadio(value, index) {
