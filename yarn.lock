@@ -5028,6 +5028,11 @@ react-native-modal@^6.2.0:
   dependencies:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
+react-native-signature-capture@^0.4.9:
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/react-native-signature-capture/-/react-native-signature-capture-0.4.9.tgz#c581cedef6cea42beea40d0f7d210173196b9d4a"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-simple-radio-button@^2.7.2:
   version "2.7.2"
