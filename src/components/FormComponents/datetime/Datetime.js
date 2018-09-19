@@ -110,7 +110,8 @@ export default class Datetime extends MultiComponent {
         disabled={readOnly}
         onPress={this.togglePicker}
         containerViewStyle={styles.button}
-        backgroundColor={this.props.colors.primary1Color}
+        color={this.props.colors.primary1Color}
+        backgroundColor={'transparent'}
         title={component.type === 'time' ? 'Select time' : 'Select date'}
         leftIcon={{name: component.type === 'time' ? 'clock-o' : 'calendar', type: 'font-awesome'}}
         />
