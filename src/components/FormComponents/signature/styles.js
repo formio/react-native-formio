@@ -8,7 +8,6 @@ const border = '#000033';
 const styles = StyleSheet.create({
   signatureWrapper: {
     marginTop: 10,
-    flexDirection: 'row',
   },
   imageWrapper: {
     marginTop: 10,
@@ -20,9 +19,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
   signature: {
-    marginLeft: 20,
-    width: 50,
-    height: 50,
+    marginLeft: 10,
+    width: 300,
+    height: 150,
   },
   signaturePadWrapper: {
     flex: 1,
@@ -41,6 +40,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     margin: 5,
+  },
+  modalFooterText: {
+    fontSize: 18,
+    marginLeft: 20,
   }
 });
 

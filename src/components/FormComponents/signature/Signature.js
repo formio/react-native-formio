@@ -75,7 +75,7 @@ export default class Signature extends ValueComponent {
           <Image
             source={{uri: image}}
             style={styles.signature}
-            resizeMode={'contain'}
+            resizeMode={'stretch'}
           />
         </View>
       );
@@ -86,11 +86,11 @@ export default class Signature extends ValueComponent {
             <Image
               style={styles.signature}
               source={{uri: this.state.value.item}}
-              resizeMode={'contain'}
+              resizeMode={'stretch'}
             />
           </View>}
          <Button
-          title={`Click to ${this.state.value && this.state.value.item ? 'change' : 'sign'}`}
+          title={`Tap to ${this.state.value && this.state.value.item ? 'change' : 'sign'}`}
           buttonStyle={styles.signatureButton}
           onPress={this.toggleSignaturePad}
           backgroundColor={'transparent'}
@@ -135,7 +135,7 @@ export default class Signature extends ValueComponent {
               viewMode={isTablet ? 'portrait' : 'landscape'}
             />
             <View style={styles.modalFooter}>
-              <Text style={styles.modalFooter}>{component.footer}</Text>
+              <Text style={styles.modalFooterText}>{component.footer}</Text>
               <Button
                   title={'Cancel'}
                   onPress={this.toggleSignaturePad}
