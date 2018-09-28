@@ -382,9 +382,7 @@ export default class Formio extends React.Component {
   }
 
   render() {
-    if (!this.state.form || !this.state.form.components) {
-      return null;
-    }
+    const {isLoading} = this.state;
 
     const style = StyleSheet.create({
       formWrapper: {
@@ -399,7 +397,6 @@ export default class Formio extends React.Component {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '40%'
       },
       loading: {
         flex: 1,
@@ -421,6 +418,20 @@ export default class Formio extends React.Component {
       }
     });
 
+    if (isLoading) {
+      return (<View style={style.loadingContainer}>
+        <ActivityIndicator
+          size="large"
+          color={this.props.colors.primary1Color}
+          style={style.loading}
+        />
+      </View>);
+    }
+
+    if (!isLoading && (!this.state.form  || !this.state.form.components)) {
+      return null;
+    }
+
     const components = this.state.form.components;
     const alerts = this.state.alerts.map((alert, index) => {
       let message;
@@ -437,20 +448,9 @@ export default class Formio extends React.Component {
       </View>);
     });
 
-    const loading = (
-      <View style={style.loadingContainer}>
-        <ActivityIndicator
-          size="large"
-          color={this.props.colors.primary1Color}
-          style={style.loading}
-        />
-      </View>
-    );
-
     return (
       <ScrollView style={style.formWrapper} contentContainerStyle={style.contentContainerStyle}>
-        {this.state.isLoading && loading}
-        {!this.state.isLoading && <FormioComponentsList
+       <FormioComponentsList
           components={components}
           values={this.data}
           options={this.props.options}
@@ -471,7 +471,7 @@ export default class Formio extends React.Component {
           checkConditional={this.checkConditional}
           showAlert={this.showAlert}
           formPristine={this.state.isPristine}
-        />}
+        />
         {this.props.options.showAlerts && alerts}
       </ScrollView>
     );
