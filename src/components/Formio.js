@@ -3,6 +3,7 @@ import {Text, ScrollView, StyleSheet, View, ActivityIndicator} from 'react-nativ
 import PropTypes from 'prop-types';
 import Formiojs from '../formio';
 import FormioUtils from '../formio/utils';
+import {ErrorTypes} from '../util/constants';
 import {FormioComponentsList} from '../components';
 import clone from 'lodash/clone';
 import theme from '../defaultTheme';
@@ -69,6 +70,7 @@ export default class Formio extends React.Component {
     this.setPristine = this.setPristine.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.errorResponse = this.errorResponse.bind(this);
   }
 
   componentDidUpdate() {
@@ -94,6 +96,17 @@ export default class Formio extends React.Component {
       this.formio = new Formiojs(this.props.src);
       this.formio.loadForm().then((form) => {
         this.loadForm(form);
+      })
+      .catch((error) => {
+       if (this.props.onFormError) {
+         this.props.onFormError({
+           type: ErrorTypes.FormFetchError,
+           message: this.errorResponse(error)
+        });
+       }
+       this.setState({
+        isLoading: false,
+       });
       });
 
       if (this.formio.submission) {
@@ -170,9 +183,17 @@ export default class Formio extends React.Component {
     });
   }
 
+  errorResponse(value) {
+    const message = typeof value === 'string' ? value : JSON.stringify(error);
+    return message;
+  }
+
   submissionError(response) {
     if (typeof this.props.onFormError === 'function') {
-      this.props.onFormError(response);
+      this.props.onFormError({
+        type: ErrorTypes.SubmissionError,
+        message: this.errorResponse(response)
+      });
     }
     this.setState({
       isSubmitting: false
