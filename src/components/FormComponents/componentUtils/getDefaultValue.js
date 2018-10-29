@@ -1,11 +1,16 @@
 import {safeSingleToMultiple} from './safeSingleToMultiple';
 
+const getCustomDefault = (component) => {
+  const value = component.customDefaultValue.toString()
+  return value;
+}
+
 export const getDefaultValue = (value, component, getInitialValue, onChangeCustom) => {
   // Allow components to set different default values.
   if (value == null) {
     if (component.hasOwnProperty('customDefaultValue')) {
       try {
-        value = eval('(function(data, row) { var value = "";' + component.customDefaultValue.toString() + '; return value; })(data, row)');
+        value = getCustomDefault(component);
       }
       catch (e) {
         /* eslint-disable no-console */
