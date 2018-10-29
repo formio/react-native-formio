@@ -184,7 +184,7 @@ export default class Formio extends React.Component {
   }
 
   errorResponse(value) {
-    const message = typeof value === 'string' ? value : JSON.stringify(error);
+    const message = typeof value === 'string' ? value : JSON.stringify(value);
     return message;
   }
 
