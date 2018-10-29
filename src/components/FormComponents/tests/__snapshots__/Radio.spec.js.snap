@@ -13,6 +13,7 @@ exports[`Radio Radio field Renders a radio field 1`] = `
       Array [
         undefined,
         Object {
+          "marginLeft": 0,
           "marginTop": 20,
           "paddingRight": 10,
         },
@@ -61,7 +62,7 @@ exports[`Radio Radio field Renders a radio field 1`] = `
               Object {
                 "alignItems": "center",
                 "alignSelf": "center",
-                "borderColor": "#2196f3",
+                "borderColor": "#03a9f4",
                 "borderRadius": 10,
                 "borderWidth": 2,
                 "height": 20,
@@ -170,7 +171,7 @@ exports[`Radio Radio field Renders a radio field 1`] = `
               Object {
                 "alignItems": "center",
                 "alignSelf": "center",
-                "borderColor": "#2196f3",
+                "borderColor": "#03a9f4",
                 "borderRadius": 10,
                 "borderWidth": 2,
                 "height": 20,

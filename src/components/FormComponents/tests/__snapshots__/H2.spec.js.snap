@@ -15,9 +15,10 @@ exports[`H#  H2 component Renders a basic H2 component 1`] = `
       undefined,
       undefined,
       Object {
-        "fontSize": 24,
-        "fontWeight": "bold",
-        "marginVertical": 5,
+        "fontSize": 28,
+        "letterSpacing": 0.36,
+        "lineHeight": 34,
+        "margin": 10,
       },
     ]
   }
