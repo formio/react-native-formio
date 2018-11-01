@@ -11,7 +11,7 @@ const tags = {
   default: Text
 };
 
-export default class Content extends BaseComponent {
+export default class HTMLElement extends BaseComponent {
 
   constructor(props) {
     super(props);
