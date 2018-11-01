@@ -15,9 +15,10 @@ exports[`H#  H3 component Renders a basic H3 component 1`] = `
       undefined,
       undefined,
       Object {
-        "fontSize": 19,
-        "fontWeight": "bold",
-        "marginVertical": 5,
+        "fontSize": 22,
+        "letterSpacing": 0.35,
+        "lineHeight": 28,
+        "margin": 10,
       },
     ]
   }

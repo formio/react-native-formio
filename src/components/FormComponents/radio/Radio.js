@@ -29,7 +29,7 @@ export default class Radio extends InputComponent {
           onPress={this.onChangeRadio}
           disabled={this.props.readOnly}
           borderWidth={2}
-          buttonColor={this.props.colors.primaryColor}
+          buttonColor={this.props.colors.primary1Color}
           buttonSize={10}
           buttonStyle={{}}
           buttonWrapStyle={styles.radioButtonWrap}

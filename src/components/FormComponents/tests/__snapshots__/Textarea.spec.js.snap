@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea Single Textarea Renders a basic textarea 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {},
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {},
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          Array [
+            Object {
+              "color": "#86939e",
+              "fontSize": 15,
+              "fontWeight": "bold",
+              "marginBottom": 1,
+              "marginLeft": 20,
+              "marginRight": 20,
+              "marginTop": 15,
+            },
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {},
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        
+      </Text>
+       
+      <Text
+        style={
+          Array [
+            Object {},
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        
+      </Text>
+       
+      textarea
+       
+      <Text
+        style={
+          Array [
+            Object {},
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        
+      </Text>
+    </Text>
+  </View>
+  <TextInput
+    allowFontScaling={true}
+    autoCorrect={true}
+    data-index={0}
+    defaultValue=""
+    disabled={true}
+    id="textarea"
+    multiline={true}
+    numberOfLines={3}
+    onChange={[Function]}
+    placeholder=""
+    style={
+      Array [
+        Object {
+          "borderWidth": 1,
+          "fontSize": 16,
+          "lineHeight": 16,
+          "marginHorizontal": 10,
+          "marginTop": 20,
+          "paddingBottom": 20,
+          "paddingHorizontal": 10,
+          "paddingTop": 10,
+        },
+        Object {
+          "borderColor": "#9e9e9e",
+          "lineHeight": 18,
+        },
+      ]
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+</View>
+`;
