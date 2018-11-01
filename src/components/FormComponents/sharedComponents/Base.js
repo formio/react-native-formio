@@ -41,6 +41,10 @@ export default class BaseComponent extends React.Component {
       return true;
     }
 
+    if (this.state && this.state.hasOwnProperty('showSignaturePad') && this.state.showSignaturePad !== nextState.showSignaturePad) {
+      return true;
+    }
+
     return false;
   }
 }

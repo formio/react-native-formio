@@ -34,6 +34,7 @@
     "react-native-device-info": "^0.22.3",
     "react-native-elements": "^0.19.1",
     "react-native-modal-datetime-picker": "^6.0.0",
+    "react-native-signature-capture": "^0.4.9",
     "react-native-simple-radio-button": "^2.7.2",
     "react-native-vector-icons": "^4.6.0",
     "react-text-mask-hoc": "^0.10.6"
@@ -55,6 +56,7 @@
     "jest": "23.4.0",
     "react": "^16.4.2",
     "react-native": "^0.56.0",
+    "react-native-create-bridge": "^2.0.1",
     "react-test-renderer": "^16.4.2",
     "written-number": "^0.8.1"
   },
