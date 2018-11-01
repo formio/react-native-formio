@@ -33,6 +33,7 @@
     "prop-types": "^15.6.1",
     "react-native-device-info": "^0.22.3",
     "react-native-elements": "^0.19.1",
+    "react-native-htmlview": "^0.13.0",
     "react-native-modal-datetime-picker": "^6.0.0",
     "react-native-signature-capture": "^0.4.9",
     "react-native-simple-radio-button": "^2.7.2",
