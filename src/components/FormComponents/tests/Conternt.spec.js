@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import colors from '../../../defaultTheme/colors';
 import Content from '../content/Content.js';
 
  describe('Content', () => {
@@ -21,6 +22,7 @@ import Content from '../content/Content.js';
       const element = renderer.create(
         <Content
           component={component}
+          colors={colors}
           attachToForm={attachToForm}
         />
       );
@@ -31,6 +33,7 @@ import Content from '../content/Content.js';
       const element = renderer.create(
         <Content
           component={component}
+          colors={colors}
           attachToForm={attachToForm}
         />
       ).find('div');
