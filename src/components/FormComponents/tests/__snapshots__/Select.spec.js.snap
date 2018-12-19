@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Field Select Compoennt Render a basic select component 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "marginTop": 10,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {},
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {},
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          Array [
+            Object {
+              "color": "#86939e",
+              "fontSize": 15,
+              "fontWeight": "bold",
+              "marginBottom": 1,
+              "marginLeft": 20,
+              "marginRight": 20,
+              "marginTop": 15,
+            },
+            Object {
+              "color": "#2196f3",
+              "fontSize": 15,
+            },
+            undefined,
+          ],
+        ]
+      }
+    >
+      Select
+    </Text>
+  </View>
+  
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginTop": -20,
+      }
+    }
+  >
+    <RCTPicker
+      items={
+        Array [
+          Object {
+            "label": "a",
+            "textColor": undefined,
+            "value": "a",
+          },
+          Object {
+            "label": "b",
+            "textColor": undefined,
+            "value": "b",
+          },
+          Object {
+            "label": "c",
+            "textColor": undefined,
+            "value": "c",
+          },
+          Object {
+            "label": "d",
+            "textColor": undefined,
+            "value": "d",
+          },
+        ]
+      }
+      onChange={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      selectedIndex={0}
+      style={
+        Array [
+          Object {
+            "height": 216,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
