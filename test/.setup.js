@@ -34,3 +34,7 @@ jest.mock('react-native-device-info', () => {
     isTablet: () => (true)
   }
 })
+
+jest.mock('react-native-select-multiple', () => {
+  return () => ('SelectBoxes')
+})

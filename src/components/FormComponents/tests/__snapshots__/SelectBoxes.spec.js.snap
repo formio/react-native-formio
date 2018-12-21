@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selectboxes Selectboxes field Renders a selectboxes field 1`] = `
+<View
+  style={
+    Object {
+      "marginLeft": 20,
+      "marginTop": 20,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 16,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    selectBox
+  </Text>
+   
+  <Text>
+    
+  </Text>
+  <View>
+    SelectBoxes
+  </View>
+</View>
+`;
