@@ -5992,6 +5992,12 @@ react-native-multiple-select@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/react-native-multiple-select/-/react-native-multiple-select-0.4.4.tgz#6deb41afa3fb4a73e34ffd6851e64f4c36f4a6df"
   integrity sha512-YQNnQMNNWUDEje3hiOXIvJNgqAFz+jpGdo6Jxvm9wPDhp0QS3D4i5S75Ce53wpavAsENBYn3kaeZJojfyARZTg==
+react-native-select-multiple@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-select-multiple/-/react-native-select-multiple-1.2.0.tgz#1f4662c085fc2b76101986d0a45b09e5343359e5"
+  integrity sha512-Y+zETjkcSzJdynBlhb2K/ZG0a0gkcrC2LZjO4/oGvgcn6ULVWMvtwttkYHt0O1k7iPsGdq3jWuMIOn4H5BG7/w==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-signature-capture@^0.4.9:
   version "0.4.9"
