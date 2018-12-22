@@ -1,13 +1,38 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import {FormLabel} from 'react-native-elements';
+import {Dropdown} from 'react-native-material-dropdown';
+import {Chip, Selectize} from 'react-native-material-selectize';
 import {interpolate} from '../../../util';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import ValueComponent from './Value';
-import {Picker} from 'react-native';
+
+const selectStyle = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    marginTop: 10
+  },
+  container: {
+    zIndex: 1000,
+  },
+  listText: {
+    fontSize: 15,
+    lineHeight: 21,
+  },
+  list: {
+    flex: 1,
+    position: 'absolute'
+  },
+  chip: {
+    paddingRight: 2
+  },
+  chipIcon: {
+    height: 24,
+    width: 24
+  },
+});
 
 export default class SelectComponent extends ValueComponent {
   constructor(props) {
@@ -107,44 +132,72 @@ export default class SelectComponent extends ValueComponent {
     });
   }
 
-  getElements() {
-    const selectStyle = StyleSheet.create({
-      wrapper: {
-        flex: 1,
-        marginTop: 10
-      },
-      label: {
-        color: this.props.colors.pickerColor,
-        fontSize: 15,
-      },
-      picker: {
-        flex: 1,
-        marginTop: -20,
-      }
-    });
-    const properties = {
-      placeholder: this.props.component.placeholder,
-      selectedValue: this.state.value ? this.state.value.item : '',
-      enabled: !this.props.readOnly,
-      onValueChange: this.onChangeSelect,
-    };
+  onChipClose(event) {
+    console.log(event, 'evENRTTNTNTNTNTNTNTNTN');
+  }
 
-   const labelText = this.props.component.label && !this.props.component.hideLabel ? this.props.component.label : 'Select';
-    const requiredInline = (!this.props.component.label && this.props.component.validate && this.props.component.validate.required ? <Icon name='asterisk' /> : '');
-    const Element = (
-      <Picker {...properties} style={selectStyle.picker}>
-        {this.state.selectItems.map((item) => (<Picker.Item key={item.value} label={item.label} value={item.value}/>))}
-      </Picker>
+  renderChip(id, onClose, item, style, iconStyle) {
+    return (
+      <Chip
+        key={id}
+        iconStyle={iconStyle}
+        onClose={() => this.onChipClose(onClose)}
+        text={id}
+        style={style}
+      />
     );
+  }
 
+  renderRow(id, onPress, item) {
+    return (
+      <TouchableOpacity
+        activeOpacity={0.6}
+        key={id}
+        onPress={onPress}
+        style={selectStyle.listRow}
+      >
+        <Text style={selectStyle.listText}>{item.label}</Text>
+      </TouchableOpacity>
+    );
+  }
+
+  getElements() {
+    const labelText = this.props.component.label && !this.props.component.hideLabel ? this.props.component.label : 'Select';
+    const requiredInline = (!this.props.component.label && this.props.component.validate && this.props.component.validate.required ? <Icon name='asterisk' /> : '');
+    const value = this.state.selectItems.find(item => this.state.value && item.value === this.state.value.item) || {};
+    let Element;
+
+    if (this.props.component.multiple) {
+      Element = (
+        <Selectize
+          ref={c => this.multipleSelect = c}
+          chipStyle={selectStyle.chip}
+          chipIconStyle={selectStyle.chipIcon}
+          itemId={this.props.component.key}
+          items={this.state.selectItems}
+          label={labelText}
+          listStyle={selectStyle.list}
+          containerStyle={selectStyle.container}
+          tintColor={this.props.colors.primary1Color}
+          renderRow={this.renderRow}
+          renderChip={this.renderChip}
+        />
+      );
+    }
+    else {
+      Element = (
+        <Dropdown
+          label={`${labelText} ${requiredInline}`}
+          data={this.state.selectItems}
+          disabled={this.props.readOnly}
+          value={value}
+          onChangeText={this.onChangeSelect}
+          labelFontSize={18}
+        />
+      );
+    }
     return (
       <View style={selectStyle.wrapper}>
-        <FormLabel
-          labelStyle={selectStyle.label}
-        >
-          {labelText}
-        </FormLabel>
-        {requiredInline}
         {Element}
       </View>
     );
