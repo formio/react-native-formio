@@ -5311,11 +5311,6 @@ normalize-path@^2.0.1, normalize-path@^2.1.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
-normalizr@3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.2.3.tgz#88755c64de418b040fa6ad1329b2de5c3250ac49"
-  integrity sha1-iHVcZN5BiwQPpq0TKbLeXDJQrEk=
-
 npm-bundled@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.0.3.tgz#7e71703d973af3370a9591bafe3a63aca0be2308"
@@ -5815,14 +5810,6 @@ prompts@^0.1.9:
     clorox "^1.0.3"
     sisteransi "^0.1.1"
 
-prop-types@15.5.10:
-  version "15.5.10"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
-  integrity sha1-J5ffwxJhguOpXj37suiT3ddFYVQ=
-  dependencies:
-    fbjs "^0.8.9"
-    loose-envify "^1.3.1"
-
 prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
@@ -5978,14 +5965,6 @@ react-native-material-ripple@^0.8.0:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-material-selectize@^1.14.2:
-  version "1.14.2"
-  resolved "https://registry.yarnpkg.com/react-native-material-selectize/-/react-native-material-selectize-1.14.2.tgz#f7b74df923cd2732acac0afd9628ed6441e309e9"
-  integrity sha512-DXIxDV4uzNybY0wAnH98DdyfxavKC3ob/G+CX1hNc4IY8GPa1wXDnGnNggW5lw8sPgrHmfOv8J87B08lellKhw==
-  dependencies:
-    normalizr "3.2.3"
-    prop-types "15.5.10"
-
 react-native-material-textfield@^0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/react-native-material-textfield/-/react-native-material-textfield-0.12.0.tgz#3fba19d76ab89f67052c81e082152fc243d82a3f"
@@ -6008,6 +5987,11 @@ react-native-modal@^6.2.0:
   dependencies:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
+
+react-native-multiple-select@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/react-native-multiple-select/-/react-native-multiple-select-0.4.4.tgz#6deb41afa3fb4a73e34ffd6851e64f4c36f4a6df"
+  integrity sha512-YQNnQMNNWUDEje3hiOXIvJNgqAFz+jpGdo6Jxvm9wPDhp0QS3D4i5S75Ce53wpavAsENBYn3kaeZJojfyARZTg==
 
 react-native-signature-capture@^0.4.9:
   version "0.4.9"
