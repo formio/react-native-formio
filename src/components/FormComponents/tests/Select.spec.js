@@ -5,7 +5,7 @@ import theme from '../../../defaultTheme';
 import Select from '../select/Select';
 
 describe('Select Field', () => {
-  describe('Select Compoennt', () => {
+  describe('Select Component', () => {
     var component= {
       'input': true,
       'tableView': true,

@@ -1,36 +1,31 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {Dropdown} from 'react-native-material-dropdown';
-import {Chip, Selectize} from 'react-native-material-selectize';
-import {interpolate} from '../../../util';
+import MultiSelect from 'react-native-multiple-select';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import ValueComponent from './Value';
+import colors from '../../../defaultTheme/colors';
 
 const selectStyle = StyleSheet.create({
   wrapper: {
     flex: 1,
-    marginTop: 10
+    marginHorizontal: 20,
+    marginTop: 20
   },
   container: {
     zIndex: 1000,
   },
-  listText: {
-    fontSize: 15,
-    lineHeight: 21,
+  containerSingle: {
+    marginVertical: 20
+  },
+  label: {
+    marginBottom: 10,
   },
   list: {
-    flex: 1,
-    position: 'absolute'
-  },
-  chip: {
-    paddingRight: 2
-  },
-  chipIcon: {
-    height: 24,
-    width: 24
+    backgroundColor: colors.mainBackground,
   },
 });
 
@@ -50,7 +45,6 @@ export default class SelectComponent extends ValueComponent {
     this.valueField = this.valueField.bind(this);
     this.getElements = this.getElements.bind(this);
     this.onToggle = this.onToggle.bind(this);
-    this.textField = this.textField.bind(this);
   }
 
   willReceiveProps(nextProps) {
@@ -89,25 +83,19 @@ export default class SelectComponent extends ValueComponent {
     return valueFieldItem;
   }
 
-  textField() {
-    // Default textfield to rendered output.
-    let textFieldItem = (item) => {
-      if (typeof item !== 'object') {
-        return item;
-      }
-      return interpolate(this.props.component.template, {item: item});
-    };
-    if (typeof this.getTextField === 'function') {
-      textFieldItem = this.getTextField();
+  onChangeSelect(selected) {
+    let value;
+    if (this.props.component.multiple) {
+      value = this.state.selectItems.filter((i) => selected.includes(i.label))
+      .map((i) => i.value);
     }
-    return textFieldItem;
-  }
-
-  onChangeSelect(value) {
+ else {
+      value = selected;
+    }
     if (Array.isArray(value) && this.valueField()) {
-      value.forEach(function(val, index) {
+      value.forEach((val, index) => {
         value[index] = (typeof val === 'object' ? get(val, this.valueField()) : val);
-      }.bind(this));
+      });
     }
     else if (typeof value === 'object' && this.valueField()) {
       value = get(value, this.valueField());
@@ -132,65 +120,46 @@ export default class SelectComponent extends ValueComponent {
     });
   }
 
-  onChipClose(event) {
-    console.log(event, 'evENRTTNTNTNTNTNTNTNTN');
-  }
-
-  renderChip(id, onClose, item, style, iconStyle) {
-    return (
-      <Chip
-        key={id}
-        iconStyle={iconStyle}
-        onClose={() => this.onChipClose(onClose)}
-        text={id}
-        style={style}
-      />
-    );
-  }
-
-  renderRow(id, onPress, item) {
-    return (
-      <TouchableOpacity
-        activeOpacity={0.6}
-        key={id}
-        onPress={onPress}
-        style={selectStyle.listRow}
-      >
-        <Text style={selectStyle.listText}>{item.label}</Text>
-      </TouchableOpacity>
-    );
-  }
-
   getElements() {
     const labelText = this.props.component.label && !this.props.component.hideLabel ? this.props.component.label : 'Select';
     const requiredInline = (!this.props.component.label && this.props.component.validate && this.props.component.validate.required ? <Icon name='asterisk' /> : '');
-    const value = this.state.selectItems.find(item => this.state.value && item.value === this.state.value.item) || {};
+    const multiMode = this.props.component.multiple;
+    let values;
     let Element;
 
-    if (this.props.component.multiple) {
+    if (multiMode) {
+      values = this.state.value && this.state.value.item ? this.state.selectItems.filter((i) => this.state.value.item.includes(i.value)) : [];
       Element = (
-        <Selectize
-          ref={c => this.multipleSelect = c}
-          chipStyle={selectStyle.chip}
-          chipIconStyle={selectStyle.chipIcon}
-          itemId={this.props.component.key}
+        <MultiSelect
+          hideTags
+          hideSubmitButton
+          fixedHeight
           items={this.state.selectItems}
-          label={labelText}
-          listStyle={selectStyle.list}
-          containerStyle={selectStyle.container}
-          tintColor={this.props.colors.primary1Color}
-          renderRow={this.renderRow}
-          renderChip={this.renderChip}
+          uniqueKey={'label'}
+          displayKey={'label'}
+          selectText={labelText}
+          showDropDowns={true}
+          readOnlyHeadings={true}
+          onSelectedItemsChange={this.onChangeSelect}
+          selectedItems={values.map(v => v.label)}
+          tagRemoveIconColor={this.props.colors.primary1Color}
+          selectedItemTextColor={this.props.colors.primary1Color}
+          selectedItemIconColor={this.props.colors.primary1Color}
         />
       );
     }
     else {
+      values = this.state.value ? this.state.value.item : '';
       Element = (
         <Dropdown
           label={`${labelText} ${requiredInline}`}
           data={this.state.selectItems}
           disabled={this.props.readOnly}
-          value={value}
+          style={selectStyle.label}
+          dropdownOffset={{top: 40, left: 5}}
+          containerStyle={selectStyle.containerSingle}
+          itemTextStyle={selectStyle.listText}
+          value={values}
           onChangeText={this.onChangeSelect}
           labelFontSize={18}
         />

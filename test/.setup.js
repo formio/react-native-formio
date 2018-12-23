@@ -11,6 +11,16 @@ jest.mock('react-native-signature-capture', () => {
   return () => ('SignatureCapture')
 })
 
+jest.mock('react-native-material-dropdown', () => {
+  return {
+    Dropdown: ()=> ('Dropdown')
+  }
+})
+
+jest.mock('react-native-multiple-select', () => {
+  return () => ('MultiSelect')
+})
+
 jest.mock('react-native-modal-datetime-picker', () => {
   return () => ('DateTimePicker')
 })

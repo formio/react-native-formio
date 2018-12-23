@@ -112,10 +112,13 @@ export const validate = (value, component, data, validateCustom) => {
   }
   // Validate each item if multiple.
   if (component.multiple) {
+    const items = [];
     value.forEach(item => {
       if (state.isValid) {
         state = validateItem(item, component, data);
+        items.push(state.item);
       }
+      state.item = items;
     });
 
     if (component.validate && component.validate.required && (!(value instanceof Array) || value.length === 0)) {
