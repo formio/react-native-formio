@@ -5987,6 +5987,7 @@ react-native-modal@^6.2.0:
   dependencies:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
+
 react-native-multiple-select@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/react-native-multiple-select/-/react-native-multiple-select-0.4.4.tgz#6deb41afa3fb4a73e34ffd6851e64f4c36f4a6df"
@@ -6462,6 +6463,11 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
+
+rn-tooltip@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rn-tooltip/-/rn-tooltip-1.0.1.tgz#2501e54cd5dca9d8134ac82c2c12c464fdeda250"
+  integrity sha512-H1H2L6azR6bQB2vEOCM7iPhNUFRaYSZfk8EGdqQuwsCC6hAma/YVcXJXAqZt2ZDE6KOUx7KbwW94HtUDQrwVeQ==
 
 rsvp@^3.3.3:
   version "3.6.2"

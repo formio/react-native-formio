@@ -41,7 +41,8 @@
     "react-native-signature-capture": "^0.4.9",
     "react-native-simple-radio-button": "^2.7.2",
     "react-native-vector-icons": "^4.6.0",
-    "react-text-mask-hoc": "^0.10.6"
+    "react-text-mask-hoc": "^0.10.6",
+    "rn-tooltip": "^1.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
