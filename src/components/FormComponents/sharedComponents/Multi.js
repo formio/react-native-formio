@@ -3,6 +3,7 @@ import React from 'react';
 import clone from 'lodash/clone';
 import PropTypes from 'prop-types';
 import {View, StyleSheet} from 'react-native';
+import Tooltip from 'rn-tooltip';
 import ValueComponent from './Value';
 import {
   Icon,
@@ -111,6 +112,15 @@ export default class MultiComponent extends ValueComponent {
           {errorText}
         </View>
       );
+    }
+    if (component.tooltip) {
+      return (
+        <Tooltip
+          popover={<Text style={{color: this.props.colors.alternateTextColor}}>{component.tooltip}</Text>}
+          backgroundColor={this.props.colors.primary1Color}
+        >
+        {Component}
+      </Tooltip>);
     }
     return Component;
   }

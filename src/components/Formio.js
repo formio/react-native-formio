@@ -481,7 +481,7 @@ export default class Formio extends React.Component {
           isFormValid={this.state.isValid}
           onElementRender={this.props.onElementRender}
           theme={this.props.theme}
-          colors={this.props.colors}
+          colors={{...colors, ...this.props.colors}}
           resetForm={this.resetForm}
           formio={this.formio}
           data={this.data}

@@ -143,7 +143,7 @@ export default class InputComponent extends MultiComponent {
       return (<TextMask style={style.input} Component={FormInput} {...properties}/>);
     }
     else {
-      return (<FormInput  inputStyle={style.input} containerStyle={style.container} {...properties} />);
+      return (<FormInput inputStyle={style.input} containerStyle={style.container} {...properties} />);
     }
   }
 }
