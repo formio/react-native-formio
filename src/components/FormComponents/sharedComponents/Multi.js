@@ -66,6 +66,17 @@ export default class MultiComponent extends ValueComponent {
       fieldWrapper: {
         flex: 1,
       },
+      labelWrapper: {
+        flexDirection: 'row'
+      },
+      tooltipText: {
+        flexWrap: 'wrap',
+        color: this.props.colors.alternateTextColor
+      },
+      tooltipIcon: {
+        marginLeft: -20,
+        marginTop: 13
+      },
       errorText: {
         alignSelf: 'flex-end',
         fontSize: 10,
@@ -107,20 +118,21 @@ export default class MultiComponent extends ValueComponent {
 
       Component = (
         <View style={multiStyles.fieldWrapper}>
+          <View style={multiStyles.labelWrapper}>
           {inputLabel}
+          {component.tooltip && <Tooltip
+            popover={<Text style={multiStyles.tooltipText}>{component.tooltip}</Text>}
+            backgroundColor={this.props.colors.primary1Color}
+            height={component.tooltip.length < 20 ? 40 : component.tooltip.length + 20}
+            width={component.tooltip.length < 20 ? 100 : component.tooltip.length + 140}
+          >
+            <Icon containerStyle={multiStyles.tooltipIcon} size={20} name='question-circle' type='font-awesome' />
+          </Tooltip>}
+          </View>
           {Element}
           {errorText}
         </View>
       );
-    }
-    if (component.tooltip) {
-      return (
-        <Tooltip
-          popover={<Text style={{color: this.props.colors.alternateTextColor}}>{component.tooltip}</Text>}
-          backgroundColor={this.props.colors.primary1Color}
-        >
-        {Component}
-      </Tooltip>);
     }
     return Component;
   }
