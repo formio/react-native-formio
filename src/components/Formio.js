@@ -268,7 +268,8 @@ export default class Formio extends React.Component {
     let allIsValid = true;
     const inputs = this.inputs;
     Object.keys(inputs).forEach((name) => {
-      if (!inputs[name].state.isValid) {
+      if (!inputs[name].state.value.isValid) {
+        console.log(inputs[name], inputs[name].state.isValid);
         allIsValid = false;
       }
     });
@@ -349,10 +350,15 @@ export default class Formio extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-
     this.setPristine(false);
     if (!this.state.isValid) {
       this.showAlert('danger', 'Please fix the following errors before submitting.', true);
+      if (this.props.onFormError) {
+        this.props.onFormError({
+          type: 'ValidationError',
+          message: 'Please fix all errors before submitting.',
+        });
+      }
       return;
     }
 
