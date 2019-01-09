@@ -1,10 +1,10 @@
-
 import React from 'react';
 import clone from 'lodash/clone';
 import PropTypes from 'prop-types';
 import {View, StyleSheet} from 'react-native';
 import Tooltip from 'rn-tooltip';
 import ValueComponent from './Value';
+import DeviceInfo from 'react-native-device-info';
 import {
   Icon,
   Button,
@@ -61,11 +61,41 @@ export default class MultiComponent extends ValueComponent {
     );
   }
 
+  elementLayout(position) {
+    switch (position) {
+      case 'top':
+       return {
+          flexDirection: 'column',
+        };
+      case 'left-left':
+      case 'left-right':
+        return {
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+        };
+      case 'right-left':
+      case 'right-right':
+        return {
+          flexDirection: 'row-reverse',
+          marginHorizontal: 20,
+        };
+      case 'bottom':
+        return {
+          flexDirection: 'column-reverse',
+        };
+      default:
+        return {
+          flexDirection: 'column',
+        };
+    }
+  }
+
   getElements() {
     const multiStyles = StyleSheet.create({
       fieldWrapper: {
         flex: 1,
       },
+      mainElement: this.elementLayout(this.props.component.labelPosition),
       labelWrapper: {
         flexDirection: 'row'
       },
@@ -82,9 +112,11 @@ export default class MultiComponent extends ValueComponent {
         fontSize: 10,
         color: this.props.colors.errorColor
       },
-      label: {
+      labelStyle: {
+        flexWrap: 'wrap',
+        maxWidth: DeviceInfo.isTablet() ? 580 : 210,
         color: this.props.theme.Label.color,
-        fontSize: this.props.theme.Label.fontSize,
+        fontSize: DeviceInfo.isTablet() ? this.props.theme.Label.fontSize : 12,
       }
     });
 
@@ -118,18 +150,20 @@ export default class MultiComponent extends ValueComponent {
 
       Component = (
         <View style={multiStyles.fieldWrapper}>
-          <View style={multiStyles.labelWrapper}>
-          {inputLabel}
-          {component.tooltip && <Tooltip
-            popover={<Text style={multiStyles.tooltipText}>{component.tooltip}</Text>}
-            backgroundColor={this.props.colors.primary1Color}
-            height={component.tooltip.length < 20 ? 40 : component.tooltip.length + 20}
-            width={component.tooltip.length < 20 ? 100 : component.tooltip.length + 140}
-          >
-            <Icon containerStyle={multiStyles.tooltipIcon} size={20} name='question-circle' type='font-awesome' />
-          </Tooltip>}
+          <View style={multiStyles.mainElement}>
+            <View style={multiStyles.labelWrapper}>
+            {inputLabel}
+            {component.tooltip && <Tooltip
+              popover={<Text style={multiStyles.tooltipText}>{component.tooltip}</Text>}
+              backgroundColor={this.props.colors.primary1Color}
+              height={component.tooltip.length < 20 ? 40 : component.tooltip.length + 20}
+              width={component.tooltip.length < 20 ? 100 : component.tooltip.length + 140}
+            >
+              <Icon containerStyle={multiStyles.tooltipIcon} size={20} name='question-circle' type='font-awesome' />
+            </Tooltip>}
+            </View>
+            {Element}
           </View>
-          {Element}
           {errorText}
         </View>
       );
