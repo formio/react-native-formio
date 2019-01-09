@@ -112,6 +112,11 @@ export default class MultiComponent extends ValueComponent {
         fontSize: 10,
         color: this.props.colors.errorColor
       },
+      descriptionText: {
+        fontSize: DeviceInfo.isTablet() ? 12 : 10,
+        marginLeft: 20,
+        marginTop: 10,
+      },
       labelStyle: {
         flexWrap: 'wrap',
         maxWidth: DeviceInfo.isTablet() ? 580 : 210,
@@ -165,6 +170,7 @@ export default class MultiComponent extends ValueComponent {
             {Element}
           </View>
           {errorText}
+          {component.description && <Text style={multiStyles.descriptionText}>{component.description}</Text>}
         </View>
       );
     }
