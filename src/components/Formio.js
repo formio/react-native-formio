@@ -269,7 +269,6 @@ export default class Formio extends React.Component {
     const inputs = this.inputs;
     Object.keys(inputs).forEach((name) => {
       if (!inputs[name].state.value.isValid) {
-        console.log(inputs[name], inputs[name].state.isValid);
         allIsValid = false;
       }
     });
