@@ -45,11 +45,16 @@ export default class BaseComponent extends React.Component {
       return true;
     }
 
+    if (this.props.component.hasOwnProperty('disableOnInvalid') && this.props.isFormValid !== nextProps.isFormValid) {
+      return true;
+    }
+
     return false;
   }
 }
 
 BaseComponent.propTypes = {
   component: PropTypes.any,
+  isFormValid: PropTypes.any,
   value: PropTypes.any
 };
