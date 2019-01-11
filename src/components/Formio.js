@@ -399,12 +399,21 @@ export default class Formio extends React.Component {
   }
 
   resetForm() {
-    this.setState((previousState) => {
-      for (let key in previousState.submission.data) {
-        delete previousState.submission.data[key];
+    const submission = this.state.submission;
+    for (let key in submission.data) {
+      delete submission.data[key];
+    }
+
+    Object.keys(this.inputs).forEach((name) => {
+      if (typeof this.inputs[name].setValue === 'function') {
+        this.inputs[name].setValue(null);
       }
-      return previousState;
     });
+    this.setState({
+      submission,
+    });
+    this.data = {};
+    this.setPristine(true);
   }
 
   render() {

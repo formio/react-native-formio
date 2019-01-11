@@ -24,11 +24,11 @@ export default class ValueComponent extends BaseComponent {
       this.state = this.customState(this.state);
     }
     this.data = {};
-    this.validate =this.validate.bind(this);
-    this.onChange =this.onChange.bind(this);
-    this.setValue =this.setValue.bind(this);
-    this.getDisplay =this.getDisplay.bind(this);
-    this.getElements =this.getElements.bind(this);
+    this.validate = this.validate.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.setValue = this.setValue.bind(this);
+    this.getDisplay = this.getDisplay.bind(this);
+    this.getElements = this.getElements.bind(this);
   }
 
   componentDidMount() {
