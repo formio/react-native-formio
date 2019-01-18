@@ -1,33 +1,16 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {Dropdown} from 'react-native-material-dropdown';
 import MultiSelect from 'react-native-multiple-select';
+import {FormLabel} from 'react-native-elements';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
+import DeviceInfo from 'react-native-device-info';
 import ValueComponent from './Value';
+import Tooltip from './Tooltip';
 import colors from '../../../defaultTheme/colors';
-
-const selectStyle = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    marginHorizontal: 20,
-    marginTop: 20
-  },
-  container: {
-    zIndex: 1000,
-  },
-  containerSingle: {
-    marginVertical: 20
-  },
-  label: {
-    marginBottom: 10,
-  },
-  list: {
-    backgroundColor: colors.mainBackground,
-  },
-});
 
 export default class SelectComponent extends ValueComponent {
   constructor(props) {
@@ -112,6 +95,36 @@ export default class SelectComponent extends ValueComponent {
     }
   }
 
+  elementLayout(position) {
+    switch (position) {
+      case 'top':
+       return {
+          flexDirection: 'column',
+        };
+      case 'left-left':
+      case 'left-right':
+        return {
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+        };
+      case 'right-left':
+      case 'right-right':
+        return {
+          flexDirection: 'row-reverse',
+          flex: 1,
+          marginHorizontal: 20,
+        };
+      case 'bottom':
+        return {
+          flexDirection: 'column-reverse',
+        };
+      default:
+        return {
+          flexDirection: 'column',
+        };
+    }
+  }
+
   onToggle(isOpen) {
     this.props.onEvent('selectToggle', this, isOpen);
     this.setState(prevState => {
@@ -121,11 +134,50 @@ export default class SelectComponent extends ValueComponent {
   }
 
   getElements() {
-    const labelText = this.props.component.label && !this.props.component.hideLabel ? this.props.component.label : 'Select';
-    const requiredInline = (!this.props.component.label && this.props.component.validate && this.props.component.validate.required ? <Icon name='asterisk' /> : '');
-    const multiMode = this.props.component.multiple;
+    const selectStyle = StyleSheet.create({
+      wrapper: {
+        flex: 1,
+        marginHorizontal: 20,
+        marginTop: 20
+      },
+      container: {
+        zIndex: 1000,
+      },
+      containerSingle: {
+        flex: 1,
+        marginTop: 0,
+        marginBottom: 15,
+      },
+      label: {
+        maxWidth: DeviceInfo.isTablet() ? 580 : 210,
+        color: this.props.theme.Label.color,
+        fontSize: DeviceInfo.isTablet() ? this.props.theme.Label.fontSize : 12,
+      },
+      mainElement: this.elementLayout(this.props.component.labelPosition),
+      labelWrapper: {
+        flexDirection: 'row',
+        marginTop: this.props.component.labelPosition === 'top' || this.props.component.labelPosition === 'bottom' ? 0 : 40,
+        marginRight: this.props.component.labelPosition === 'left-left' || this.props.component.labelPosition === 'left-right' ? 10 : 0,
+      },
+      list: {
+        backgroundColor: colors.mainBackground,
+      },
+      descriptionText: {
+        fontSize: DeviceInfo.isTablet() ? 12 : 10,
+        marginLeft: 20,
+        marginTop: 10,
+      },
+    });
+
+    const {component} = this.props;
+    const labelText = component.label && !component.hideLabel ? component.label : '';
+    const requiredInline = (!component.label && component.validate && component.validate.required ? <Icon name='asterisk' /> : '');
+    const multiMode = component.multiple;
     let values;
     let Element;
+
+    const inputLabel = labelText ?
+      <FormLabel labelStyle={selectStyle.label}>{requiredInline} {component.label}</FormLabel> : null;
 
     if (multiMode) {
       values = this.state.value && this.state.value.item ? this.state.selectItems.filter((i) => this.state.value.item.includes(i.value)) : [];
@@ -137,7 +189,7 @@ export default class SelectComponent extends ValueComponent {
           items={this.state.selectItems}
           uniqueKey={'label'}
           displayKey={'label'}
-          selectText={labelText}
+          selectText={component.placeholder}
           showDropDowns={true}
           readOnlyHeadings={true}
           onSelectedItemsChange={this.onChangeSelect}
@@ -152,7 +204,7 @@ export default class SelectComponent extends ValueComponent {
       values = this.state.value ? this.state.value.item : '';
       Element = (
         <Dropdown
-          label={`${labelText} ${requiredInline}`}
+          label={component.placeholder}
           data={this.state.selectItems}
           disabled={this.props.readOnly}
           style={selectStyle.label}
@@ -167,7 +219,24 @@ export default class SelectComponent extends ValueComponent {
     }
     return (
       <View style={selectStyle.wrapper}>
-        {Element}
+        <View style={selectStyle.mainElement}>
+          <View style={selectStyle.labelWrapper}>
+          {inputLabel}
+          {component.tooltip && <Tooltip
+            text={component.tooltip}
+            color={this.props.colors.alternateTextColor}
+            backgroundColor={this.props.colors.primary1Color}
+            styles={{
+              icon: {
+                marginTop: this.props.component.labelPosition === 'top' || this.props.component.labelPosition === 'bottom' ? 0 : 12,
+                marginLeft: this.props.component.labelPosition === 'top' || this.props.component.labelPosition === 'bottom' ? -15 : -20,
+              }
+            }}
+          />}
+          </View>
+          {Element}
+        </View>
+        {component.description && <Text style={selectStyle.descriptionText}>{component.description}</Text>}
       </View>
     );
   }
