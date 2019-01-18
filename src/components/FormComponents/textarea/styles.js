@@ -2,6 +2,7 @@ import {StyleSheet} from  'react-native';
 
 const styles = StyleSheet.create({
   textarea: {
+    flex: 1,
     marginTop: 20,
     paddingTop: 10,
     marginHorizontal: 10,

@@ -2,7 +2,7 @@ import React from 'react';
 import clone from 'lodash/clone';
 import PropTypes from 'prop-types';
 import {View, StyleSheet} from 'react-native';
-import Tooltip from 'rn-tooltip';
+import Tooltip from './Tooltip';
 import ValueComponent from './Value';
 import DeviceInfo from 'react-native-device-info';
 import {
@@ -97,15 +97,9 @@ export default class MultiComponent extends ValueComponent {
       },
       mainElement: this.elementLayout(this.props.component.labelPosition),
       labelWrapper: {
-        flexDirection: 'row'
-      },
-      tooltipText: {
-        flexWrap: 'wrap',
-        color: this.props.colors.alternateTextColor
-      },
-      tooltipIcon: {
-        marginLeft: -20,
-        marginTop: 13
+        flexDirection: 'row',
+        marginTop: this.props.component.labelPosition === 'top' || this.props.component.labelPosition === 'bottom' ? 0 : 15,
+        marginRight: this.props.component.labelPosition === 'left-left' || this.props.component.labelPosition === 'left-right' ? 10 : 0,
       },
       errorText: {
         alignSelf: 'flex-end',
@@ -159,13 +153,10 @@ export default class MultiComponent extends ValueComponent {
             <View style={multiStyles.labelWrapper}>
             {inputLabel}
             {component.tooltip && <Tooltip
-              popover={<Text style={multiStyles.tooltipText}>{component.tooltip}</Text>}
+              text={component.tooltip}
+              color={this.props.colors.alternateTextColor}
               backgroundColor={this.props.colors.primary1Color}
-              height={component.tooltip.length < 20 ? 40 : component.tooltip.length + 20}
-              width={component.tooltip.length < 20 ? 100 : component.tooltip.length + 140}
-            >
-              <Icon containerStyle={multiStyles.tooltipIcon} size={20} name='question-circle' type='font-awesome' />
-            </Tooltip>}
+            />}
             </View>
             {Element}
           </View>
