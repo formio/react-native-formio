@@ -69,6 +69,7 @@ export default class Formio extends React.Component {
     this.showAlert = this.showAlert.bind(this);
     this.setPristine = this.setPristine.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSave = this.onSave.bind(this);
     this.resetForm = this.resetForm.bind(this);
     this.errorResponse = this.errorResponse.bind(this);
   }
@@ -109,9 +110,14 @@ export default class Formio extends React.Component {
        });
       });
 
-      if (this.formio.submission) {
-        this.formio.loadSubmission().then((submission) => {
+      if (this.props.submissionId) {
+        this.formio.submissionId = this.props.submissionId;
+        this.formio.submissionUrl = `${this.props.src}/submission/${this.props.submissionId}`;
+        this.formio.loadSubmission()
+        .then((submission) => {
           this.loadSubmission(submission);
+        }).catch((e) => {
+          return e;
         });
       }
     }
@@ -178,7 +184,7 @@ export default class Formio extends React.Component {
       isSubmitting: false,
       alerts: [{
         type: 'success',
-        message: 'Submission was ' + ((method === 'put') ? 'updated' : 'created')
+        message: `Submission was ${method === 'put' ? 'updated' : 'created'}`
       }]
     });
   }
@@ -361,12 +367,13 @@ export default class Formio extends React.Component {
       return;
     }
 
+    const sub = this.state.submission;
+    sub.data = clone(this.data);
+
     this.setState({
       alerts: [],
       isSubmitting: true
     });
-    const sub = this.state.submission;
-    sub.data = clone(this.data);
 
     let request;
     let method;
@@ -396,6 +403,30 @@ export default class Formio extends React.Component {
         isSubmitting: false
       });
     }
+  }
+
+  onSave() {
+    const sub = this.state.submission;
+    sub.data = clone(this.data);
+    sub.state = 'draft';
+
+    this.setState({
+      alerts: [],
+      isSubmitting: true
+    });
+
+    this.formio.saveSubmission(sub).then((submission) => {
+      if (typeof this.props.onFormSave === 'function') {
+        this.props.onFormSave(submission);
+      }
+      this.setState({
+        alerts: [{
+          type: 'success',
+          message: 'Submission was saved',
+        }],
+        isSubmitting: false
+      });
+    });
   }
 
   resetForm() {
@@ -500,6 +531,7 @@ export default class Formio extends React.Component {
           formio={this.formio}
           data={this.data}
           onSubmit={this.onSubmit}
+          onSave={this.onSave}
           onChange={this.onChange}
           onEvent={this.onEvent}
           isDisabled={this.isDisabled}
@@ -545,6 +577,7 @@ Formio.propTypes = {
   onFormLoad: PropTypes.func,
   onSubmissionLoad: PropTypes.func,
   onFormSubmit: PropTypes.func,
+  onFormSave: PropTypes.func,
   onChange: PropTypes.func,
   onEvent: PropTypes.func,
   onFormError: PropTypes.func,

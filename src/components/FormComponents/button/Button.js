@@ -33,8 +33,10 @@ export default class Button extends BaseComponent {
     }
     switch (this.props.component.action) {
       case 'submit':
-      case 'saveState':
         this.props.onSubmit(event);
+        break;
+      case 'saveState':
+        this.props.onSave(event);
         break;
       case 'event':
         this.props.onEvent(this.props.component.event);
