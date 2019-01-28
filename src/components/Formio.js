@@ -274,7 +274,7 @@ export default class Formio extends React.Component {
     let allIsValid = true;
     const inputs = this.inputs;
     Object.keys(inputs).forEach((name) => {
-      if (!inputs[name].state.value.isValid) {
+      if (inputs[name].state.value && !inputs[name].state.value.isValid) {
         allIsValid = false;
       }
     });
@@ -369,6 +369,7 @@ export default class Formio extends React.Component {
 
     const sub = this.state.submission;
     sub.data = clone(this.data);
+    sub.state = 'submitted';
 
     this.setState({
       alerts: [],
