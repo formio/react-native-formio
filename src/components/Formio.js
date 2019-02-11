@@ -99,25 +99,30 @@ export default class Formio extends React.Component {
         this.loadForm(form);
       })
       .catch((error) => {
-       if (this.props.onFormError) {
-         this.props.onFormError({
-           type: ErrorTypes.FormFetchError,
-           message: this.errorResponse(error)
+        if (this.props.onFormError) {
+          this.props.onFormError({
+            type: ErrorTypes.FormFetchError,
+            message: this.errorResponse(error)
+          });
+        }
+        this.setState({
+          isLoading: false,
         });
-       }
-       this.setState({
-        isLoading: false,
-       });
       });
 
-      if (this.props.submissionId) {
+      if (this.form && this.props.submissionId) {
         this.formio.submissionId = this.props.submissionId;
         this.formio.submissionUrl = `${this.props.src}/submission/${this.props.submissionId}`;
         this.formio.loadSubmission()
         .then((submission) => {
           this.loadSubmission(submission);
         }).catch((e) => {
-          return e;
+          if (this.props.onFormError) {
+            this.props.onFormError({
+              type: ErrorTypes.SubmissionFetchError,
+              message: this.errorResponse(e)
+           });
+          }
         });
       }
     }
