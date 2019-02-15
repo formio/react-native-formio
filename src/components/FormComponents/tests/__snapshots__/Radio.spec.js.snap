@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio Radio field Renders a radio field 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        undefined,
+        Object {
+          "marginLeft": 0,
+          "marginTop": 20,
+          "paddingRight": 10,
+        },
+        false,
+      ]
+    }
+  >
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "center",
+              "flexDirection": "row",
+              "marginBottom": 5,
+            },
+            Object {
+              "alignSelf": "flex-start",
+              "justifyContent": "flex-start",
+            },
+            Object {
+              "flexDirection": "column",
+              "paddingLeft": 10,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginLeft": 10,
+            }
+          }
+        >
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "borderColor": "#03a9f4",
+                "borderRadius": 10,
+                "borderWidth": 2,
+                "height": 20,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 20,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderRadius": 10,
+                  },
+                  false,
+                  false,
+                  false,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          accessible={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Array [
+              Object {},
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "lineHeight": 20,
+                  "paddingLeft": 10,
+                },
+                Object {
+                  "paddingLeft": 0,
+                },
+                Object {
+                  "color": undefined,
+                },
+                Object {
+                  "fontSize": 14,
+                  "marginHorizontal": 10,
+                },
+              ]
+            }
+          >
+            test
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "center",
+              "flexDirection": "row",
+              "marginBottom": 5,
+            },
+            Object {
+              "alignSelf": "flex-start",
+              "justifyContent": "flex-start",
+            },
+            Object {
+              "flexDirection": "column",
+              "paddingLeft": 10,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginLeft": 10,
+            }
+          }
+        >
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "borderColor": "#03a9f4",
+                "borderRadius": 10,
+                "borderWidth": 2,
+                "height": 20,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 20,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderRadius": 10,
+                  },
+                  false,
+                  false,
+                  false,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          accessible={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Array [
+              Object {},
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "lineHeight": 20,
+                  "paddingLeft": 10,
+                },
+                Object {
+                  "paddingLeft": 0,
+                },
+                Object {
+                  "color": undefined,
+                },
+                Object {
+                  "fontSize": 14,
+                  "marginHorizontal": 10,
+                },
+              ]
+            }
+          >
+            test1
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

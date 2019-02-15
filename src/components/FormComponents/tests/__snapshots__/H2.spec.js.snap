@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`H#  H2 component Renders a basic H2 component 1`] = `
+<Text
+  style={
+    Array [
+      Object {},
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      Object {
+        "fontSize": 28,
+        "letterSpacing": 0.36,
+        "lineHeight": 34,
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Content
+</Text>
+`;

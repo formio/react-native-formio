@@ -4,11 +4,7 @@ import isEqual from 'lodash/isEqual';
 
 function defineTransformerOutsideStrictMode() {
   var safeGlobalName = '____formioSelectMixinGetTransformer';
-  var globalObject = typeof window !== 'undefined'
-    ? window
-    : typeof global !== 'undefined'
-    ? global
-    : {};
+  var globalObject = typeof global !== 'undefined' ? global : {};
 
   /* We are essentially doing this, but because we're in strict mode by default in all babeled
    * modules, we need to escape it
@@ -82,7 +78,7 @@ export const serialize = obj => {
 
 //helper function to render raw html under a react element.
 export const raw = function(html) {
-  return { dangerouslySetInnerHTML: { __html: html } };
+  return {dangerouslySetInnerHTML: {__html: html}};
 };
 
 export const fileSize = function(a, b, c, d, e) {
@@ -91,8 +87,8 @@ export const fileSize = function(a, b, c, d, e) {
 };
 
 // Resolve nested values within an array.
-export const nested = function({ rowData, column }) {
-  const { property } = column;
+export const nested = function({rowData, column}) {
+  const {property} = column;
 
   if (!property) {
     return {};

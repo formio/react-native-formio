@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch Switch field Renders a checkbox field 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "marginLeft": 20,
+      "marginTop": 10,
+    }
+  }
+>
+  <RCTSwitch
+    disabled={false}
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onValueChange={[Function]}
+    style={
+      Object {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    tintColor="#03a9f4"
+    value={false}
+  />
+  <Text
+    style={
+      Object {
+        "color": "rgba(0, 0, 0, 0.87)",
+        "fontSize": 15,
+        "marginLeft": 10,
+        "marginTop": 8,
+      }
+    }
+  >
+    Checkbox
+  </Text>
+</View>
+`;

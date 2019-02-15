@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Change Events @change fires change events on a form 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    Object {
+      "paddingBottom": 30,
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {},
+              undefined,
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {},
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                Array [
+                  Object {
+                    "color": "#86939e",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
+                    "marginBottom": 1,
+                    "marginLeft": 20,
+                    "marginRight": 20,
+                    "marginTop": 15,
+                  },
+                  undefined,
+                  undefined,
+                ],
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                ]
+              }
+            >
+              
+            </Text>
+             
+            <Text
+              style={
+                Array [
+                  Object {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                ]
+              }
+            >
+              
+            </Text>
+             
+            My Textfield
+             
+            <Text
+              style={
+                Array [
+                  Object {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                ]
+              }
+            >
+              
+            </Text>
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "borderBottomColor": "#bdc6cf",
+              "borderBottomWidth": 1,
+              "borderColor": "#9e9e9e",
+              "marginLeft": 20,
+              "marginRight": 20,
+              "transform": Array [
+                Object {
+                  "translateX": 0,
+                },
+              ],
+            }
+          }
+        >
+          <TextInput
+            allowFontScaling={true}
+            data-index={0}
+            defaultValue=""
+            editable={true}
+            id="myTextfield"
+            name="myTextfield"
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            placeholder=""
+            placeholderTextColor="#bdbdbd"
+            shake={true}
+            style={
+              Array [
+                Object {
+                  "color": "#86939e",
+                  "minHeight": 36,
+                  "width": 750,
+                },
+                Object {
+                  "fontSize": 17.5,
+                },
+                Object {
+                  "color": "rgba(0, 0, 0, 0.87)",
+                  "fontSize": 14,
+                  "lineHeight": 18,
+                },
+              ]
+            }
+            type="text"
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

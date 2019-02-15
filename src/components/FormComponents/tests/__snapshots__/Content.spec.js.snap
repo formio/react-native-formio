@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content Content field Renders a content component 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "marginBottom": 0,
+      "marginHorizontal": 20,
+      "marginTop": 10,
+    }
+  }
+>
+  HTMLView
+</View>
+`;

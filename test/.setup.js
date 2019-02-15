@@ -1,21 +1,40 @@
-require('babel-register')();
 
-var jsdom = require('jsdom').jsdom;
+import { Response, Headers, Request } from 'node-fetch';
 
-var exposedProperties = ['window', 'navigator', 'document'];
+global.Response = Response;
+global.Headers = Headers;
+global.Request = Request;
 
-global.document = jsdom('');
-global.window = document.defaultView;
-global.window.FormioComponents = {};
-Object.keys(document.defaultView).forEach(function (property) {
-  if (typeof global[property] === 'undefined') {
-    exposedProperties.push(property);
-    global[property] = document.defaultView[property];
+jest.useFakeTimers()
+
+jest.mock('react-native-signature-capture', () => {
+  return () => ('SignatureCapture')
+})
+
+jest.mock('react-native-material-dropdown', () => {
+  return {
+    Dropdown: ()=> ('Dropdown')
   }
-});
+})
 
-global.navigator = {
-  userAgent: 'node.js'
-};
+jest.mock('react-native-multiple-select', () => {
+  return () => ('MultiSelect')
+})
 
-documentRef = document;
+jest.mock('react-native-modal-datetime-picker', () => {
+  return () => ('DateTimePicker')
+})
+
+jest.mock('react-native-htmlview', () => {
+  return () => ('HTMLView')
+})
+
+jest.mock('react-native-device-info', () => {
+  return {
+    isTablet: () => (true)
+  }
+})
+
+jest.mock('react-native-select-multiple', () => {
+  return () => ('SelectBoxes')
+})

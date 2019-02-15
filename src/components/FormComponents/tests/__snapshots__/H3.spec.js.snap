@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`H#  H3 component Renders a basic H3 component 1`] = `
+<Text
+  style={
+    Array [
+      Object {},
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      Object {
+        "fontSize": 22,
+        "letterSpacing": 0.35,
+        "lineHeight": 28,
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Header
+</Text>
+`;
