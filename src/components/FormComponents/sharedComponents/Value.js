@@ -67,9 +67,11 @@ export default class ValueComponent extends BaseComponent {
         }
       }
     }
-    if (this.props.value && prevProps.value && prevProps.value.item !== this.props.value.item) {
+
+    if (this.props.value && (!prevProps.value || prevProps.value !== this.props.value)) {
       value = safeSingleToMultiple(this.props.value, this.props.component);
     }
+
     // This occurs when a datagrid row is deleted.
     let defaultValue = getDefaultValue(value, this.props.component, this.getInitialValue, this.onChangeCustom);
     if (value === null && this.state.value !== defaultValue) {
@@ -81,7 +83,7 @@ export default class ValueComponent extends BaseComponent {
     if (typeof value !== 'undefined' && value !== null) {
       const valid = this.validate(value);
       this.setState({
-        value: value,
+        value: valid,
         isValid: valid.isValid,
         errorType: valid.errorType,
         errorMessage: valid.errorMessage

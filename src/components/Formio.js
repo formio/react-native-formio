@@ -55,6 +55,7 @@ export default class Formio extends React.Component {
     this.loadSubmission = this.loadSubmission.bind(this);
     this.attachToForm = this.attachToForm.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.fetchSubmission = this.fetchSubmission.bind(this);
     this.submissionError = this.submissionError.bind(this);
     this.setInputsErrorMessage = this.setInputsErrorMessage.bind(this);
     this.setInputsPristine = this.setInputsPristine.bind(this);
@@ -97,6 +98,7 @@ export default class Formio extends React.Component {
       this.formio = new Formiojs(this.props.src);
       this.formio.loadForm().then((form) => {
         this.loadForm(form);
+        this.fetchSubmission();
       })
       .catch((error) => {
         if (this.props.onFormError) {
@@ -109,30 +111,34 @@ export default class Formio extends React.Component {
           isLoading: false,
         });
       });
-
-      if (this.form && this.props.submissionId) {
-        this.formio.submissionId = this.props.submissionId;
-        this.formio.submissionUrl = `${this.props.src}/submission/${this.props.submissionId}`;
-        this.formio.loadSubmission()
-        .then((submission) => {
-          this.loadSubmission(submission);
-        }).catch((e) => {
-          if (this.props.onFormError) {
-            this.props.onFormError({
-              type: ErrorTypes.SubmissionFetchError,
-              message: this.errorResponse(e)
-           });
-          }
-        });
-      }
     }
     else if (this.props.form) {
       this.validate();
+      this.fetchSubmission();
     }
   }
 
   componentWillUnmount() {
     this.unmounting = true;
+  }
+
+  fetchSubmission() {
+    const form = this.state.form || this.props.form;
+    if (form && form._id && this.props.submissionId) {
+      this.formio.submissionId = this.props.submissionId;
+      this.formio.submissionUrl = `${this.props.src}/submission/${this.props.submissionId}`;
+      this.formio.loadSubmission()
+      .then((submission) => {
+        this.loadSubmission(submission);
+      }).catch((e) => {
+        if (this.props.onFormError) {
+          this.props.onFormError({
+            type: ErrorTypes.SubmissionFetchError,
+            message: this.errorResponse(e)
+         });
+        }
+      });
+    }
   }
 
   loadForm(form) {
