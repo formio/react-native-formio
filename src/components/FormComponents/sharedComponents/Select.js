@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import {Dropdown} from 'react-native-material-dropdown';
+import Dropdown from './DropdownPatch';
 import MultiSelect from 'react-native-multiple-select';
 import {FormLabel} from 'react-native-elements';
 import get from 'lodash/get';
