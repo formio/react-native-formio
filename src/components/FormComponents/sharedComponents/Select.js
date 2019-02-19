@@ -31,6 +31,9 @@ export default class SelectComponent extends ValueComponent {
   }
 
   willReceiveProps(nextProps) {
+    if (!nextProps.value) {
+      this.setState({ value: nextProps.value })
+    }
     if (this.props.component.refreshOn && !nextProps.formPristine) {
       const refreshOn = this.props.component.refreshOn;
       this.refresh = false;
