@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import {Dropdown} from 'react-native-material-dropdown';
+import Dropdown from './DropdownPatch';
 import MultiSelect from 'react-native-multiple-select';
 import {FormLabel} from 'react-native-elements';
 import get from 'lodash/get';
@@ -31,6 +31,9 @@ export default class SelectComponent extends ValueComponent {
   }
 
   willReceiveProps(nextProps) {
+    if (!nextProps.value) {
+      this.setState({ value: nextProps.value })
+    }
     if (this.props.component.refreshOn && !nextProps.formPristine) {
       const refreshOn = this.props.component.refreshOn;
       this.refresh = false;
