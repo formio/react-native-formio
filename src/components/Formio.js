@@ -433,6 +433,12 @@ export default class Formio extends React.Component {
       isSubmitting: true
     });
 
+    if (this.props.noSubmit) {
+      // Do not submit if no submit is true
+      this.props.onFormSave(sub);
+      return;
+    }
+
     this.formio.saveSubmission(sub).then((submission) => {
       if (typeof this.props.onFormSave === 'function') {
         this.props.onFormSave(submission);
