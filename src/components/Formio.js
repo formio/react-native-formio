@@ -389,6 +389,12 @@ export default class Formio extends React.Component {
 
     let request;
     let method;
+
+    if (this.props.noSubmit) {
+      // Do not submit if no submit is true
+      this.props.onFormSubmit(sub);
+      return;
+    }
     // Do the submit here.
     if (this.state.form.action) {
       method = this.state.submission._id ? 'put' : 'post';
@@ -593,4 +599,5 @@ Formio.propTypes = {
   onChange: PropTypes.func,
   onEvent: PropTypes.func,
   onFormError: PropTypes.func,
+  noSubmit: PropTypes.bool,
 };
