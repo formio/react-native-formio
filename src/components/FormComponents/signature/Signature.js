@@ -66,14 +66,16 @@ export default class Signature extends ValueComponent {
   }
 
   getElements() {
-    const {component} = this.props;
+    const {component, readOnly} = this.props;
 
-    if (this.props.readOnly) {
-      const image = typeof this.state.value === 'object' ? this.state.value.item : this.state.value;
+    const {value} = this.state;
+    const imageUri = typeof value === 'object' ? this.state.value.item : this.state.value;
+    if (readOnly) {
+      const image =  imageUri;
       return (
         <View style={styles.imageWrapper}>
           <Image
-            source={{uri: image}}
+            source={{uri: imageUri}}
             style={styles.signature}
             resizeMode={'stretch'}
           />
@@ -82,15 +84,15 @@ export default class Signature extends ValueComponent {
     }
     return (
       <View style={styles.signatureWrapper}>
-          {this.state.value && this.state.value.item && <View style={styles.imageWrapper}>
+          {imageUri && <View style={styles.imageWrapper}>
             <Image
               style={styles.signature}
-              source={{uri: this.state.value.item}}
+              source={{uri: imageUri}}
               resizeMode={'stretch'}
             />
           </View>}
          <Button
-          title={`Tap to ${this.state.value && this.state.value.item ? 'change' : 'sign'}`}
+          title={`Tap to ${imageUri ? 'change' : 'sign'}`}
           buttonStyle={styles.signatureButton}
           onPress={this.toggleSignaturePad}
           backgroundColor={'transparent'}
