@@ -17,17 +17,17 @@ export default class SelectBox extends ValueComponent {
   }
 
   getInitialValue() {
-    return {};
+    return [];
   }
 
   onChangeItems(item) {
     const selectedItems = this.state.value && this.state.value.item ? this.state.value.item : [];
-    const isSelected = Object.keys(selectedItems).find((i) => i === item.value);
-    if (isSelected && selectedItems[isSelected] === true) {
-      selectedItems[item.value] = false;
+    const itemIndex = selectedItems.findIndex((i) => i === item.value);
+    if (itemIndex > -1) { // if item was previously selected, remove it.
+      selectedItems.splice(itemIndex, 1);
     }
     else {
-      selectedItems[item.value] = true;
+      selectedItems.push(item.value);
     }
     this.setValue(selectedItems);
   }
@@ -67,6 +67,7 @@ export default class SelectBox extends ValueComponent {
       boxesWrapper: {
         flex: 1,
         flexDirection: component.inline ? 'row' : 'column',
+        flexWrap: 'wrap',
         marginHorizontal: component.inline ? 20 : 0,
         borderBottomWidth: 0.5,
         borderTopWidth: 0.5,
@@ -84,8 +85,7 @@ export default class SelectBox extends ValueComponent {
      <View style={boxesStyles.boxesWrapper}>
         {component.values.map(item => {
           const selectedItems = this.state.value && this.state.value.item ? this.state.value.item : [];
-          const isSelected = Object.keys(selectedItems).find((i) => i === item.value);
-          const isChecked = isSelected && selectedItems[isSelected] === true;
+          const isSelected = selectedItems.find((i) => i === item.value);
           const onSelect = () => this.onChangeItems(item);
 
           return (
@@ -99,7 +99,7 @@ export default class SelectBox extends ValueComponent {
             iconRight={component.optionsLabelPosition === 'left'}
             checkedColor={this.props.colors.primary1Color}
             uncheckedColor={this.props.colors.primary1Color}
-            checked={isChecked}
+            checked={!!isSelected}
             onIconPress={onSelect}
           />);
         })}
