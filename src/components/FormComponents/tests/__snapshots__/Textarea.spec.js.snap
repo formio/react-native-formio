@@ -10,135 +10,159 @@ exports[`Textarea Single Textarea Renders a basic textarea 1`] = `
 >
   <View
     style={
-      Array [
-        Object {},
-        undefined,
-      ]
+      Object {
+        "flexDirection": "column",
+      }
     }
   >
-    <Text
+    <View
       style={
-        Array [
-          Object {},
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          Array [
-            Object {
-              "color": "#86939e",
-              "fontSize": 15,
-              "fontWeight": "bold",
-              "marginBottom": 1,
-              "marginLeft": 20,
-              "marginRight": 20,
-              "marginTop": 15,
-            },
-            undefined,
-            undefined,
-          ],
-        ]
+        Object {
+          "flexDirection": "row",
+          "marginRight": 0,
+          "marginTop": 15,
+        }
       }
     >
-      <Text
+      <View
         style={
           Array [
             Object {},
             undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
           ]
         }
       >
-        
-      </Text>
-       
-      <Text
-        style={
-          Array [
-            Object {},
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-          ]
-        }
-      >
-        
-      </Text>
-       
-      textarea
-       
-      <Text
-        style={
-          Array [
-            Object {},
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-          ]
-        }
-      >
-        
-      </Text>
-    </Text>
+        <Text
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "#86939e",
+                  "fontSize": 15,
+                  "fontWeight": "bold",
+                  "marginBottom": 1,
+                  "marginLeft": 20,
+                  "marginRight": 20,
+                  "marginTop": 15,
+                },
+                Object {
+                  "color": "rgba(0, 0, 0, 0.87)",
+                  "flexWrap": "wrap",
+                  "fontSize": 12,
+                  "maxWidth": 580,
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {},
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ]
+            }
+          >
+            
+          </Text>
+           
+          <Text
+            style={
+              Array [
+                Object {},
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ]
+            }
+          >
+            
+          </Text>
+           
+          textarea
+           
+          <Text
+            style={
+              Array [
+                Object {},
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ]
+            }
+          >
+            
+          </Text>
+        </Text>
+      </View>
+    </View>
+    <TextInput
+      allowFontScaling={true}
+      autoCorrect={true}
+      data-index={0}
+      defaultValue=""
+      disabled={true}
+      id="textarea"
+      multiline={true}
+      numberOfLines={3}
+      onChange={[Function]}
+      placeholder=""
+      style={
+        Array [
+          Object {
+            "borderWidth": 1,
+            "flex": 1,
+            "fontSize": 16,
+            "lineHeight": 16,
+            "marginHorizontal": 10,
+            "marginTop": 20,
+            "paddingBottom": 20,
+            "paddingHorizontal": 10,
+            "paddingTop": 10,
+          },
+          Object {
+            "borderColor": "#9e9e9e",
+            "lineHeight": 18,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
   </View>
-  <TextInput
-    allowFontScaling={true}
-    autoCorrect={true}
-    data-index={0}
-    defaultValue=""
-    disabled={true}
-    id="textarea"
-    multiline={true}
-    numberOfLines={3}
-    onChange={[Function]}
-    placeholder=""
-    style={
-      Array [
-        Object {
-          "borderWidth": 1,
-          "fontSize": 16,
-          "lineHeight": 16,
-          "marginHorizontal": 10,
-          "marginTop": 20,
-          "paddingBottom": 20,
-          "paddingHorizontal": 10,
-          "paddingTop": 10,
-        },
-        Object {
-          "borderColor": "#9e9e9e",
-          "lineHeight": 18,
-        },
-      ]
-    }
-    underlineColorAndroid="transparent"
-    value=""
-  />
 </View>
 `;

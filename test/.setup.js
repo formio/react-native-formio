@@ -38,3 +38,7 @@ jest.mock('react-native-device-info', () => {
 jest.mock('react-native-select-multiple', () => {
   return () => ('SelectBoxes')
 })
+
+jest.mock('rn-tooltip', () => {
+  return () => ('RNTooltip')
+})

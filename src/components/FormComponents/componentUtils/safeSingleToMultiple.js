@@ -15,7 +15,7 @@ export const safeSingleToMultiple = (value, component) => {
   }
   // If this was a multivalue but is now single value.
   // RE-60 :-Need to return the value as array of object instead of object while converting  a multivalue to single value for datagrid component
-  else if (!component.multiple && Array.isArray(value)) {
+  else if (!component.multiple && component.type !== 'selectboxes' && Array.isArray(value)) {
     value = value[0];
   }
   // Set dates to Date object.

@@ -7,5 +7,23 @@ exports[`Textfield @textfield Single Textfield renders a basic textfield 1`] = `
       "flex": 1,
     }
   }
-/>
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginRight": 0,
+          "marginTop": 15,
+        }
+      }
+    />
+  </View>
+</View>
 `;
