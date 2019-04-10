@@ -2,7 +2,6 @@ import React from 'react';
 import MultiComponent from './Multi';
 import {StyleSheet} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import {TextMask} from 'react-text-mask-hoc/ReactNative';
 import {clone} from 'lodash';
 import {FormInput} from 'react-native-elements';
 import PropTypes from 'prop-types';
@@ -143,7 +142,7 @@ export default class InputComponent extends MultiComponent {
       properties.placeholderChar = '_';
       properties.guide = true;
 
-      return (<TextMask style={style.input} Component={FormInput} {...properties}/>);
+      return (<FormInput inputStyle={style.input} containerStyle={style.container} {...properties} />);
     }
     else {
       return (<FormInput inputStyle={style.input} containerStyle={style.container} {...properties} />);

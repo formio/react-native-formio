@@ -3516,11 +3516,6 @@ has@^1.0.1:
   dependencies:
     function-bind "^1.1.1"
 
-hoist-non-react-statics@^2.3.1:
-  version "2.5.5"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
-  integrity sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
-
 home-or-tmp@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
@@ -6086,13 +6081,6 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-shallow-equal@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-shallow-equal/-/react-shallow-equal-0.1.1.tgz#7a8e317e42c3f9871c6e788426cbd6ed65390c63"
-  integrity sha512-3in6sv3/6HTv/dRuc8Sjimb5C+zM+JlkNUv45VwE2FqfCzFi03tlFnwwGU9ihDDFJecvKOCgwfnwGoIx0Yr+Ug==
-  dependencies:
-    style-equal "^1.0.0"
-
 react-test-renderer@^16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.4.2.tgz#4e03eca9359bb3210d4373f7547d1364218ef74e"
@@ -6102,15 +6090,6 @@ react-test-renderer@^16.4.2:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
     react-is "^16.4.2"
-
-react-text-mask-hoc@^0.10.6:
-  version "0.10.6"
-  resolved "https://registry.yarnpkg.com/react-text-mask-hoc/-/react-text-mask-hoc-0.10.6.tgz#dd639c9582db68e5cb5379c788b5ffba3d5e64b5"
-  integrity sha512-F9WjhvfTNcxTHeA4YFdo3/dgQt+s++ceanRl+RNOaVfiJWy9Y1YwPfp03vzsRkIdg7ZMi64cyMW8mKmeBvP8Jg==
-  dependencies:
-    hoist-non-react-statics "^2.3.1"
-    prop-types "^15.6.0"
-    react-shallow-equal "^0.1.1"
 
 react-timer-mixin@^0.13.2:
   version "0.13.4"
@@ -6952,11 +6931,6 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
-
-style-equal@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/style-equal/-/style-equal-1.0.0.tgz#98a1c5922226bfe13c196e73f1940e91b8e66595"
-  integrity sha1-mKHFkiImv+E8GW5z8ZQOkbjmZZU=
 
 supports-color@^2.0.0:
   version "2.0.0"
