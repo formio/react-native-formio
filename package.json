@@ -41,7 +41,6 @@
     "react-native-signature-capture": "^0.4.9",
     "react-native-simple-radio-button": "^2.7.2",
     "react-native-vector-icons": "^4.6.0",
-    "react-text-mask-hoc": "^0.10.6",
     "rn-tooltip": "^1.0.1"
   },
   "devDependencies": {
@@ -83,7 +82,7 @@
       "<rootDir>/test/.setup.js"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|react-native-clean-form|react-native-vector-icons|react-text-mask-hoc|react-native-elements|react-native-simple-radio-button)/)"
+      "node_modules/(?!(react-native|react-native-clean-form|react-native-vector-icons|react-native-elements|react-native-simple-radio-button)/)"
     ],
     "moduleFileExtensions": [
       "js",
