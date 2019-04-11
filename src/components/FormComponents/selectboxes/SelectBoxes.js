@@ -148,8 +148,8 @@ export default class SelectBox extends ValueComponent {
       <View style={selectBoxStyle.wrapper}>
          <View style={selectBoxStyle.mainElement}>
           <View style={selectBoxStyle.labelWrapper}>
-          {inputLabel} {requiredInline}
-          {component.tooltip && <Tooltip
+          {inputLabel}{requiredInline}
+          {!!component.tooltip && <Tooltip
             text={component.tooltip}
             color={this.props.colors.alternateTextColor}
             backgroundColor={this.props.colors.primary1Color}
@@ -157,7 +157,7 @@ export default class SelectBox extends ValueComponent {
           </View>
           {this.selectBoxes()}
         </View>
-        {component.description && <Text style={selectBoxStyle.descriptionText}>{component.description}</Text>}
+        {!!component.description && <Text style={selectBoxStyle.descriptionText}>{component.description}</Text>}
       </View>
     );
   }

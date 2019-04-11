@@ -32,7 +32,7 @@ export default class SelectComponent extends ValueComponent {
 
   willReceiveProps(nextProps) {
     if (!nextProps.value) {
-      this.setState({ value: nextProps.value })
+      this.setState({value: nextProps.value});
     }
     if (this.props.component.refreshOn && !nextProps.formPristine) {
       const refreshOn = this.props.component.refreshOn;
@@ -225,7 +225,7 @@ export default class SelectComponent extends ValueComponent {
         <View style={selectStyle.mainElement}>
           <View style={selectStyle.labelWrapper}>
           {inputLabel}
-          {component.tooltip && <Tooltip
+          {!!component.tooltip && <Tooltip
             text={component.tooltip}
             color={this.props.colors.alternateTextColor}
             backgroundColor={this.props.colors.primary1Color}
@@ -239,7 +239,7 @@ export default class SelectComponent extends ValueComponent {
           </View>
           {Element}
         </View>
-        {component.description && <Text style={selectStyle.descriptionText}>{component.description}</Text>}
+        {!!component.description && <Text style={selectStyle.descriptionText}>{component.description}</Text>}
       </View>
     );
   }

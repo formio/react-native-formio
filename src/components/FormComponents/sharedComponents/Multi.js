@@ -152,7 +152,7 @@ export default class MultiComponent extends ValueComponent {
           <View style={multiStyles.mainElement}>
             <View style={multiStyles.labelWrapper}>
             {inputLabel}
-            {component.tooltip && <Tooltip
+            {!!component.tooltip && <Tooltip
               text={component.tooltip}
               color={this.props.colors.alternateTextColor}
               backgroundColor={this.props.colors.primary1Color}
@@ -161,7 +161,7 @@ export default class MultiComponent extends ValueComponent {
             {Element}
           </View>
           {errorText}
-          {component.description && <Text style={multiStyles.descriptionText}>{component.description}</Text>}
+          {!!component.description && <Text style={multiStyles.descriptionText}>{component.description}</Text>}
         </View>
       );
     }

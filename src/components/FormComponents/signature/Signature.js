@@ -84,7 +84,7 @@ export default class Signature extends ValueComponent {
     }
     return (
       <View style={styles.signatureWrapper}>
-          {imageUri && <View style={styles.imageWrapper}>
+          {!!imageUri && <View style={styles.imageWrapper}>
             <Image
               style={styles.signature}
               source={{uri: imageUri}}
