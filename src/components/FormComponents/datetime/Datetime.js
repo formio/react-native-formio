@@ -102,7 +102,7 @@ export default class Datetime extends MultiComponent {
     const dateFormat = this.props.component.dateFirst ? 'DD/MM/YYYY' : 'MM/DD/YYYY';
     return (
       <View style={styles.date}>
-        {this.state.value && this.state.value.item &&
+        {!!this.state.value && !!this.state.value.item &&
           <Text style={styles.dateText}>{
             moment(this.state.value.item, dateFormat).format(this.getDisplayFormat())}
         </Text>}
