@@ -21,7 +21,7 @@ export default class SelectBox extends ValueComponent {
   }
 
   onChangeItems(item) {
-    const selectedItems = this.state.value && this.state.value.item ? this.state.value.item : [];
+    const selectedItems = this.state.value && this.state.value.item ? [...this.state.value.item] : [];
     const itemIndex = selectedItems.findIndex((i) => i === item.value);
     if (itemIndex > -1) { // if item was previously selected, remove it.
       selectedItems.splice(itemIndex, 1);
