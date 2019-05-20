@@ -1,9 +1,10 @@
-
 import React from 'react';
 import clone from 'lodash/clone';
 import PropTypes from 'prop-types';
 import {View, StyleSheet} from 'react-native';
+import Tooltip from './Tooltip';
 import ValueComponent from './Value';
+import DeviceInfo from 'react-native-device-info';
 import {
   Icon,
   Button,
@@ -60,19 +61,61 @@ export default class MultiComponent extends ValueComponent {
     );
   }
 
+  elementLayout(position) {
+    switch (position) {
+      case 'top':
+       return {
+          flexDirection: 'column',
+        };
+      case 'left-left':
+      case 'left-right':
+        return {
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+        };
+      case 'right-left':
+      case 'right-right':
+        return {
+          flexDirection: 'row-reverse',
+          marginHorizontal: 20,
+        };
+      case 'bottom':
+        return {
+          flexDirection: 'column-reverse',
+        };
+      default:
+        return {
+          flexDirection: 'column',
+        };
+    }
+  }
+
   getElements() {
     const multiStyles = StyleSheet.create({
       fieldWrapper: {
         flex: 1,
+      },
+      mainElement: this.elementLayout(this.props.component.labelPosition),
+      labelWrapper: {
+        flexDirection: 'row',
+        marginTop: this.props.component.labelPosition === 'top' || this.props.component.labelPosition === 'bottom' ? 0 : 15,
+        marginRight: this.props.component.labelPosition === 'left-left' || this.props.component.labelPosition === 'left-right' ? 10 : 0,
       },
       errorText: {
         alignSelf: 'flex-end',
         fontSize: 10,
         color: this.props.colors.errorColor
       },
-      label: {
+      descriptionText: {
+        fontSize: DeviceInfo.isTablet() ? 12 : 10,
+        marginLeft: 20,
+        marginTop: 10,
+      },
+      labelStyle: {
+        flexWrap: 'wrap',
+        maxWidth: DeviceInfo.isTablet() ? 580 : 210,
         color: this.props.theme.Label.color,
-        fontSize: this.props.theme.Label.fontSize,
+        fontSize: DeviceInfo.isTablet() ? this.props.theme.Label.fontSize : 12,
       }
     });
 
@@ -106,9 +149,19 @@ export default class MultiComponent extends ValueComponent {
 
       Component = (
         <View style={multiStyles.fieldWrapper}>
-          {inputLabel}
-          {Element}
+          <View style={multiStyles.mainElement}>
+            <View style={multiStyles.labelWrapper}>
+            {inputLabel}
+            {component.tooltip && <Tooltip
+              text={component.tooltip}
+              color={this.props.colors.alternateTextColor}
+              backgroundColor={this.props.colors.primary1Color}
+            />}
+            </View>
+            {Element}
+          </View>
           {errorText}
+          {component.description && <Text style={multiStyles.descriptionText}>{component.description}</Text>}
         </View>
       );
     }

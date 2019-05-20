@@ -1,6 +1,7 @@
 import React from 'react';
 import MultiComponent from './Multi';
 import {StyleSheet} from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import {TextMask} from 'react-text-mask-hoc/ReactNative';
 import {clone} from 'lodash';
 import {FormInput} from 'react-native-elements';
@@ -110,6 +111,8 @@ export default class InputComponent extends MultiComponent {
         color: themeStyle.color,
         fontSize: themeStyle.fontSize,
         lineHeight: themeStyle.lineHeight,
+        flex: 1,
+        maxWidth: DeviceInfo.isTablet() ? 580 : 210,
       }
     });
 
@@ -143,7 +146,7 @@ export default class InputComponent extends MultiComponent {
       return (<TextMask style={style.input} Component={FormInput} {...properties}/>);
     }
     else {
-      return (<FormInput  inputStyle={style.input} containerStyle={style.container} {...properties} />);
+      return (<FormInput inputStyle={style.input} containerStyle={style.container} {...properties} />);
     }
   }
 }

@@ -44,7 +44,7 @@ import Textarea from '../textarea/Textarea';
           theme={theme}
         />
       );
-      expect(element).toMatchSnapshot()
+      expect(element).toMatchSnapshot();
     });
 
      it.skip('Fills in the placeholder value', () => {
@@ -146,7 +146,7 @@ import Textarea from '../textarea/Textarea';
       expect(element.find('.formio-component-single label').length).to.equal(0);
     });
      it.skip('sets a custom class', () => {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = renderer.create(
         <Textarea
           component={component}
@@ -284,7 +284,7 @@ import Textarea from '../textarea/Textarea';
     });
      it.skip('Adds and removes rows', () => {
       component.defaultValue = 'My Value';
-      const element = mount(
+      const element = renderer.create(
         <Textarea
           name='textarea'
           component={component}
@@ -326,7 +326,7 @@ import Textarea from '../textarea/Textarea';
       table.find('a.btn.add-row').simulate('click');
       expect(table.find('tr').length).to.equal(2);
       expect(table.find('tr').at(0).find('textarea').prop('data-index')).to.equal(0);
-    })
+    });
      it.skip('Check multiple textarea with required', () => {
       component.validate.required = true;
       const element = renderer.create(
@@ -364,7 +364,7 @@ import Textarea from '../textarea/Textarea';
       expect(element.find('.formio-component-multiple label').length).to.equal(0);
     });
      it.skip('sets a custom class', () => {
-      component.customClass = 'my-custom-class'
+      component.customClass = 'my-custom-class';
       const element = renderer.create(
         <Textarea
           component={component}

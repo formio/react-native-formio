@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Field Select Component Render a basic select component 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "marginHorizontal": 20,
+      "marginTop": 20,
+    }
+  }
+>
+  Dropdown
+</View>
+`;

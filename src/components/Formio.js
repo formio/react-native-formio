@@ -55,6 +55,7 @@ export default class Formio extends React.Component {
     this.loadSubmission = this.loadSubmission.bind(this);
     this.attachToForm = this.attachToForm.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.fetchSubmission = this.fetchSubmission.bind(this);
     this.submissionError = this.submissionError.bind(this);
     this.setInputsErrorMessage = this.setInputsErrorMessage.bind(this);
     this.setInputsPristine = this.setInputsPristine.bind(this);
@@ -69,6 +70,7 @@ export default class Formio extends React.Component {
     this.showAlert = this.showAlert.bind(this);
     this.setPristine = this.setPristine.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSave = this.onSave.bind(this);
     this.resetForm = this.resetForm.bind(this);
     this.errorResponse = this.errorResponse.bind(this);
   }
@@ -96,32 +98,47 @@ export default class Formio extends React.Component {
       this.formio = new Formiojs(this.props.src);
       this.formio.loadForm().then((form) => {
         this.loadForm(form);
+        this.fetchSubmission();
       })
       .catch((error) => {
-       if (this.props.onFormError) {
-         this.props.onFormError({
-           type: ErrorTypes.FormFetchError,
-           message: this.errorResponse(error)
+        if (this.props.onFormError) {
+          this.props.onFormError({
+            type: ErrorTypes.FormFetchError,
+            message: this.errorResponse(error)
+          });
+        }
+        this.setState({
+          isLoading: false,
         });
-       }
-       this.setState({
-        isLoading: false,
-       });
       });
-
-      if (this.formio.submission) {
-        this.formio.loadSubmission().then((submission) => {
-          this.loadSubmission(submission);
-        });
-      }
     }
     else if (this.props.form) {
       this.validate();
+      this.fetchSubmission();
     }
   }
 
   componentWillUnmount() {
     this.unmounting = true;
+  }
+
+  fetchSubmission() {
+    const form = this.state.form || this.props.form;
+    if (form && form._id && this.props.submissionId) {
+      this.formio.submissionId = this.props.submissionId;
+      this.formio.submissionUrl = `${this.props.src}/submission/${this.props.submissionId}`;
+      this.formio.loadSubmission()
+      .then((submission) => {
+        this.loadSubmission(submission);
+      }).catch((e) => {
+        if (this.props.onFormError) {
+          this.props.onFormError({
+            type: ErrorTypes.SubmissionFetchError,
+            message: this.errorResponse(e)
+         });
+        }
+      });
+    }
   }
 
   loadForm(form) {
@@ -178,7 +195,7 @@ export default class Formio extends React.Component {
       isSubmitting: false,
       alerts: [{
         type: 'success',
-        message: 'Submission was ' + ((method === 'put') ? 'updated' : 'created')
+        message: `Submission was ${method === 'put' ? 'updated' : 'created'}`
       }]
     });
   }
@@ -268,7 +285,7 @@ export default class Formio extends React.Component {
     let allIsValid = true;
     const inputs = this.inputs;
     Object.keys(inputs).forEach((name) => {
-      if (!inputs[name].state.isValid) {
+      if (inputs[name].state.value && !inputs[name].state.value.isValid) {
         allIsValid = false;
       }
     });
@@ -349,19 +366,26 @@ export default class Formio extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-
     this.setPristine(false);
     if (!this.state.isValid) {
       this.showAlert('danger', 'Please fix the following errors before submitting.', true);
+      if (this.props.onFormError) {
+        this.props.onFormError({
+          type: 'ValidationError',
+          message: 'Please fix all errors before submitting.',
+        });
+      }
       return;
     }
+
+    const sub = this.state.submission;
+    sub.data = clone(this.data);
+    sub.state = 'submitted';
 
     this.setState({
       alerts: [],
       isSubmitting: true
     });
-    const sub = this.state.submission;
-    sub.data = clone(this.data);
 
     let request;
     let method;
@@ -393,13 +417,46 @@ export default class Formio extends React.Component {
     }
   }
 
-  resetForm() {
-    this.setState((previousState) => {
-      for (let key in previousState.submission.data) {
-        delete previousState.submission.data[key];
-      }
-      return previousState;
+  onSave() {
+    const sub = this.state.submission;
+    sub.data = clone(this.data);
+    sub.state = 'draft';
+
+    this.setState({
+      alerts: [],
+      isSubmitting: true
     });
+
+    this.formio.saveSubmission(sub).then((submission) => {
+      if (typeof this.props.onFormSave === 'function') {
+        this.props.onFormSave(submission);
+      }
+      this.setState({
+        alerts: [{
+          type: 'success',
+          message: 'Submission was saved',
+        }],
+        isSubmitting: false
+      });
+    });
+  }
+
+  resetForm() {
+    const submission = this.state.submission;
+    for (let key in submission.data) {
+      delete submission.data[key];
+    }
+
+    Object.keys(this.inputs).forEach((name) => {
+      if (typeof this.inputs[name].setValue === 'function') {
+        this.inputs[name].setValue(null);
+      }
+    });
+    this.setState({
+      submission,
+    });
+    this.data = {};
+    this.setPristine(true);
   }
 
   render() {
@@ -481,11 +538,12 @@ export default class Formio extends React.Component {
           isFormValid={this.state.isValid}
           onElementRender={this.props.onElementRender}
           theme={this.props.theme}
-          colors={this.props.colors}
+          colors={{...colors, ...this.props.colors}}
           resetForm={this.resetForm}
           formio={this.formio}
           data={this.data}
           onSubmit={this.onSubmit}
+          onSave={this.onSave}
           onChange={this.onChange}
           onEvent={this.onEvent}
           isDisabled={this.isDisabled}
@@ -531,6 +589,7 @@ Formio.propTypes = {
   onFormLoad: PropTypes.func,
   onSubmissionLoad: PropTypes.func,
   onFormSubmit: PropTypes.func,
+  onFormSave: PropTypes.func,
   onChange: PropTypes.func,
   onEvent: PropTypes.func,
   onFormError: PropTypes.func,

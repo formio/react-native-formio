@@ -1,9 +1,9 @@
 import {safeSingleToMultiple} from './safeSingleToMultiple';
 
 const getCustomDefault = (component) => {
-  const value = component.customDefaultValue.toString()
+  const value = component.customDefaultValue.toString();
   return value;
-}
+};
 
 export const getDefaultValue = (value, component, getInitialValue, onChangeCustom) => {
   // Allow components to set different default values.

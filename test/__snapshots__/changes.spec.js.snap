@@ -1,514 +1,186 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Change Events @change fires change events on a form 1`] = `
-<View
+<RCTScrollView
+  contentContainerStyle={
+    Object {
+      "paddingBottom": 30,
+    }
+  }
   style={
     Object {
+      "backgroundColor": "#ffffff",
       "flex": 1,
-      "marginHorizontal": 10,
     }
   }
 >
-  <View
-    onLayout={[Function]}
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  >
-    <RCTScrollView
-      contentContainerStyle={
+  <View>
+    <View
+      style={
         Object {
-          "minHeight": null,
+          "flex": 1,
         }
       }
     >
-      <View>
-        <Text>
-          
-        </Text>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
         <View
           style={
             Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
+              Object {},
               undefined,
             ]
           }
         >
-          <View
-            border={true}
-            componentName="FormGroupWrapper"
-            error={false}
-            inlineLabel={false}
-            multiline={false}
-            numberOfLines={1}
+          <Text
             style={
               Array [
-                Object {
-                  "alignItems": "stretch",
-                  "borderColor": "#ebebeb",
-                  "borderRadius": 3,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "column",
-                  "height": 60,
-                  "justifyContent": "flex-start",
-                  "marginBottom": 10,
-                  "paddingBottom": 0,
-                  "paddingLeft": 10,
-                  "paddingRight": 10,
-                  "paddingTop": 0,
-                },
+                Object {},
                 undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                Array [
+                  Object {
+                    "color": "#86939e",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
+                    "marginBottom": 1,
+                    "marginLeft": 20,
+                    "marginRight": 20,
+                    "marginTop": 15,
+                  },
+                  undefined,
+                  undefined,
+                ],
               ]
             }
-            theme={
-              Object {
-                "BaseInput": Object {
-                  "fontSize": 12,
-                  "lineHeight": 18,
-                  "placeholderColor": "#c9c9c9",
-                },
-                "Button": Object {
-                  "backgroundColor": "#4286dd",
-                  "color": "#fff",
-                  "fontSize": 12,
-                  "fontWeight": 700,
-                  "height": 45,
-                },
-                "ErrorMessage": Object {
-                  "color": "red",
-                  "fontSize": 10,
-                  "marginBottom": 15,
-                  "textAlign": "right",
-                },
-                "Fieldset": Object {
-                  "borderBottomColor": "#ddd",
-                  "borderBottomWidth": 1,
-                  "labelColor": "#909090",
-                  "labelHeight": 25,
-                  "labelSize": 9,
-                  "labelWeight": 700,
-                  "paddingBottom": 12,
-                  "paddingLeft": 8,
-                  "paddingRight": 8,
-                  "paddingTop": 12,
-                },
-                "FormGroup": Object {
-                  "borderColor": "#ebebeb",
-                  "borderRadius": 3,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "errorBorderColor": "red",
-                  "height": 35,
-                  "marginBottom": 10,
-                  "paddingBottom": 0,
-                  "paddingLeft": 10,
-                  "paddingRight": 10,
-                  "paddingTop": 0,
-                },
-                "Input": Object {
-                  "color": "#313131",
-                },
-                "Label": Object {
-                  "color": "#bfc2c9",
-                  "fontSize": 12,
-                  "stackedHeight": 25,
-                },
-                "Select": Object {},
-              }
-            }
           >
-            <View
-              inlineLabel={false}
-              style={
-                Array [
-                  Object {
-                    "flexBasis": 0,
-                    "flexDirection": "column",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "center",
-                    "marginTop": 5,
-                    "paddingLeft": 0,
-                  },
-                  undefined,
-                ]
-              }
-              theme={
-                Object {
-                  "BaseInput": Object {
-                    "fontSize": 12,
-                    "lineHeight": 18,
-                    "placeholderColor": "#c9c9c9",
-                  },
-                  "Button": Object {
-                    "backgroundColor": "#4286dd",
-                    "color": "#fff",
-                    "fontSize": 12,
-                    "fontWeight": 700,
-                    "height": 45,
-                  },
-                  "ErrorMessage": Object {
-                    "color": "red",
-                    "fontSize": 10,
-                    "marginBottom": 15,
-                    "textAlign": "right",
-                  },
-                  "Fieldset": Object {
-                    "borderBottomColor": "#ddd",
-                    "borderBottomWidth": 1,
-                    "labelColor": "#909090",
-                    "labelHeight": 25,
-                    "labelSize": 9,
-                    "labelWeight": 700,
-                    "paddingBottom": 12,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 12,
-                  },
-                  "FormGroup": Object {
-                    "borderColor": "#ebebeb",
-                    "borderRadius": 3,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "errorBorderColor": "red",
-                    "height": 35,
-                    "marginBottom": 10,
-                    "paddingBottom": 0,
-                    "paddingLeft": 10,
-                    "paddingRight": 10,
-                    "paddingTop": 0,
-                  },
-                  "Input": Object {
-                    "color": "#313131",
-                  },
-                  "Label": Object {
-                    "color": "#bfc2c9",
-                    "fontSize": 12,
-                    "stackedHeight": 25,
-                  },
-                  "Select": Object {},
-                }
-              }
-            >
-              <Text
-                componentName="Label"
-                inlineLabel={false}
-                style={
-                  Array [
-                    Object {
-                      "color": "#bfc2c9",
-                      "fontSize": 12,
-                    },
-                    undefined,
-                  ]
-                }
-                theme={
-                  Object {
-                    "BaseInput": Object {
-                      "fontSize": 12,
-                      "lineHeight": 18,
-                      "placeholderColor": "#c9c9c9",
-                    },
-                    "Button": Object {
-                      "backgroundColor": "#4286dd",
-                      "color": "#fff",
-                      "fontSize": 12,
-                      "fontWeight": 700,
-                      "height": 45,
-                    },
-                    "ErrorMessage": Object {
-                      "color": "red",
-                      "fontSize": 10,
-                      "marginBottom": 15,
-                      "textAlign": "right",
-                    },
-                    "Fieldset": Object {
-                      "borderBottomColor": "#ddd",
-                      "borderBottomWidth": 1,
-                      "labelColor": "#909090",
-                      "labelHeight": 25,
-                      "labelSize": 9,
-                      "labelWeight": 700,
-                      "paddingBottom": 12,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 12,
-                    },
-                    "FormGroup": Object {
-                      "borderColor": "#ebebeb",
-                      "borderRadius": 3,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "errorBorderColor": "red",
-                      "height": 35,
-                      "marginBottom": 10,
-                      "paddingBottom": 0,
-                      "paddingLeft": 10,
-                      "paddingRight": 10,
-                      "paddingTop": 0,
-                    },
-                    "Input": Object {
-                      "color": "#313131",
-                    },
-                    "Label": Object {
-                      "color": "#bfc2c9",
-                      "fontSize": 12,
-                      "stackedHeight": 25,
-                    },
-                    "Select": Object {},
-                  }
-                }
-              >
-                
-                 
-                
-                 
-                My Textfield
-                 
-                
-              </Text>
-            </View>
-            <View
-              inlineLabel={false}
-              multiline={false}
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "center",
-                  },
-                  undefined,
-                ]
-              }
-              theme={
-                Object {
-                  "BaseInput": Object {
-                    "fontSize": 12,
-                    "lineHeight": 18,
-                    "placeholderColor": "#c9c9c9",
-                  },
-                  "Button": Object {
-                    "backgroundColor": "#4286dd",
-                    "color": "#fff",
-                    "fontSize": 12,
-                    "fontWeight": 700,
-                    "height": 45,
-                  },
-                  "ErrorMessage": Object {
-                    "color": "red",
-                    "fontSize": 10,
-                    "marginBottom": 15,
-                    "textAlign": "right",
-                  },
-                  "Fieldset": Object {
-                    "borderBottomColor": "#ddd",
-                    "borderBottomWidth": 1,
-                    "labelColor": "#909090",
-                    "labelHeight": 25,
-                    "labelSize": 9,
-                    "labelWeight": 700,
-                    "paddingBottom": 12,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 12,
-                  },
-                  "FormGroup": Object {
-                    "borderColor": "#ebebeb",
-                    "borderRadius": 3,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "errorBorderColor": "red",
-                    "height": 35,
-                    "marginBottom": 10,
-                    "paddingBottom": 0,
-                    "paddingLeft": 10,
-                    "paddingRight": 10,
-                    "paddingTop": 0,
-                  },
-                  "Input": Object {
-                    "color": "#313131",
-                  },
-                  "Label": Object {
-                    "color": "#bfc2c9",
-                    "fontSize": 12,
-                    "stackedHeight": 40,
-                  },
-                  "Select": Object {},
-                }
-              }
-            >
-              <TextInput
-                allowFontScaling={true}
-                componentName="Input"
-                data-index={0}
-                defaultValue=""
-                editable={true}
-                id="myTextfield"
-                inlineLabel={false}
-                multiline={false}
-                name="myTextfield"
-                numberOfLines={1}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                placeholder=""
-                placeholderTextColor="#c9c9c9"
-                style={
-                  Array [
-                    Object {
-                      "color": "#313131",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontSize": 12,
-                      "lineHeight": 18,
-                      "textAlignVertical": "center",
-                    },
-                    undefined,
-                  ]
-                }
-                theme={
-                  Object {
-                    "BaseInput": Object {
-                      "fontSize": 12,
-                      "lineHeight": 18,
-                      "placeholderColor": "#c9c9c9",
-                    },
-                    "Button": Object {
-                      "backgroundColor": "#4286dd",
-                      "color": "#fff",
-                      "fontSize": 12,
-                      "fontWeight": 700,
-                      "height": 45,
-                    },
-                    "ErrorMessage": Object {
-                      "color": "red",
-                      "fontSize": 10,
-                      "marginBottom": 15,
-                      "textAlign": "right",
-                    },
-                    "Fieldset": Object {
-                      "borderBottomColor": "#ddd",
-                      "borderBottomWidth": 1,
-                      "labelColor": "#909090",
-                      "labelHeight": 25,
-                      "labelSize": 9,
-                      "labelWeight": 700,
-                      "paddingBottom": 12,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 12,
-                    },
-                    "FormGroup": Object {
-                      "borderColor": "#ebebeb",
-                      "borderRadius": 3,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "errorBorderColor": "red",
-                      "height": 35,
-                      "marginBottom": 10,
-                      "paddingBottom": 0,
-                      "paddingLeft": 10,
-                      "paddingRight": 10,
-                      "paddingTop": 0,
-                    },
-                    "Input": Object {
-                      "color": "#313131",
-                    },
-                    "Label": Object {
-                      "color": "#bfc2c9",
-                      "fontSize": 12,
-                      "stackedHeight": 25,
-                    },
-                    "Select": Object {},
-                  }
-                }
-                type="text"
-                underlineColorAndroid="transparent"
-                value=""
-              />
-            </View>
             <Text
-              inlineLabel={false}
               style={
-                Object {
-                  "alignSelf": "flex-end",
-                  "color": "#FF4545",
-                  "fontSize": 10,
-                }
-              }
-              theme={
-                Object {
-                  "BaseInput": Object {
-                    "fontSize": 12,
-                    "lineHeight": 18,
-                    "placeholderColor": "#c9c9c9",
-                  },
-                  "Button": Object {
-                    "backgroundColor": "#4286dd",
-                    "color": "#fff",
-                    "fontSize": 12,
-                    "fontWeight": 700,
-                    "height": 45,
-                  },
-                  "ErrorMessage": Object {
-                    "color": "red",
-                    "fontSize": 10,
-                    "marginBottom": 15,
-                    "textAlign": "right",
-                  },
-                  "Fieldset": Object {
-                    "borderBottomColor": "#ddd",
-                    "borderBottomWidth": 1,
-                    "labelColor": "#909090",
-                    "labelHeight": 25,
-                    "labelSize": 9,
-                    "labelWeight": 700,
-                    "paddingBottom": 12,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 12,
-                  },
-                  "FormGroup": Object {
-                    "borderColor": "#ebebeb",
-                    "borderRadius": 3,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "errorBorderColor": "red",
-                    "height": 35,
-                    "marginBottom": 10,
-                    "paddingBottom": 0,
-                    "paddingLeft": 10,
-                    "paddingRight": 10,
-                    "paddingTop": 0,
-                  },
-                  "Input": Object {
-                    "color": "#313131",
-                  },
-                  "Label": Object {
-                    "color": "#bfc2c9",
-                    "fontSize": 12,
-                    "stackedHeight": 25,
-                  },
-                  "Select": Object {},
-                }
+                Array [
+                  Object {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                ]
               }
             >
               
             </Text>
-          </View>
+             
+            <Text
+              style={
+                Array [
+                  Object {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                ]
+              }
+            >
+              
+            </Text>
+             
+            My Textfield
+             
+            <Text
+              style={
+                Array [
+                  Object {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                ]
+              }
+            >
+              
+            </Text>
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "borderBottomColor": "#bdc6cf",
+              "borderBottomWidth": 1,
+              "borderColor": "#9e9e9e",
+              "marginLeft": 20,
+              "marginRight": 20,
+              "transform": Array [
+                Object {
+                  "translateX": 0,
+                },
+              ],
+            }
+          }
+        >
+          <TextInput
+            allowFontScaling={true}
+            data-index={0}
+            defaultValue=""
+            editable={true}
+            id="myTextfield"
+            name="myTextfield"
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            placeholder=""
+            placeholderTextColor="#bdbdbd"
+            shake={true}
+            style={
+              Array [
+                Object {
+                  "color": "#86939e",
+                  "minHeight": 36,
+                  "width": 750,
+                },
+                Object {
+                  "fontSize": 17.5,
+                },
+                Object {
+                  "color": "rgba(0, 0, 0, 0.87)",
+                  "fontSize": 14,
+                  "lineHeight": 18,
+                },
+              ]
+            }
+            type="text"
+            underlineColorAndroid="transparent"
+            value=""
+          />
         </View>
       </View>
-    </RCTScrollView>
+    </View>
   </View>
-</View>
+</RCTScrollView>
 `;
