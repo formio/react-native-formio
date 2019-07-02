@@ -96,7 +96,7 @@ export default class Formio extends React.Component {
 
     if (this.props.src) {
       this.formio = new Formiojs(this.props.src);
-      this.formio.loadForm().then((form) => {
+      this.formio.loadForm(undefined, {ignoreCache: this.props.options.ignoreCache}).then((form) => {
         this.loadForm(form);
         this.fetchSubmission();
       })
@@ -127,7 +127,7 @@ export default class Formio extends React.Component {
     if (form && form._id && this.props.submissionId) {
       this.formio.submissionId = this.props.submissionId;
       this.formio.submissionUrl = `${this.props.src}/submission/${this.props.submissionId}`;
-      this.formio.loadSubmission()
+      this.formio.loadSubmission(undefined, {ignoreCache: this.props.options.ignoreCache})
       .then((submission) => {
         this.loadSubmission(submission);
       }).catch((e) => {
@@ -576,6 +576,7 @@ Formio.defaultProps = {
   colors: colors,
   options: {
     showAlerts: true,
+    ignoreCache: false,
   }
 };
 
@@ -590,6 +591,7 @@ Formio.propTypes = {
   readOnly: PropTypes.bool,
   options: PropTypes.shape({
     isInit: PropTypes.bool,
+    ignoreCache: PropTypes.bool,
     showAlerts: PropTypes.bool,
   }),
   theme: PropTypes.object,
